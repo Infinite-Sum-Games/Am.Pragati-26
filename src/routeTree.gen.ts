@@ -10,63 +10,33 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DemoZustandRouteImport } from './routes/demo/zustand'
-import { Route as DemoFramerMotionRouteImport } from './routes/demo/framer-motion'
-import { Route as DemoFormsRouteImport } from './routes/demo/forms'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DemoZustandRoute = DemoZustandRouteImport.update({
-  id: '/demo/zustand',
-  path: '/demo/zustand',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoFramerMotionRoute = DemoFramerMotionRouteImport.update({
-  id: '/demo/framer-motion',
-  path: '/demo/framer-motion',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoFormsRoute = DemoFormsRouteImport.update({
-  id: '/demo/forms',
-  path: '/demo/forms',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/demo/forms': typeof DemoFormsRoute
-  '/demo/framer-motion': typeof DemoFramerMotionRoute
-  '/demo/zustand': typeof DemoZustandRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/demo/forms': typeof DemoFormsRoute
-  '/demo/framer-motion': typeof DemoFramerMotionRoute
-  '/demo/zustand': typeof DemoZustandRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/demo/forms': typeof DemoFormsRoute
-  '/demo/framer-motion': typeof DemoFramerMotionRoute
-  '/demo/zustand': typeof DemoZustandRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/demo/forms' | '/demo/framer-motion' | '/demo/zustand'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/demo/forms' | '/demo/framer-motion' | '/demo/zustand'
-  id: '__root__' | '/' | '/demo/forms' | '/demo/framer-motion' | '/demo/zustand'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DemoFormsRoute: typeof DemoFormsRoute
-  DemoFramerMotionRoute: typeof DemoFramerMotionRoute
-  DemoZustandRoute: typeof DemoZustandRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -78,35 +48,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo/zustand': {
-      id: '/demo/zustand'
-      path: '/demo/zustand'
-      fullPath: '/demo/zustand'
-      preLoaderRoute: typeof DemoZustandRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/framer-motion': {
-      id: '/demo/framer-motion'
-      path: '/demo/framer-motion'
-      fullPath: '/demo/framer-motion'
-      preLoaderRoute: typeof DemoFramerMotionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/forms': {
-      id: '/demo/forms'
-      path: '/demo/forms'
-      fullPath: '/demo/forms'
-      preLoaderRoute: typeof DemoFormsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DemoFormsRoute: DemoFormsRoute,
-  DemoFramerMotionRoute: DemoFramerMotionRoute,
-  DemoZustandRoute: DemoZustandRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
