@@ -9,303 +9,48 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as NotFoundRouteImport } from './routes/not-found'
-import { Route as HomeRouteImport } from './routes/home'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as TeamsIndexRouteImport } from './routes/teams/index'
-import { Route as SponsorsIndexRouteImport } from './routes/sponsors/index'
-import { Route as SignupIndexRouteImport } from './routes/signup/index'
-import { Route as ScheduleIndexRouteImport } from './routes/schedule/index'
-import { Route as ResetPasswordIndexRouteImport } from './routes/reset-password/index'
-import { Route as ResetOtpIndexRouteImport } from './routes/reset-otp/index'
-import { Route as ProshowIndexRouteImport } from './routes/proshow/index'
-import { Route as ProfileIndexRouteImport } from './routes/profile/index'
-import { Route as OtpIndexRouteImport } from './routes/otp/index'
-import { Route as MbaFairIndexRouteImport } from './routes/mba-fair/index'
-import { Route as MaintenanceIndexRouteImport } from './routes/maintenance/index'
-import { Route as LoginIndexRouteImport } from './routes/login/index'
-import { Route as ForgotPasswordIndexRouteImport } from './routes/forgot-password/index'
-import { Route as EventsIndexRouteImport } from './routes/events/index'
-import { Route as ComingSoonIndexRouteImport } from './routes/coming-soon/index'
-import { Route as CeoConnectIndexRouteImport } from './routes/ceo-connect/index'
-import { Route as BrochureIndexRouteImport } from './routes/brochure/index'
+import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-query'
 
-const NotFoundRoute = NotFoundRouteImport.update({
-  id: '/not-found',
-  path: '/not-found',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HomeRoute = HomeRouteImport.update({
-  id: '/home',
-  path: '/home',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TeamsIndexRoute = TeamsIndexRouteImport.update({
-  id: '/teams/',
-  path: '/teams/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SponsorsIndexRoute = SponsorsIndexRouteImport.update({
-  id: '/sponsors/',
-  path: '/sponsors/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SignupIndexRoute = SignupIndexRouteImport.update({
-  id: '/signup/',
-  path: '/signup/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ScheduleIndexRoute = ScheduleIndexRouteImport.update({
-  id: '/schedule/',
-  path: '/schedule/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResetPasswordIndexRoute = ResetPasswordIndexRouteImport.update({
-  id: '/reset-password/',
-  path: '/reset-password/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResetOtpIndexRoute = ResetOtpIndexRouteImport.update({
-  id: '/reset-otp/',
-  path: '/reset-otp/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProshowIndexRoute = ProshowIndexRouteImport.update({
-  id: '/proshow/',
-  path: '/proshow/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProfileIndexRoute = ProfileIndexRouteImport.update({
-  id: '/profile/',
-  path: '/profile/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OtpIndexRoute = OtpIndexRouteImport.update({
-  id: '/otp/',
-  path: '/otp/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MbaFairIndexRoute = MbaFairIndexRouteImport.update({
-  id: '/mba-fair/',
-  path: '/mba-fair/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MaintenanceIndexRoute = MaintenanceIndexRouteImport.update({
-  id: '/maintenance/',
-  path: '/maintenance/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginIndexRoute = LoginIndexRouteImport.update({
-  id: '/login/',
-  path: '/login/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ForgotPasswordIndexRoute = ForgotPasswordIndexRouteImport.update({
-  id: '/forgot-password/',
-  path: '/forgot-password/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EventsIndexRoute = EventsIndexRouteImport.update({
-  id: '/events/',
-  path: '/events/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ComingSoonIndexRoute = ComingSoonIndexRouteImport.update({
-  id: '/coming-soon/',
-  path: '/coming-soon/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CeoConnectIndexRoute = CeoConnectIndexRouteImport.update({
-  id: '/ceo-connect/',
-  path: '/ceo-connect/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BrochureIndexRoute = BrochureIndexRouteImport.update({
-  id: '/brochure/',
-  path: '/brochure/',
+const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
+  id: '/demo/tanstack-query',
+  path: '/demo/tanstack-query',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/home': typeof HomeRoute
-  '/not-found': typeof NotFoundRoute
-  '/brochure/': typeof BrochureIndexRoute
-  '/ceo-connect/': typeof CeoConnectIndexRoute
-  '/coming-soon/': typeof ComingSoonIndexRoute
-  '/events/': typeof EventsIndexRoute
-  '/forgot-password/': typeof ForgotPasswordIndexRoute
-  '/login/': typeof LoginIndexRoute
-  '/maintenance/': typeof MaintenanceIndexRoute
-  '/mba-fair/': typeof MbaFairIndexRoute
-  '/otp/': typeof OtpIndexRoute
-  '/profile/': typeof ProfileIndexRoute
-  '/proshow/': typeof ProshowIndexRoute
-  '/reset-otp/': typeof ResetOtpIndexRoute
-  '/reset-password/': typeof ResetPasswordIndexRoute
-  '/schedule/': typeof ScheduleIndexRoute
-  '/signup/': typeof SignupIndexRoute
-  '/sponsors/': typeof SponsorsIndexRoute
-  '/teams/': typeof TeamsIndexRoute
+  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/home': typeof HomeRoute
-  '/not-found': typeof NotFoundRoute
-  '/brochure': typeof BrochureIndexRoute
-  '/ceo-connect': typeof CeoConnectIndexRoute
-  '/coming-soon': typeof ComingSoonIndexRoute
-  '/events': typeof EventsIndexRoute
-  '/forgot-password': typeof ForgotPasswordIndexRoute
-  '/login': typeof LoginIndexRoute
-  '/maintenance': typeof MaintenanceIndexRoute
-  '/mba-fair': typeof MbaFairIndexRoute
-  '/otp': typeof OtpIndexRoute
-  '/profile': typeof ProfileIndexRoute
-  '/proshow': typeof ProshowIndexRoute
-  '/reset-otp': typeof ResetOtpIndexRoute
-  '/reset-password': typeof ResetPasswordIndexRoute
-  '/schedule': typeof ScheduleIndexRoute
-  '/signup': typeof SignupIndexRoute
-  '/sponsors': typeof SponsorsIndexRoute
-  '/teams': typeof TeamsIndexRoute
+  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/home': typeof HomeRoute
-  '/not-found': typeof NotFoundRoute
-  '/brochure/': typeof BrochureIndexRoute
-  '/ceo-connect/': typeof CeoConnectIndexRoute
-  '/coming-soon/': typeof ComingSoonIndexRoute
-  '/events/': typeof EventsIndexRoute
-  '/forgot-password/': typeof ForgotPasswordIndexRoute
-  '/login/': typeof LoginIndexRoute
-  '/maintenance/': typeof MaintenanceIndexRoute
-  '/mba-fair/': typeof MbaFairIndexRoute
-  '/otp/': typeof OtpIndexRoute
-  '/profile/': typeof ProfileIndexRoute
-  '/proshow/': typeof ProshowIndexRoute
-  '/reset-otp/': typeof ResetOtpIndexRoute
-  '/reset-password/': typeof ResetPasswordIndexRoute
-  '/schedule/': typeof ScheduleIndexRoute
-  '/signup/': typeof SignupIndexRoute
-  '/sponsors/': typeof SponsorsIndexRoute
-  '/teams/': typeof TeamsIndexRoute
+  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/home'
-    | '/not-found'
-    | '/brochure/'
-    | '/ceo-connect/'
-    | '/coming-soon/'
-    | '/events/'
-    | '/forgot-password/'
-    | '/login/'
-    | '/maintenance/'
-    | '/mba-fair/'
-    | '/otp/'
-    | '/profile/'
-    | '/proshow/'
-    | '/reset-otp/'
-    | '/reset-password/'
-    | '/schedule/'
-    | '/signup/'
-    | '/sponsors/'
-    | '/teams/'
+  fullPaths: '/' | '/demo/tanstack-query'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/home'
-    | '/not-found'
-    | '/brochure'
-    | '/ceo-connect'
-    | '/coming-soon'
-    | '/events'
-    | '/forgot-password'
-    | '/login'
-    | '/maintenance'
-    | '/mba-fair'
-    | '/otp'
-    | '/profile'
-    | '/proshow'
-    | '/reset-otp'
-    | '/reset-password'
-    | '/schedule'
-    | '/signup'
-    | '/sponsors'
-    | '/teams'
-  id:
-    | '__root__'
-    | '/'
-    | '/home'
-    | '/not-found'
-    | '/brochure/'
-    | '/ceo-connect/'
-    | '/coming-soon/'
-    | '/events/'
-    | '/forgot-password/'
-    | '/login/'
-    | '/maintenance/'
-    | '/mba-fair/'
-    | '/otp/'
-    | '/profile/'
-    | '/proshow/'
-    | '/reset-otp/'
-    | '/reset-password/'
-    | '/schedule/'
-    | '/signup/'
-    | '/sponsors/'
-    | '/teams/'
+  to: '/' | '/demo/tanstack-query'
+  id: '__root__' | '/' | '/demo/tanstack-query'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  HomeRoute: typeof HomeRoute
-  NotFoundRoute: typeof NotFoundRoute
-  BrochureIndexRoute: typeof BrochureIndexRoute
-  CeoConnectIndexRoute: typeof CeoConnectIndexRoute
-  ComingSoonIndexRoute: typeof ComingSoonIndexRoute
-  EventsIndexRoute: typeof EventsIndexRoute
-  ForgotPasswordIndexRoute: typeof ForgotPasswordIndexRoute
-  LoginIndexRoute: typeof LoginIndexRoute
-  MaintenanceIndexRoute: typeof MaintenanceIndexRoute
-  MbaFairIndexRoute: typeof MbaFairIndexRoute
-  OtpIndexRoute: typeof OtpIndexRoute
-  ProfileIndexRoute: typeof ProfileIndexRoute
-  ProshowIndexRoute: typeof ProshowIndexRoute
-  ResetOtpIndexRoute: typeof ResetOtpIndexRoute
-  ResetPasswordIndexRoute: typeof ResetPasswordIndexRoute
-  ScheduleIndexRoute: typeof ScheduleIndexRoute
-  SignupIndexRoute: typeof SignupIndexRoute
-  SponsorsIndexRoute: typeof SponsorsIndexRoute
-  TeamsIndexRoute: typeof TeamsIndexRoute
+  DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/not-found': {
-      id: '/not-found'
-      path: '/not-found'
-      fullPath: '/not-found'
-      preLoaderRoute: typeof NotFoundRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/home': {
-      id: '/home'
-      path: '/home'
-      fullPath: '/home'
-      preLoaderRoute: typeof HomeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -313,123 +58,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/teams/': {
-      id: '/teams/'
-      path: '/teams'
-      fullPath: '/teams/'
-      preLoaderRoute: typeof TeamsIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sponsors/': {
-      id: '/sponsors/'
-      path: '/sponsors'
-      fullPath: '/sponsors/'
-      preLoaderRoute: typeof SponsorsIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/signup/': {
-      id: '/signup/'
-      path: '/signup'
-      fullPath: '/signup/'
-      preLoaderRoute: typeof SignupIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/schedule/': {
-      id: '/schedule/'
-      path: '/schedule'
-      fullPath: '/schedule/'
-      preLoaderRoute: typeof ScheduleIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reset-password/': {
-      id: '/reset-password/'
-      path: '/reset-password'
-      fullPath: '/reset-password/'
-      preLoaderRoute: typeof ResetPasswordIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reset-otp/': {
-      id: '/reset-otp/'
-      path: '/reset-otp'
-      fullPath: '/reset-otp/'
-      preLoaderRoute: typeof ResetOtpIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/proshow/': {
-      id: '/proshow/'
-      path: '/proshow'
-      fullPath: '/proshow/'
-      preLoaderRoute: typeof ProshowIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/profile/': {
-      id: '/profile/'
-      path: '/profile'
-      fullPath: '/profile/'
-      preLoaderRoute: typeof ProfileIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/otp/': {
-      id: '/otp/'
-      path: '/otp'
-      fullPath: '/otp/'
-      preLoaderRoute: typeof OtpIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mba-fair/': {
-      id: '/mba-fair/'
-      path: '/mba-fair'
-      fullPath: '/mba-fair/'
-      preLoaderRoute: typeof MbaFairIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/maintenance/': {
-      id: '/maintenance/'
-      path: '/maintenance'
-      fullPath: '/maintenance/'
-      preLoaderRoute: typeof MaintenanceIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login/': {
-      id: '/login/'
-      path: '/login'
-      fullPath: '/login/'
-      preLoaderRoute: typeof LoginIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/forgot-password/': {
-      id: '/forgot-password/'
-      path: '/forgot-password'
-      fullPath: '/forgot-password/'
-      preLoaderRoute: typeof ForgotPasswordIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/events/': {
-      id: '/events/'
-      path: '/events'
-      fullPath: '/events/'
-      preLoaderRoute: typeof EventsIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/coming-soon/': {
-      id: '/coming-soon/'
-      path: '/coming-soon'
-      fullPath: '/coming-soon/'
-      preLoaderRoute: typeof ComingSoonIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ceo-connect/': {
-      id: '/ceo-connect/'
-      path: '/ceo-connect'
-      fullPath: '/ceo-connect/'
-      preLoaderRoute: typeof CeoConnectIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/brochure/': {
-      id: '/brochure/'
-      path: '/brochure'
-      fullPath: '/brochure/'
-      preLoaderRoute: typeof BrochureIndexRouteImport
+    '/demo/tanstack-query': {
+      id: '/demo/tanstack-query'
+      path: '/demo/tanstack-query'
+      fullPath: '/demo/tanstack-query'
+      preLoaderRoute: typeof DemoTanstackQueryRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -437,25 +70,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  HomeRoute: HomeRoute,
-  NotFoundRoute: NotFoundRoute,
-  BrochureIndexRoute: BrochureIndexRoute,
-  CeoConnectIndexRoute: CeoConnectIndexRoute,
-  ComingSoonIndexRoute: ComingSoonIndexRoute,
-  EventsIndexRoute: EventsIndexRoute,
-  ForgotPasswordIndexRoute: ForgotPasswordIndexRoute,
-  LoginIndexRoute: LoginIndexRoute,
-  MaintenanceIndexRoute: MaintenanceIndexRoute,
-  MbaFairIndexRoute: MbaFairIndexRoute,
-  OtpIndexRoute: OtpIndexRoute,
-  ProfileIndexRoute: ProfileIndexRoute,
-  ProshowIndexRoute: ProshowIndexRoute,
-  ResetOtpIndexRoute: ResetOtpIndexRoute,
-  ResetPasswordIndexRoute: ResetPasswordIndexRoute,
-  ScheduleIndexRoute: ScheduleIndexRoute,
-  SignupIndexRoute: SignupIndexRoute,
-  SponsorsIndexRoute: SponsorsIndexRoute,
-  TeamsIndexRoute: TeamsIndexRoute,
+  DemoTanstackQueryRoute: DemoTanstackQueryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
