@@ -3,7 +3,23 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-@custom-variant dark (&:is(.dark *));
+@font-face {
+  font-family: 'vcr';
+  src: url('/fonts/vcr.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'jersey15';
+  src: url('/fonts/Jersey15-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* @custom-variant dark (&:is(.dark *));
 
 /* Responsive defaults */
 *,
@@ -162,4 +178,18 @@ code {
   body {
     @apply bg-background text-foreground;
   }
+} */
+
+@theme {
+  /* for night theme */
+  --color-retro-pink: #ff00ff;
+  --color-retro-purple: #3d1a5f;
+  --color-retro-orange: #ff8c00;
+  --color-retro-yellow: #f4d03f;
+  --color-retro-cyan: #00ffff;
+  
+
+  /* --bg-retro-gradient: linear-gradient(to bottom, #f4d03f 0%, #ff8c00 50%, #ff00ff 100%); */
+  --font-vcr: "vcr", monospace;
+  --font-jersey15: "jersey15", monospace;
 }

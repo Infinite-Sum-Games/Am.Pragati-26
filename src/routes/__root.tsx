@@ -7,9 +7,8 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import { Toaster } from 'react-hot-toast'
 
-import Header from '../components/Header'
-import Footer from '../components/Footer'
 
+import Footer from '../components/Footer'
 import TanStackQueryDevtools from '../providers/tanstack-query-devtools'
 
 import type { QueryClient } from '@tanstack/react-query'
@@ -50,7 +49,6 @@ function RootComponent() {
 
   return (
     <>
-      {showNavbar && <Header />}
       <Outlet />
       {showFooter && <Footer />}
       <Toaster position="top-right" />
