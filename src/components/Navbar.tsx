@@ -31,9 +31,6 @@ const CRTOverlay = () => (
   />
 );
 
-// ==========================================
-// 3. CYBER PARTY DECORATIONS (INTERACTIVE)
-// ==========================================
 const PartyDecorations = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -83,11 +80,11 @@ const PartyDecorations = () => {
 };
 
 // ==========================================
-// 4. MENU ITEM COMPONENT (UPDATED)
+// 4. MENU ITEM COMPONENT
 // ==========================================
 const MenuItem: React.FC<MenuItemProps> = ({ text, hasArrow, align = "left", href = "/coming-soon" }) => {
-    const justifyClass = align === "right" ? "justify-end" : "justify-start";
-    const originClass = align === "right" ? "origin-right" : "origin-left";
+    const justifyClass = align === "right" ? "justify-center md:justify-end" : "justify-center md:justify-start";
+    const originClass = align === "right" ? "origin-center md:origin-right" : "origin-center md:origin-left";
     const translateClass = align === "right" ? "group-hover:-translate-x-2" : "group-hover:translate-x-2";
 
     const glitchVariants = {
@@ -104,15 +101,13 @@ const MenuItem: React.FC<MenuItemProps> = ({ text, hasArrow, align = "left", hre
     };
 
     return (
-      // CHANGED: div -> a tag, w-full -> w-fit, inline-block -> block
-      // This ensures the black highlight background perfectly wraps the text size.
       <a 
         href={href}
         className="group relative cursor-pointer block w-fit py-2 px-4 no-underline"
       >
           <div className={`relative z-10 flex items-center gap-4 ${justifyClass}`}>
             {hasArrow && align === "right" && (
-                <span className="text-2xl text-white opacity-0 group-hover:opacity-100 transition-opacity -translate-x-4 group-hover:translate-x-0 duration-100">➜</span>
+                <span className="text-2xl text-white opacity-0 group-hover:opacity-100 transition-opacity -translate-x-4 group-hover:translate-x-0 duration-100 hidden md:inline-block">➜</span>
             )}
             <motion.span 
                 variants={glitchVariants}
@@ -127,7 +122,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ text, hasArrow, align = "left", hre
                {text}
             </motion.span>
              {hasArrow && align === "left" && (
-                <span className="text-2xl text-white opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 duration-100">⬅</span>
+                <span className="text-2xl text-white opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 duration-100 hidden md:inline-block">⬅</span>
             )}
           </div>
           <span className={`absolute inset-0 bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-150 ${originClass} z-0 border-2 border-cyan-400`} />
@@ -206,14 +201,13 @@ const BeatDropOverlay: React.FC<OverlayProps> = ({ isOpen, onClose }) => {
                </button>
             </div>
 
-            <div className="flex-1 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12 px-6 items-center">
-                <div className="flex flex-col gap-10 border-r-0 md:border-r border-white/20 pr-0 md:pr-12 text-right md:items-end">
-                    {/* HREFS default to /coming-soon via the Component default prop, but explicitly setting it here */}
-                    <MenuItem text="HOME" hasArrow align="right" href="/coming-soon" />
+            <div className="flex-1 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 px-6 content-center">
+                <div className="flex flex-col gap-10 border-r-0 md:border-r border-white/20 pr-0 md:pr-12 items-center text-center md:items-end md:text-right">
+                    <MenuItem text="HOME" align="right" href="/coming-soon" />
                     <MenuItem text="EVENTS" align="right" href="/coming-soon" />
                     <MenuItem text="Business Fair" align="right" href="/coming-soon" />
                 </div>
-                <div className="flex flex-col gap-10 pl-0 md:pl-12 text-left md:items-start">
+                <div className="flex flex-col gap-10 pl-0 md:pl-12 items-center text-center md:items-start md:text-left">
                     <MenuItem text="TEAM" align="left" href="/coming-soon" />
                     <MenuItem text="SPONSORS" align="left" href="/coming-soon" />
                     <MenuItem text="CEO CONNECT" align="left" href="/coming-soon" />
@@ -316,7 +310,7 @@ const Navbar: React.FC = () => {
              )}
           </motion.button>
 
-          {/* --- LOGIN BUTTON (UPDATED: Wrapped in Anchor) --- */}
+          {/* --- LOGIN BUTTON --- */}
           <a href="/login" className="pointer-events-auto block">
             <motion.button
                 whileHover={{ y: -4, boxShadow: "4px 4px 0px rgba(0,0,0,1)" }}
