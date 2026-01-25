@@ -1,15 +1,5 @@
 import type { ReactElement } from 'react';
-
-type NeonColor = 'cyan' | 'fuchsia';
-type Size = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
-
-interface RetroMarqueeProps {
-  text: string;
-  speed?: number;
-  color?: NeonColor;
-  size?: Size;
-  className?: string;
-}
+import type { RetroMarqueeProps, NeonColor, Size } from '../types/retroMarqueeTypes';
 
 const sizeClassMap: Record<Size, string> = {
   sm: 'text-xl',
