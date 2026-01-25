@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, type Variants, useMotionValue, useSpring, useTransform } from "framer-motion";
 
-// --- Types ---
+
 interface OverlayProps {
   isOpen: boolean;
   onClose: () => void;
@@ -10,25 +10,20 @@ interface MenuItemProps {
   text: string;
   hasArrow?: boolean;
   align?: "left" | "right";
+  href?: string; 
 }
 
-// ==========================================
-// 1. ASSETS & STYLES
-// ==========================================
 const pixelFont = {
   fontFamily: '"Press Start 2P", cursive', 
   letterSpacing: '-1px' 
 };
 
-// UPDATED: A direct MP3 link that works for streaming
 const AUDIO_URL = "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3";
 
-// ==========================================
-// 2. CRT SCANLINE EFFECT
-// ==========================================
+
 const CRTOverlay = () => (
   <div 
-    className="absolute inset-0 z-[60] pointer-events-none opacity-20"
+    className="absolute inset-0 z-60 pointer-events-none opacity-20"
     style={{
       background: "linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))",
       backgroundSize: "100% 2px, 3px 100%"
@@ -88,7 +83,60 @@ const PartyDecorations = () => {
 };
 
 // ==========================================
-// 4. "BEAT DROP" TRANSITION OVERLAY
+// 4. MENU ITEM COMPONENT (UPDATED)
+// ==========================================
+const MenuItem: React.FC<MenuItemProps> = ({ text, hasArrow, align = "left", href = "/coming-soon" }) => {
+    const justifyClass = align === "right" ? "justify-end" : "justify-start";
+    const originClass = align === "right" ? "origin-right" : "origin-left";
+    const translateClass = align === "right" ? "group-hover:-translate-x-2" : "group-hover:translate-x-2";
+
+    const glitchVariants = {
+      rest: { x: 0, textShadow: "4px 4px 0px rgba(0,0,0,1)" },
+      hover: {
+        x: [0, -2, 2, -1, 1, 0], 
+        textShadow: [
+          "2px 0px 0px #00ffff, -2px 0px 0px #ff00ff",
+          "-2px 2px 0px #00ffff, 2px -2px 0px #ff00ff",
+          "2px -2px 0px #00ffff, -2px 2px 0px #ff00ff"
+        ],
+        transition: { duration: 0.2, repeat: Infinity, repeatType: "mirror" as const }
+      }
+    };
+
+    return (
+      // CHANGED: div -> a tag, w-full -> w-fit, inline-block -> block
+      // This ensures the black highlight background perfectly wraps the text size.
+      <a 
+        href={href}
+        className="group relative cursor-pointer block w-fit py-2 px-4 no-underline"
+      >
+          <div className={`relative z-10 flex items-center gap-4 ${justifyClass}`}>
+            {hasArrow && align === "right" && (
+                <span className="text-2xl text-white opacity-0 group-hover:opacity-100 transition-opacity -translate-x-4 group-hover:translate-x-0 duration-100">➜</span>
+            )}
+            <motion.span 
+                variants={glitchVariants}
+                initial="rest"
+                whileHover="hover"
+                style={pixelFont}
+                className={`text-xl md:text-3xl lg:text-5xl whitespace-nowrap text-white uppercase leading-relaxed transition-all duration-100 
+                group-hover:text-cyan-300
+                ${translateClass}
+                group-hover:-translate-y-2`}
+            >
+               {text}
+            </motion.span>
+             {hasArrow && align === "left" && (
+                <span className="text-2xl text-white opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 duration-100">⬅</span>
+            )}
+          </div>
+          <span className={`absolute inset-0 bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-150 ${originClass} z-0 border-2 border-cyan-400`} />
+      </a>
+    );
+}
+
+// ==========================================
+// 5. "BEAT DROP" TRANSITION OVERLAY
 // ==========================================
 const BeatDropOverlay: React.FC<OverlayProps> = ({ isOpen, onClose }) => {
   const bars = [0, 1, 2, 3, 4];
@@ -115,7 +163,7 @@ const BeatDropOverlay: React.FC<OverlayProps> = ({ isOpen, onClose }) => {
     <AnimatePresence>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');`}</style>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex flex-col justify-center pointer-events-none">
+        <div className="fixed inset-0 z-100 flex flex-col justify-center pointer-events-none">
           <div className="absolute inset-0 z-0 flex h-full pointer-events-auto">
             {bars.map((i) => (
               <motion.div
@@ -152,7 +200,7 @@ const BeatDropOverlay: React.FC<OverlayProps> = ({ isOpen, onClose }) => {
             <div className="flex justify-end p-6 md:p-8">
                <button 
                   onClick={onClose}
-                  className="group bg-white border-4 border-black w-16 h-16 flex items-center justify-center hover:bg-black transition-colors shadow-[6px_6px_0_rgba(0,0,0,0.5)] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none"
+                  className="group bg-white border-4 border-black w-16 h-16 flex items-center justify-center hover:bg-black transition-colors shadow-[6px_6px_0_rgba(0,0,0,0.5)] active:translate-x-1 active:translate-y-1 active:shadow-none"
                >
                   <span className="text-2xl text-black group-hover:text-white font-black">X</span>
                </button>
@@ -160,19 +208,20 @@ const BeatDropOverlay: React.FC<OverlayProps> = ({ isOpen, onClose }) => {
 
             <div className="flex-1 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12 px-6 items-center">
                 <div className="flex flex-col gap-10 border-r-0 md:border-r border-white/20 pr-0 md:pr-12 text-right md:items-end">
-                    <MenuItem text="HOME" hasArrow align="right" />
-                    <MenuItem text="EVENTS" align="right" />
-                    <MenuItem text="Business Fair" align="right" />
+                    {/* HREFS default to /coming-soon via the Component default prop, but explicitly setting it here */}
+                    <MenuItem text="HOME" hasArrow align="right" href="/coming-soon" />
+                    <MenuItem text="EVENTS" align="right" href="/coming-soon" />
+                    <MenuItem text="Business Fair" align="right" href="/coming-soon" />
                 </div>
                 <div className="flex flex-col gap-10 pl-0 md:pl-12 text-left md:items-start">
-                    <MenuItem text="TEAM" align="left" />
-                    <MenuItem text="SPONSORS" align="left" />
-                    <MenuItem text="CEO CONNECT" align="left" />
+                    <MenuItem text="TEAM" align="left" href="/coming-soon" />
+                    <MenuItem text="SPONSORS" align="left" href="/coming-soon" />
+                    <MenuItem text="CEO CONNECT" align="left" href="/coming-soon" />
                 </div>
             </div>
 
             <div className="p-8 text-center bg-black/20 backdrop-blur-sm border-t border-white/10">
-                <div className="flex justify-center gap-[10px] mb-4 h-12 items-end">
+                <div className="flex justify-center gap-2.5 mb-4 h-12 items-end">
                     {[1,2,3,4,5,6].map(i => (
                         <motion.div 
                             key={i} 
@@ -193,57 +242,7 @@ const BeatDropOverlay: React.FC<OverlayProps> = ({ isOpen, onClose }) => {
   );
 };
 
-// ==========================================
-// 5. MENU ITEM COMPONENT
-// ==========================================
-const MenuItem: React.FC<MenuItemProps> = ({ text, hasArrow, align = "left" }) => {
-    const justifyClass = align === "right" ? "justify-end" : "justify-start";
-    const originClass = align === "right" ? "origin-right" : "origin-left";
-    const translateClass = align === "right" ? "group-hover:-translate-x-2" : "group-hover:translate-x-2";
 
-    const glitchVariants = {
-      rest: { x: 0, textShadow: "4px 4px 0px rgba(0,0,0,1)" },
-      hover: {
-        x: [0, -2, 2, -1, 1, 0], 
-        textShadow: [
-          "2px 0px 0px #00ffff, -2px 0px 0px #ff00ff",
-          "-2px 2px 0px #00ffff, 2px -2px 0px #ff00ff",
-          "2px -2px 0px #00ffff, -2px 2px 0px #ff00ff"
-        ],
-        transition: { duration: 0.2, repeat: Infinity, repeatType: "mirror" as const }
-      }
-    };
-
-    return (
-      <div className="group relative cursor-pointer inline-block py-2 px-4 w-full">
-          <div className={`relative z-10 flex items-center gap-4 ${justifyClass}`}>
-            {hasArrow && align === "right" && (
-                <span className="text-2xl text-white opacity-0 group-hover:opacity-100 transition-opacity -translate-x-4 group-hover:translate-x-0 duration-100">➜</span>
-            )}
-            <motion.span 
-                variants={glitchVariants}
-                initial="rest"
-                whileHover="hover"
-                style={pixelFont}
-                className={`text-xl md:text-3xl lg:text-5xl whitespace-nowrap text-white uppercase leading-relaxed transition-all duration-100 
-                group-hover:text-cyan-300
-                ${translateClass}
-                group-hover:-translate-y-2`}
-            >
-               {text}
-            </motion.span>
-             {hasArrow && align === "left" && (
-                <span className="text-2xl text-white opacity-0 group-hover:opacity-100 transition-opacity translate-x-4 group-hover:translate-x-0 duration-100">⬅</span>
-            )}
-          </div>
-          <span className={`absolute inset-0 bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-150 ${originClass} -z-0 border-2 border-cyan-400`} />
-      </div>
-    );
-}
-
-// ==========================================
-// 6. NAVBAR WITH MUSIC CONTROL
-// ==========================================
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -253,7 +252,6 @@ const Navbar: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Initialize Audio with the direct URL
     audioRef.current = new Audio(AUDIO_URL);
     audioRef.current.loop = true;
     audioRef.current.volume = 0.5;
@@ -263,7 +261,6 @@ const Navbar: React.FC = () => {
 
     return () => {
         window.removeEventListener("scroll", handleScroll);
-        // Cleanup audio on unmount
         if(audioRef.current) {
             audioRef.current.pause();
             audioRef.current = null;
@@ -278,16 +275,10 @@ const Navbar: React.FC = () => {
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      // Modern browsers return a promise on play()
-      // We must handle the promise to prevent Uncaught (in promise) DOMException
       const playPromise = audioRef.current.play();
-      
       if (playPromise !== undefined) {
         playPromise
-          .then(() => {
-            // Play started successfully
-            setIsPlaying(true);
-          })
+          .then(() => setIsPlaying(true))
           .catch((error) => {
             console.error("Audio playback failed:", error);
             setIsPlaying(false);
@@ -315,38 +306,38 @@ const Navbar: React.FC = () => {
             className="pointer-events-auto h-12 w-12 bg-cyan-400 border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.5)] hover:bg-cyan-300 flex items-center justify-center transition-all relative overflow-hidden"
           >
              {isPlaying ? (
-                // Animated Equalizer Icon
-                <div className="flex gap-[3px] items-end h-5">
+                <div className="flex gap-0.75 items-end h-5">
                     <motion.div animate={{ height: [5, 16, 8, 20, 5] }} transition={{ repeat: Infinity, duration: 0.5 }} className="w-1.5 bg-black" />
                     <motion.div animate={{ height: [10, 5, 20, 10, 15] }} transition={{ repeat: Infinity, duration: 0.4 }} className="w-1.5 bg-black" />
                     <motion.div animate={{ height: [20, 12, 5, 16, 20] }} transition={{ repeat: Infinity, duration: 0.6 }} className="w-1.5 bg-black" />
                 </div>
              ) : (
-                // Play Icon
-                <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-black border-b-[8px] border-b-transparent ml-1" />
+                <div className="w-0 h-0 border-t-8 border-t-transparent border-l-14 border-l-black border-b-8 border-b-transparent ml-1" />
              )}
           </motion.button>
 
-          {/* --- LOGIN BUTTON --- */}
-          <motion.button
-            whileHover={{ y: -4, boxShadow: "4px 4px 0px rgba(0,0,0,1)" }}
-            whileTap={{ y: 0, boxShadow: "0px 0px 0px rgba(0,0,0,0)" }}
-            style={pixelFont}
-            className="pointer-events-auto h-12 px-6 bg-[#7e22ce] border-4 border-black text-white text-sm uppercase tracking-wider shadow-[4px_4px_0_rgba(0,0,0,0.5)] transition-all flex items-center"
-          >
-            LOGIN
-          </motion.button>
+          {/* --- LOGIN BUTTON (UPDATED: Wrapped in Anchor) --- */}
+          <a href="/login" className="pointer-events-auto block">
+            <motion.button
+                whileHover={{ y: -4, boxShadow: "4px 4px 0px rgba(0,0,0,1)" }}
+                whileTap={{ y: 0, boxShadow: "0px 0px 0px rgba(0,0,0,0)" }}
+                style={pixelFont}
+                className="h-12 px-6 bg-[#7e22ce] border-4 border-black text-white text-sm uppercase tracking-wider shadow-[4px_4px_0_rgba(0,0,0,0.5)] transition-all flex items-center"
+            >
+                LOGIN
+            </motion.button>
+          </a>
 
           {/* --- MENU TOGGLE --- */}
           <motion.button
             onClick={() => setIsOpen(true)}
             whileHover={{ y: -4, boxShadow: "4px 4px 0px rgba(0,0,0,1)" }}
             whileTap={{ y: 0, boxShadow: "0px 0px 0px rgba(0,0,0,0)" }}
-            className="pointer-events-auto h-12 w-12 bg-white border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.5)] hover:bg-[#d8b4fe] flex flex-col justify-center items-center gap-[4px] group transition-all"
+            className="pointer-events-auto h-12 w-12 bg-white border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,0.5)] hover:bg-[#d8b4fe] flex flex-col justify-center items-center gap-1 group transition-all"
           >
-             <span className="w-6 h-[4px] bg-black group-hover:w-8 transition-all duration-200" />
-             <span className="w-6 h-[4px] bg-black group-hover:w-4 transition-all duration-200" />
-             <span className="w-6 h-[4px] bg-black group-hover:w-8 transition-all duration-200" />
+             <span className="w-6 h-1 bg-black group-hover:w-8 transition-all duration-200" />
+             <span className="w-6 h-1 bg-black group-hover:w-4 transition-all duration-200" />
+             <span className="w-6 h-1 bg-black group-hover:w-8 transition-all duration-200" />
           </motion.button>
         </div>
       </nav>
