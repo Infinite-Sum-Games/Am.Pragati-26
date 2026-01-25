@@ -6,7 +6,6 @@ interface OverlayProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
 interface MenuItemProps {
   text: string;
   hasArrow?: boolean;
@@ -21,10 +20,8 @@ const pixelFont = {
   letterSpacing: '-1px' 
 };
 
-// PLACEHOLDER AUDIO - Replace with your own MP3 URL
-const AUDIO_URL =
-  "https://cdn.pixabay.com/download/audio/2022/10/26/audio_9b0c2fd8df.mp3";
-
+// UPDATED: A direct MP3 link that works for streaming
+const AUDIO_URL = "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Tours/Enthusiast/Tours_-_01_-_Enthusiast.mp3";
 
 // ==========================================
 // 2. CRT SCANLINE EFFECT
@@ -45,7 +42,6 @@ const CRTOverlay = () => (
 const PartyDecorations = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-
   const springConfig = { damping: 25, stiffness: 150 };
   const springX = useSpring(mouseX, springConfig);
   const springY = useSpring(mouseY, springConfig);
@@ -96,7 +92,7 @@ const PartyDecorations = () => {
 // ==========================================
 const BeatDropOverlay: React.FC<OverlayProps> = ({ isOpen, onClose }) => {
   const bars = [0, 1, 2, 3, 4];
-
+  
   const dropVariants: Variants = {
     hidden: { y: "-100%" },
     visible: (i: number) => ({
@@ -135,6 +131,7 @@ const BeatDropOverlay: React.FC<OverlayProps> = ({ isOpen, onClose }) => {
               </motion.div>
             ))}
           </div>
+
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -144,6 +141,7 @@ const BeatDropOverlay: React.FC<OverlayProps> = ({ isOpen, onClose }) => {
               <PartyDecorations />
               <CRTOverlay />
           </motion.div>
+
           <motion.div
             variants={contentVariants}
             initial="hidden"
@@ -159,6 +157,7 @@ const BeatDropOverlay: React.FC<OverlayProps> = ({ isOpen, onClose }) => {
                   <span className="text-2xl text-black group-hover:text-white font-black">X</span>
                </button>
             </div>
+
             <div className="flex-1 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12 px-6 items-center">
                 <div className="flex flex-col gap-10 border-r-0 md:border-r border-white/20 pr-0 md:pr-12 text-right md:items-end">
                     <MenuItem text="HOME" hasArrow align="right" />
@@ -171,6 +170,7 @@ const BeatDropOverlay: React.FC<OverlayProps> = ({ isOpen, onClose }) => {
                     <MenuItem text="CEO CONNECT" align="left" />
                 </div>
             </div>
+
             <div className="p-8 text-center bg-black/20 backdrop-blur-sm border-t border-white/10">
                 <div className="flex justify-center gap-[10px] mb-4 h-12 items-end">
                     {[1,2,3,4,5,6].map(i => (
@@ -253,13 +253,14 @@ const Navbar: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Initialize Audio
+    // Initialize Audio with the direct URL
     audioRef.current = new Audio(AUDIO_URL);
     audioRef.current.loop = true;
     audioRef.current.volume = 0.5;
 
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
+
     return () => {
         window.removeEventListener("scroll", handleScroll);
         // Cleanup audio on unmount
@@ -275,16 +276,30 @@ const Navbar: React.FC = () => {
     
     if (isPlaying) {
       audioRef.current.pause();
+      setIsPlaying(false);
     } else {
-      audioRef.current.play().catch(e => console.log("Audio play failed (user interaction needed):", e));
+      // Modern browsers return a promise on play()
+      // We must handle the promise to prevent Uncaught (in promise) DOMException
+      const playPromise = audioRef.current.play();
+      
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => {
+            // Play started successfully
+            setIsPlaying(true);
+          })
+          .catch((error) => {
+            console.error("Audio playback failed:", error);
+            setIsPlaying(false);
+          });
+      }
     }
-    setIsPlaying(!isPlaying);
   };
 
   return (
     <>
       <BeatDropOverlay isOpen={isOpen} onClose={() => setIsOpen(false)} />
-
+      
       <nav 
         className={`fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-300 ${
             scrolled ? "py-3" : "py-6"
