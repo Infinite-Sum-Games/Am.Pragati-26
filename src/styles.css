@@ -193,3 +193,9 @@ code {
   --font-vcr: "vcr", monospace;
   --font-jersey15: "jersey15", monospace;
 }
+
+@media (pointer: fine) {
+  body, a, button, input {
+    cursor: none !important;
+  }
+}
