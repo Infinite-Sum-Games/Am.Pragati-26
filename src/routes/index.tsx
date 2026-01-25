@@ -35,7 +35,6 @@ function App() {
           Learn TanStack
         </a>
       </header>
-      <About />
     </div>
   );
 }
