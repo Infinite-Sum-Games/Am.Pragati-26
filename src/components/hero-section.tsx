@@ -13,7 +13,7 @@ function HeroSection() {
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/herobg2.png')" }} // Updated to .jpg as per your upload
+        style={{ backgroundImage: "url('/herobg4.png')" }} // Updated to .jpg as per your upload
       >
         {/* Optional: Darker overlay only at the very top to make text pop */}
         {/* <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-black/60 to-transparent pointer-events-none" /> */}
