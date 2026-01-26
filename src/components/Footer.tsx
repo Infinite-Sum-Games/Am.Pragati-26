@@ -87,9 +87,9 @@ export default function Footer() {
                     href: 'https://www.linkedin.com/company/pragati-asb/',
                     icon: <Linkedin className="w-4 h-4" />,
                   },
-                ].map((social, index) => (
+                ].map((social) => (
                   <a
-                    key={index}
+                    key={social.href}
                     href={social.href}
                     target="_blank"
                     rel="noreferrer"
