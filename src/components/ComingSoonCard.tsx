@@ -16,7 +16,7 @@ export default function ComingSoonCard({
   }
 
   const SponsorBadge = ({ title, logo, color, borderColor }: any) => (
-    <div className="flex flex-col items-center group cursor-default">
+    <div className="flex flex-col items-center group">
       <div className="flex items-center gap-2 mb-1">
         <div className={`h-0.5 w-3 md:w-6 ${color} shadow-[0_0_10px_currentColor]`} />
         <span className={`font-vcr text-[9px] md:text-xs ${color} tracking-widest drop-shadow-[0_0_5px_currentColor] whitespace-nowrap`}>
