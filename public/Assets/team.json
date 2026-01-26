@@ -1,0 +1,126 @@
+{
+  "ORGANIZERS": {
+    "name": "Organizers",
+    "members": [
+      {
+        "name": "name1",
+        "role": "role1",
+        "tagline": "tagline1",
+        "dept": "dept1",
+        "image": "https://api.dicebear.com/9.x/avataaars/svg?seed=image1",
+        "contactEmail": "contactEmail1@example.com",
+        "linkedin": "https://example.com/linkedin1"
+      },
+      {
+        "name": "name2",
+        "role": "role2",
+        "tagline": "tagline2",
+        "dept": "dept2",
+        "image": "https://api.dicebear.com/9.x/avataaars/svg?seed=image2",
+        "contactEmail": "contactEmail2@example.com",
+        "linkedin": "https://example.com/linkedin2"
+      },
+      {
+        "name": "name3",
+        "role": "role3",
+        "tagline": "tagline3",
+        "dept": "dept3",
+        "image": "https://api.dicebear.com/9.x/avataaars/svg?seed=image3",
+        "contactEmail": "contactEmail3@example.com",
+        "linkedin": "https://example.com/linkedin3"
+      },
+      {
+        "name": "name4",
+        "role": "role4",
+        "tagline": "tagline4",
+        "dept": "dept4",
+        "image": "https://api.dicebear.com/9.x/avataaars/svg?seed=image4",
+        "contactEmail": "contactEmail4@example.com",
+        "linkedin": "https://example.com/linkedin4"
+      },
+      {
+        "name": "name5",
+        "role": "role5",
+        "tagline": "tagline5",
+        "dept": "dept5",
+        "image": "https://api.dicebear.com/9.x/avataaars/svg?seed=image5",
+        "contactEmail": "contactEmail5@example.com",
+        "linkedin": "https://example.com/linkedin5"
+      },
+      {
+        "name": "name6",
+        "role": "role6",
+        "tagline": "tagline6",
+        "dept": "dept6",
+        "image": "https://api.dicebear.com/9.x/avataaars/svg?seed=image6",
+        "contactEmail": "contactEmail6@example.com",
+        "linkedin": "https://example.com/linkedin6"
+      }
+    ]
+  },
+  "DEVELOPERS": {
+    "name": "Developers",
+    "members": [
+      {
+        "name": "name7",
+        "role": "role7",
+        "tagline": "tagline7",
+        "dept": "dept7",
+        "year": 1,
+        "image": "https://api.dicebear.com/9.x/avataaars/svg?seed=image7",
+        "github": "https://example.com/github7",
+        "linkedin": "https://example.com/linkedin7"
+      },
+      {
+        "name": "name8",
+        "role": "role8",
+        "tagline": "tagline8",
+        "dept": "dept8",
+        "year": 2,
+        "image": "https://api.dicebear.com/9.x/avataaars/svg?seed=image8",
+        "github": "https://example.com/github8",
+        "linkedin": "https://example.com/linkedin8"
+      },
+      {
+        "name": "name9",
+        "role": "role9",
+        "tagline": "tagline9",
+        "dept": "dept9",
+        "year": 3,
+        "image": "https://api.dicebear.com/9.x/avataaars/svg?seed=image9",
+        "github": "https://example.com/github9",
+        "linkedin": "https://example.com/linkedin9"
+      },
+      {
+        "name": "name10",
+        "role": "role10",
+        "tagline": "tagline10",
+        "dept": "dept10",
+        "year": 4,
+        "image": "https://api.dicebear.com/9.x/avataaars/svg?seed=image10",
+        "github": "https://example.com/github10",
+        "linkedin": "https://example.com/linkedin10"
+      },
+      {
+        "name": "name11",
+        "role": "role11",
+        "tagline": "tagline11",
+        "dept": "dept11",
+        "year": 5,
+        "image": "https://api.dicebear.com/9.x/avataaars/svg?seed=image11",
+        "github": "https://example.com/github11",
+        "linkedin": "https://example.com/linkedin11"
+      },
+      {
+        "name": "name12",
+        "role": "role12",
+        "tagline": "tagline12",
+        "dept": "dept12",
+        "year": 1,
+        "image": "https://api.dicebear.com/9.x/avataaars/svg?seed=image12",
+        "github": "https://example.com/github12",
+        "linkedin": "https://example.com/linkedin12"
+      }
+    ]
+  }
+}

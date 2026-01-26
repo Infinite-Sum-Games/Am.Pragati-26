@@ -4,7 +4,23 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-@custom-variant dark (&:is(.dark *));
+@font-face {
+  font-family: 'vcr';
+  src: url('/fonts/vcr.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'jersey15';
+  src: url('/fonts/Jersey15-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* @custom-variant dark (&:is(.dark *)); */
 
 /* Responsive defaults */
 *,
@@ -13,7 +29,7 @@
   box-sizing: border-box;
 }
 
-html {
+/* html {
   -webkit-text-size-adjust: 100%;
 }
 
@@ -23,30 +39,14 @@ video,
 canvas {
   max-width: 100%;
   height: auto;
-}
-
-body {
-  @apply m-0;
-  font-family:
-    'Roboto',
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    'Noto Sans',
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+} */
 
 code {
   font-family:
     source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-:root {
+/* :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
@@ -115,9 +115,9 @@ code {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.274 0.006 286.033);
   --sidebar-ring: oklch(0.442 0.017 285.786);
-}
+} */
 
-@theme inline {
+/* @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -154,15 +154,29 @@ code {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-}
+} */
 
-@layer base {
+/* @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
   }
+} */
+
+@theme {
+  /* for night theme */
+  --color-retro-pink: #ff00ff;
+  --color-retro-purple: #3d1a5f;
+  --color-retro-orange: #ff8c00;
+  --color-retro-yellow: #f4d03f;
+  --color-retro-cyan: #00ffff;
+  
+
+  /* --bg-retro-gradient: linear-gradient(to bottom, #f4d03f 0%, #ff8c00 50%, #ff00ff 100%); */
+  --font-vcr: "vcr", monospace;
+  --font-jersey15: "jersey15", monospace;
 }
 
 @layer utilities {
@@ -245,5 +259,11 @@ code {
   @keyframes retro-marquee {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-50%); }
+  }
+}
+
+@media (pointer: fine) {
+  body, a, button, input {
+    cursor: none !important;
   }
 }

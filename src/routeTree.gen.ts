@@ -12,7 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as NotFoundRouteImport } from './routes/not-found'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as TeamsIndexRouteImport } from './routes/teams/index'
+import { Route as TeamIndexRouteImport } from './routes/team/index'
 import { Route as SponsorsIndexRouteImport } from './routes/sponsors/index'
 import { Route as SignupIndexRouteImport } from './routes/signup/index'
 import { Route as ScheduleIndexRouteImport } from './routes/schedule/index'
@@ -45,9 +45,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TeamsIndexRoute = TeamsIndexRouteImport.update({
-  id: '/teams/',
-  path: '/teams/',
+const TeamIndexRoute = TeamIndexRouteImport.update({
+  id: '/team/',
+  path: '/team/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SponsorsIndexRoute = SponsorsIndexRouteImport.update({
@@ -151,7 +151,7 @@ export interface FileRoutesByFullPath {
   '/schedule/': typeof ScheduleIndexRoute
   '/signup/': typeof SignupIndexRoute
   '/sponsors/': typeof SponsorsIndexRoute
-  '/teams/': typeof TeamsIndexRoute
+  '/team/': typeof TeamIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -173,7 +173,7 @@ export interface FileRoutesByTo {
   '/schedule': typeof ScheduleIndexRoute
   '/signup': typeof SignupIndexRoute
   '/sponsors': typeof SponsorsIndexRoute
-  '/teams': typeof TeamsIndexRoute
+  '/team': typeof TeamIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -196,7 +196,7 @@ export interface FileRoutesById {
   '/schedule/': typeof ScheduleIndexRoute
   '/signup/': typeof SignupIndexRoute
   '/sponsors/': typeof SponsorsIndexRoute
-  '/teams/': typeof TeamsIndexRoute
+  '/team/': typeof TeamIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -220,7 +220,7 @@ export interface FileRouteTypes {
     | '/schedule/'
     | '/signup/'
     | '/sponsors/'
-    | '/teams/'
+    | '/team/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -242,7 +242,7 @@ export interface FileRouteTypes {
     | '/schedule'
     | '/signup'
     | '/sponsors'
-    | '/teams'
+    | '/team'
   id:
     | '__root__'
     | '/'
@@ -264,7 +264,7 @@ export interface FileRouteTypes {
     | '/schedule/'
     | '/signup/'
     | '/sponsors/'
-    | '/teams/'
+    | '/team/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -287,7 +287,7 @@ export interface RootRouteChildren {
   ScheduleIndexRoute: typeof ScheduleIndexRoute
   SignupIndexRoute: typeof SignupIndexRoute
   SponsorsIndexRoute: typeof SponsorsIndexRoute
-  TeamsIndexRoute: typeof TeamsIndexRoute
+  TeamIndexRoute: typeof TeamIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -313,11 +313,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/teams/': {
-      id: '/teams/'
-      path: '/teams'
-      fullPath: '/teams/'
-      preLoaderRoute: typeof TeamsIndexRouteImport
+    '/team/': {
+      id: '/team/'
+      path: '/team'
+      fullPath: '/team/'
+      preLoaderRoute: typeof TeamIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sponsors/': {
@@ -455,7 +455,7 @@ const rootRouteChildren: RootRouteChildren = {
   ScheduleIndexRoute: ScheduleIndexRoute,
   SignupIndexRoute: SignupIndexRoute,
   SponsorsIndexRoute: SponsorsIndexRoute,
-  TeamsIndexRoute: TeamsIndexRoute,
+  TeamIndexRoute: TeamIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
