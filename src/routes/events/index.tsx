@@ -10,7 +10,7 @@ function EventsPage() {
     <div className="p-6 flex flex-col gap-6">
       <h1 className="text-2xl font-semibold">Events</h1>
       <RetroMarquee
-        text="NEXT EVENT: CYBER-HACKATHON || TIME: 10:00 AM || LOCATION: MAIN HALL B ||"
+        text="'Pragati 2026' - The Annual Tech Fest of Amrita School of Buisiness, Coimbatore"
         color="cyan"
         size="lg"
         speed={16}

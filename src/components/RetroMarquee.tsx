@@ -26,7 +26,7 @@ export function RetroMarquee({
   const colorClass = colorClassMap[color];
 
   return (
-    <div className={`relative bg-gray-800 border-4 border-gray-600 rounded-lg shadow-2xl p-4 ${className}`}>
+    <div className={`relative bg-gray-800 border-4 border-gray-600 rounded-lg shadow-2xl p-2 ${className}`}>
       <div className="absolute top-2 left-2 w-4 h-4 rounded-full bg-gray-700 shadow-inner" />
       <div className="absolute top-2 right-2 w-4 h-4 rounded-full bg-gray-700 shadow-inner" />
       <div className="absolute bottom-2 left-2 w-4 h-4 rounded-full bg-gray-700 shadow-inner" />
