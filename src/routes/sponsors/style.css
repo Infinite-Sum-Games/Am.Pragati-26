@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/* Load Custom Fonts */
+@font-face {
+  font-family: "jersey15";
+  src: url("sponsors-page/Jersey15-Regular.ttf");
+}
+
+@theme {
+  --font-jersey: jersey15;
+
+  /* Neon glow animaion. Not using this now, but let this be here */
+  --animate-neon-glow: neon-glow 3s ease-in-out infinite;
+
+  @keyframes neon-glow {
+    0%, 100% {
+      text-shadow: 0px 0px 50px #ffffff;
+      color: #f4d03e;
+    }
+
+    50% {
+      text-shadow: 0px 0px 30px #ffffff;
+      color: var(--color-amber-300);
+      opacity: 0.7;
+    }
+  }
+}
