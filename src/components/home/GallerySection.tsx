@@ -27,7 +27,7 @@ const DISCO_COLOR_CLASSES = ['bg-pink-500', 'bg-yellow-400', 'bg-cyan-400', 'bg-
 function ColorfulDiscoBall({ phase }: { phase: Phase }) {
   return (
     <motion.div
-      className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-[100px] md:h-[100px]"
+      className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-25 md:h-25"
       style={{ perspective: '1000px', transformStyle: 'preserve-3d' }}
       animate={
         phase === 'exploding'
@@ -53,7 +53,7 @@ function ColorfulDiscoBall({ phase }: { phase: Phase }) {
           ))
         )}
       </div>
-      <div className="absolute -inset-8 rounded-full opacity-50 blur-3xl bg-gradient-conic from-pink-500 via-yellow-400 via-cyan-400 via-fuchsia-600 via-teal-400 to-violet-500 animate-spin" />
+      <div className="absolute -inset-8 rounded-full opacity-50 blur-3xl bg-gradient-conic from-pink-500 via-teal-400 to-violet-500 animate-spin" />
     </motion.div>
   )
 }
@@ -106,7 +106,7 @@ function PolaroidCard({
   return (
     <div 
       ref={cardRef}
-      className="flex-shrink-0 group relative pt-6 polaroid-card will-change-transform"
+      className="shrink-0 group relative pt-6 polaroid-card will-change-transform"
       data-color-class={image.colorClass}
       style={{
         transformOrigin: 'top center',
@@ -161,12 +161,12 @@ function PolaroidCard({
                        style={{ borderColor: '#b45309' }} />
                   <div className="absolute right-0 top-0 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full border-2 sm:border-[3px] bg-transparent"
                        style={{ borderColor: '#d97706' }} />
-                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-gradient-to-br from-amber-500 via-amber-700 to-amber-900 shadow-sm" />
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-linear-to-br from-amber-500 via-amber-700 to-amber-900 shadow-sm" />
                 </div>
               </div>
             </div>
             
-            <div className="relative aspect-[4/3] overflow-hidden bg-gray-900 mt-3 sm:mt-4">
+            <div className="relative aspect-4/3 overflow-hidden bg-gray-900 mt-3 sm:mt-4">
               <img
                 src={image.src}
                 alt={image.caption}
@@ -292,10 +292,10 @@ function InfiniteScrollRow({
 
   return (
     <div className="relative overflow-hidden py-8 sm:py-10 md:py-12" ref={containerRef}>
-      <div className="absolute top-0 left-0 right-0 h-1 z-10 bg-gradient-to-r from-transparent via-amber-700/90 to-transparent shadow-md" />
+      <div className="absolute top-0 left-0 right-0 h-1 z-10 bg-linear-to-r from-transparent via-amber-700/90 to-transparent shadow-md" />
 
-      <div className="absolute inset-y-0 left-0 w-16 sm:w-24 md:w-40 z-30 pointer-events-none bg-gradient-to-r from-[#0f0f2e] via-[#0f0f2e]/80 to-transparent" />
-      <div className="absolute inset-y-0 right-0 w-16 sm:w-24 md:w-40 z-30 pointer-events-none bg-gradient-to-l from-[#0f0f2e] via-[#0f0f2e]/80 to-transparent" />
+      <div className="absolute inset-y-0 left-0 w-16 sm:w-24 md:w-40 z-30 pointer-events-none bg-linear-to-r from-[#0f0f2e] via-[#0f0f2e]/80 to-transparent" />
+      <div className="absolute inset-y-0 right-0 w-16 sm:w-24 md:w-40 z-30 pointer-events-none bg-linear-to-l from-[#0f0f2e] via-[#0f0f2e]/80 to-transparent" />
 
       <div
         ref={trackRef}
@@ -352,7 +352,7 @@ export function GallerySection() {
   return (
     <section 
       ref={sectionRef} 
-      className="relative min-h-[500px] sm:min-h-[600px] md:min-h-[700px] lg:min-h-[750px] overflow-hidden py-8 sm:py-10 md:py-12 bg-[#0f0f2e]"
+      className="relative min-h-125 sm:min-h-150 md:min-h-175 lg:min-h-187.5 overflow-hidden py-8 sm:py-10 md:py-12 bg-[#0f0f2e]"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute w-48 h-48 sm:w-80 sm:h-80 md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] rounded-full blur-[80px] sm:blur-[120px] md:blur-[150px] opacity-30 -top-[10%] sm:-top-[15%] md:-top-[20%] -left-[5%] sm:-left-[8%] md:-left-[10%] bg-gradient-to-br from-pink-500 to-fuchsia-600" />
@@ -408,7 +408,7 @@ export function GallerySection() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-yellow-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent animate-pulse">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-linear-to-r from-yellow-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent animate-pulse">
                 Moments That Shine
               </h2>
             </motion.div>

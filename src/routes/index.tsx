@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import GallerySection from '@/components/GallerySection'
-import HeroSection from '@/components/hero-section'
+import About from '@/components/home/About'
+import GallerySection from '@/components/home/GallerySection'
+import HeroSection from '@/components/home/hero-section'
 import Navbar from '@/components/Navbar'
 
 export const Route = createFileRoute("/")({
@@ -12,8 +13,7 @@ function App() {
     <div className='flex flex-col'>
       <Navbar />
       <HeroSection />
-      {/* Other sections go here
-      like About, Events, Team, Sponsors, FAQ, Footer */}
+      <About />
       <GallerySection />
     </div>
   );
