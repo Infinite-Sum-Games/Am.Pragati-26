@@ -226,30 +226,50 @@ function InfiniteScrollRow({
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
   const positionRef = useRef(direction === 'left' ? 0 : -33.33)
   const animationRef = useRef<number | undefined>(undefined)
+  const frameCountRef = useRef(0)
+  const containerCacheRef = useRef<{ centerX: number; maxDistance: number } | null>(null)
 
-  // Update card scales based on position
+  // Cache container dimensions (update on resize)
+  useEffect(() => {
+    const updateContainerCache = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect()
+        containerCacheRef.current = {
+          centerX: rect.left + rect.width / 2,
+          maxDistance: rect.width / 2,
+        }
+      }
+    }
+    
+    updateContainerCache()
+    window.addEventListener('resize', updateContainerCache)
+    return () => window.removeEventListener('resize', updateContainerCache)
+  }, [])
+
+  // Update card scales based on position - optimized with batched reads/writes
   const updateScales = useCallback(() => {
-    if (!containerRef.current) return
+    const cache = containerCacheRef.current
+    if (!cache) return
 
-    const containerRect = containerRef.current.getBoundingClientRect()
-    const centerX = containerRect.left + containerRect.width / 2
-
+    // Batch read all card positions first
+    const cardData: { card: HTMLDivElement; cardCenterX: number }[] = []
     cardRefs.current.forEach((card) => {
-      if (!card) return
+      if (card) {
+        const cardRect = card.getBoundingClientRect()
+        cardData.push({ card, cardCenterX: cardRect.left + cardRect.width / 2 })
+      }
+    })
 
-      const cardRect = card.getBoundingClientRect()
-      const cardCenterX = cardRect.left + cardRect.width / 2
-      const distanceFromCenter = Math.abs(cardCenterX - centerX)
-      const maxDistance = containerRect.width / 2
-
-      // Calculate scale: 1.15 at center, 0.7 at edges
-      const normalizedDistance = Math.min(distanceFromCenter / maxDistance, 1)
+    // Batch write all styles
+    cardData.forEach(({ card, cardCenterX }) => {
+      const distanceFromCenter = Math.abs(cardCenterX - cache.centerX)
+      const normalizedDistance = Math.min(distanceFromCenter / cache.maxDistance, 1)
       const scale = 1.15 - normalizedDistance * 0.45
       const opacity = 1 - normalizedDistance * 0.4
       const zIndex = Math.round((1 - normalizedDistance) * 20)
 
-      // Apply styles directly for performance
-      card.style.transform = `scale(${scale})`
+      // Use transform3d for GPU acceleration
+      card.style.transform = `scale3d(${scale}, ${scale}, 1)`
       card.style.opacity = String(opacity)
       card.style.zIndex = String(zIndex)
 
@@ -266,7 +286,7 @@ function InfiniteScrollRow({
     })
   }, [])
 
-  // Animation loop
+  // Animation loop - optimized with throttled scale updates
   useEffect(() => {
     const speed = 0.08 // Balanced speed
     let lastTime = performance.now()
@@ -274,6 +294,7 @@ function InfiniteScrollRow({
     const animate = (currentTime: number) => {
       const delta = currentTime - lastTime
       lastTime = currentTime
+      frameCountRef.current++
 
       // Update position
       if (direction === 'left') {
@@ -288,13 +309,15 @@ function InfiniteScrollRow({
         }
       }
 
-      // Apply transform
+      // Apply transform with GPU acceleration
       if (trackRef.current) {
-        trackRef.current.style.transform = `translateX(${positionRef.current}%)`
+        trackRef.current.style.transform = `translate3d(${positionRef.current}%, 0, 0)`
       }
 
-      // Update scales
-      updateScales()
+      // Throttle scale updates to every 3rd frame for better performance
+      if (frameCountRef.current % 3 === 0) {
+        updateScales()
+      }
 
       animationRef.current = requestAnimationFrame(animate)
     }
@@ -430,7 +453,9 @@ const keyframeStyles = `
     50% { opacity: 0.8; transform: scale(1); }
   }
   .polaroid-card {
-    transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+    transition: transform 0.1s linear, opacity 0.1s linear;
+    will-change: transform, opacity;
+    transform: translate3d(0, 0, 0);
   }
   @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 `
