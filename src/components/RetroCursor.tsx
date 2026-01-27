@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function RetroCursor() {
@@ -11,9 +11,9 @@ export default function RetroCursor() {
 
 	// 2. Add Smoothness (Spring Physics)
 	// stiffness: higher = snappier, damping: higher = less wobble
-	const springConfig = { damping: 25, stiffness: 400 };
-	const smoothX = useSpring(mouseX, springConfig);
-	const smoothY = useSpring(mouseY, springConfig);
+	// const springConfig = { damping: 25, stiffness: 400 };
+	// const smoothX = useSpring(mouseX, springConfig);
+	// const smoothY = useSpring(mouseY, springConfig);
 
 	useEffect(() => {
 		// Check if device has a fine pointer (mouse)
@@ -54,8 +54,8 @@ export default function RetroCursor() {
 			alt="Custom Cursor"
 			className="fixed top-0 left-0 z-9999 pointer-events-none w-6 h-6 md:w-8 md:h-8"
 			style={{
-				x: smoothX,
-				y: smoothY,
+				x: mouseX,
+				y: mouseY,
 			}}
 			animate={{
 				// 3. The Rotation Logic
