@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { useForm, type TriggerConfig } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Eye, EyeOff, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -23,7 +23,7 @@ const signUpSchema = z.object({
     fullName: z.string().min(2, { message: 'Name must be at least 2 characters' }),
     email: z.string().email({ message: 'Invalid email address' }),
     phone: z.string().min(10, { message: 'Invaid phone number' }),
-    isAmritaStudent: z.boolean().default(false),
+    isAmritaStudent: z.boolean(),
     collegeName: z.string().optional(),
     collegeCity: z.string().optional(),
     password: z.string().min(8, { message: 'Password should be minimum of 8 characters' }),

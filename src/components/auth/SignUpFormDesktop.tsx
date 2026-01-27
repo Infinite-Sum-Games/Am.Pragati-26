@@ -23,7 +23,7 @@ const signUpSchema = z.object({
     fullName: z.string().min(2, { message: 'Name must be at least 2 characters' }),
     email: z.string().email({ message: 'Invalid email address' }),
     phone: z.string().min(10, { message: 'Phone number must be at least 10 digits' }),
-    isAmritaStudent: z.boolean().default(false),
+    isAmritaStudent: z.boolean(),
     collegeName: z.string().optional(),
     collegeCity: z.string().optional(),
     password: z.string().min(6, { message: 'Password must be at least 6 characters' }),
@@ -41,9 +41,10 @@ const signUpSchema = z.object({
     path: ["collegeName"] // Highlight college name, could be both
 });
 
+type SignUpFormData = z.infer<typeof signUpSchema>;
 
 interface SignUpFormDesktopProps {
-    onSubmit: (data: z.infer<typeof signUpSchema>) => void;
+    onSubmit: (data: SignUpFormData) => void;
     isSubmitting: boolean;
 }
 
@@ -51,7 +52,7 @@ const SignUpFormDesktop = ({ onSubmit, isSubmitting }: SignUpFormDesktopProps) =
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-    const form = useForm<z.infer<typeof signUpSchema>>({
+    const form = useForm<SignUpFormData>({
         resolver: zodResolver(signUpSchema),
         defaultValues: {
             fullName: '',

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { type InternalAxiosRequestConfig, type AxiosResponse, type AxiosError } from "axios";
 import { toast } from "react-hot-toast";
 
 export const api = axios.create({
@@ -9,14 +9,18 @@ export const api = axios.create({
 	timeout: 10000,
 });
 
+interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
+	skipAuth?: boolean;
+}
+
 // Request interceptor
 api.interceptors.request.use((config) => {
-	if ((config as any).skipAuth) return config;
+	const customConfig = config as CustomAxiosRequestConfig;
+	if (customConfig.skipAuth) return config;
 
 	const token = localStorage.getItem("token");
 	if (token) {
-		config.headers = config.headers ?? {};
-		(config.headers as any).Authorization = `Bearer ${token}`;
+		config.headers.Authorization = `Bearer ${token}`;
 	}
 
 	return config;
@@ -24,13 +28,13 @@ api.interceptors.request.use((config) => {
 
 // Response interceptor
 api.interceptors.response.use(
-	(response) => {
+	(response: AxiosResponse) => {
 		if (response?.data?.message) {
 			toast.success(response.data.message);
 		}
 		return response;
 	},
-	(error) => {
+	(error: AxiosError<{ message?: string }>) => {
 		const status = error?.response?.status;
 		const message = error?.response?.data?.message || "Something went wrong";
 
