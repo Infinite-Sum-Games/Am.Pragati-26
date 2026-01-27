@@ -1,16 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router';
 import RetroWindowWrapper from '@/components/RetroWindowWrapper';
-import { ResetPasswordOtpVerificationForm } from '@/features/otp/ResetPasswordOtpVerificationForm';
+import { OtpVerificationForm } from '@/features/otp/OtpVerificationForm'; // Re-using the general OtpVerificationForm
 
 const pixelFont = {
   fontFamily: '"Press Start 2P", cursive',
 };
 
-export const Route = createFileRoute('/reset-password/verify')({
-    component: ResetPasswordOtpVerificationPage,
+export const Route = createFileRoute('/signup/verify')({
+    component: SignupOtpVerificationPage,
 });
 
-function ResetPasswordOtpVerificationPage() {
+function SignupOtpVerificationPage() {
     return (
         <div className="min-h-screen flex items-center justify-center p-4 bg-black">
             <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20 pointer-events-none"></div>
@@ -19,7 +19,7 @@ function ResetPasswordOtpVerificationPage() {
                     <div className="space-y-4 text-center">
                         <div className="space-y-1">
                             <h1 className="text-2xl font-bold tracking-widest text-white" style={pixelFont}>
-                                RESET PASSWORD - VERIFY OTP
+                                VERIFY YOUR ACCOUNT
                             </h1>
                         </div>
 
@@ -42,7 +42,8 @@ function ResetPasswordOtpVerificationPage() {
                         </div>
                     </div>
                 </div>
-                <ResetPasswordOtpVerificationForm />
+                {/* The OtpVerificationForm internally uses useSignupOtpVerification and useOtpCountdownTimer with 'signupResendStartTime' */}
+                <OtpVerificationForm />
             </RetroWindowWrapper>
         </div>
     );

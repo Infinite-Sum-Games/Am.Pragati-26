@@ -4,10 +4,10 @@ import { useNavigate } from '@tanstack/react-router'; // Changed from useRouter
 import toast from 'react-hot-toast';
 import { AuthService } from '@/services/auth.service';
 
-export function useResetPasswordOtpVerification() {
+export function useSignupOtpVerification() {
   const navigate = useNavigate(); // Changed from router
   return useMutation({
-    mutationFn: AuthService.verifyResetPasswordOtp,
+    mutationFn: AuthService.verifySignupOtp,
     onSuccess: () => {
       toast.success('OTP verified successfully. Please login.');
       navigate({ to: '/login' }); // Changed from router.push

@@ -1,33 +1,26 @@
+'use client';
+
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { UseMutationResult } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { OtpVerificationView } from '@/components/otp/OtpVerificationView'; // Adjusted import
 import { useOtpCountdownTimer } from '@/hooks/useOtpCountdownTimer';
-import { useResetPasswordOtpVerification } from '@/hooks/useResetPasswordOtpVerification';
-import { useResetPasswordResendOtp } from '@/hooks/useResetPasswordResendOtp';
+import { useSignupOtpVerification } from '@/hooks/useSignupOtpVerification';
+import { useSignupResendOtp } from '@/hooks/useSignupResendOtp';
 import { type OtpFormValues, otpSchema } from '@/types/otpTypes';
 
-interface ResetPasswordOtpVerificationFormProps {
-  mutation?: UseMutationResult<any, any, { otp: string }, any>;
-}
-
-export function ResetPasswordOtpVerificationForm({
-  mutation,
-}: ResetPasswordOtpVerificationFormProps = {}) {
+export function OtpVerificationForm() {
   const { setValue, watch, formState } = useForm<OtpFormValues>({
     resolver: zodResolver(otpSchema),
     defaultValues: { otp: '' },
   });
 
   const otp = watch('otp');
-  const { mutate: verifyOtp, isPending } =
-    mutation || useResetPasswordOtpVerification();
-  const { mutate: resendOtp, isPending: isResending } =
-    useResetPasswordResendOtp();
+  const { mutate: verifyOtp, isPending } = useSignupOtpVerification();
+  const { mutate: resendOtp, isPending: isResending } = useSignupResendOtp();
 
   const { countdown, showResend, handleResend } = useOtpCountdownTimer({
-    storageKey: 'resetPasswordResendStartTime',
-    onResend: () => resendOtp(),
+    onResend: () => resendOtp(), //API trigger for resending otp
+    storageKey: 'signupResendStartTime',
   });
   const handleChange = (val: string) => {
     setValue('otp', val, { shouldValidate: true });
@@ -35,7 +28,7 @@ export function ResetPasswordOtpVerificationForm({
 
   const onSubmit = () => {
     if (otp.length === 6) {
-      verifyOtp({ otp });
+      verifyOtp({ otp }); //API trigger for verifying otp
     }
   };
 

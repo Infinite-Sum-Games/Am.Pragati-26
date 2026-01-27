@@ -1,12 +1,10 @@
-'use client';
-
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { AuthService } from '@/services/auth.service';
 
-export function useResetPasswordResendOtp() {
+export function useSignupResendOtp() {
   return useMutation({
-    mutationFn: AuthService.resendResetPasswordOtp,
+    mutationFn: AuthService.resendSignupOtp,
     onSuccess: () => {
       toast.success('OTP resent successfully!');
     },

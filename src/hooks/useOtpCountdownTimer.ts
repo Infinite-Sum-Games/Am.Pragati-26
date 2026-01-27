@@ -1,53 +1,90 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-interface UseOtpCountdownTimerProps {
-    storageKey: string;
-    onResend: () => void;
-    initialSeconds?: number;
-}
+type UseOtpCountdownOptions = {
+  duration?: number; // in seconds, default = 120
+  storageKey?: string;
+  onResend?: () => void;
+};
 
 export function useOtpCountdownTimer({
-    storageKey,
-    onResend,
-    initialSeconds = 60,
-}: UseOtpCountdownTimerProps) {
-    const [countdown, setCountdown] = useState(0);
-    const [showResend, setShowResend] = useState(false);
+  duration = 120,
+  storageKey = 'signupResendStartTime',
+  onResend,
+}: UseOtpCountdownOptions) {
+  const inMemoryStartRef = useRef<number>(0);
 
-    useEffect(() => {
-        const startTimeStr = window.localStorage.getItem(storageKey);
-        const startTime = startTimeStr ? parseInt(startTimeStr, 10) : 0;
+  const [signupResendStartTime, setSignupResendStartTime] = useState<number>(
+    () => {
+      if (typeof window !== 'undefined') {
+        const stored = window.localStorage.getItem(storageKey);
+        const val = stored ? parseInt(stored, 10) : 0;
+        inMemoryStartRef.current = val;
+        return val;
+      }
+      return 0;
+    },
+  );
 
-        const updateTimer = () => {
-            const now = Date.now();
-            const elapsed = Math.floor((now - startTime) / 1000);
-            const remaining = initialSeconds - elapsed;
+  const [countdown, setCountdown] = useState(duration);
+  const showResend = countdown === 0;
 
-            if (remaining > 0) {
-                setCountdown(remaining);
-                setShowResend(false);
-            } else {
-                setCountdown(0);
-                setShowResend(true);
-            }
-        };
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
 
-        if (startTime) {
-            updateTimer();
-            const interval = setInterval(updateTimer, 1000);
-            return () => clearInterval(interval);
+    if (!signupResendStartTime) {
+      const now = Date.now();
+      window.localStorage.setItem(storageKey, String(now));
+      inMemoryStartRef.current = now;
+      setSignupResendStartTime(now);
+    }
+  }, []);
+
+  useEffect(() => {
+    const startTime = signupResendStartTime || inMemoryStartRef.current;
+
+    if (!startTime) return;
+
+    const updateRemaining = () => {
+      const now = Date.now();
+      const elapsed = Math.floor((now - startTime) / 1000);
+      const remaining = Math.max(duration - elapsed, 0);
+
+      setCountdown(remaining);
+    };
+
+    updateRemaining();
+
+    if (countdown === 0) return;
+
+    const interval = setInterval(updateRemaining, 1000);
+    return () => clearInterval(interval);
+  }, [signupResendStartTime, duration, countdown]); // Added countdown to dependencies
+
+  useEffect(() => {
+    const handleStorage = (e: StorageEvent) => {
+      if (e.key === storageKey) {
+        if (e.newValue) {
+          const newTime = parseInt(e.newValue, 10);
+          inMemoryStartRef.current = newTime;
+          setSignupResendStartTime(newTime);
         } else {
-            setShowResend(true);
+          setSignupResendStartTime(inMemoryStartRef.current);
         }
-    }, [storageKey, initialSeconds]);
+      }
+    };
 
-    const handleResend = useCallback(() => {
-        onResend();
-        const now = Date.now();
-        window.localStorage.setItem(storageKey, now.toString());
-        setCountdown(initialSeconds);
-        setShowResend(false);
-    }, [onResend, storageKey, initialSeconds]);
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, [storageKey]);
 
-    return { countdown, showResend, handleResend };
+  const handleResend = () => {
+    const now = Date.now();
+    window.localStorage.setItem(storageKey, String(now));
+    inMemoryStartRef.current = now;
+    setSignupResendStartTime(now);
+    setCountdown(duration);
+    onResend?.();
+  };
+
+  return { countdown, showResend, handleResend };
 }
