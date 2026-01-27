@@ -1,5 +1,6 @@
 
 // This is a mock service. Replace with actual API calls.
+import { apiPost } from "@/lib/api";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -27,5 +28,17 @@ export const AuthService = {
         await delay(1500);
         console.log('User Registered:', userData);
         return { success: true };
+    },
+
+    resetPassword: async (payload: { email: string; password: string; confirmPassword: string }) => {
+        return apiPost('/forgot-password', payload, { skipAuth: true });
+    },
+
+    verifyResetPasswordOtp: async (payload: { otp: string }) => {
+        return apiPost('/verify-reset-password-otp', payload, { skipAuth: true });
+    },
+
+    resendResetPasswordOtp: async () => {
+        return apiPost('/resend-reset-password-otp', {}, { skipAuth: true });
     },
 };
