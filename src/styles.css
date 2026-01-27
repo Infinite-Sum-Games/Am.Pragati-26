@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
 
 @import 'tailwindcss';
 @import 'tw-animate-css';
@@ -240,6 +241,118 @@ code {
   --font-vcr: "vcr", monospace;
   --font-jersey15: "jersey15", monospace;
   --font-press-start: "Press Start 2P", cursive;
+}
+
+@layer utilities {
+  .font-retro {
+    font-family: 'VT323', 'Press Start 2P', monospace;
+    letter-spacing: 0.02em;
+  }
+  .neon-cyan {
+    color: #22d3ee;
+    text-shadow:
+      0 0 2px rgba(34, 211, 238, 0.9),
+      0 0 8px rgba(34, 211, 238, 0.6),
+      0 0 18px rgba(34, 211, 238, 0.35);
+  }
+  .neon-fuchsia {
+    color: #e879f9;
+    text-shadow:
+      0 0 2px rgba(232, 121, 249, 0.95),
+      0 0 8px rgba(232, 121, 249, 0.6),
+      0 0 18px rgba(232, 121, 249, 0.35);
+  }
+  .led-matrix {
+    --cell-size: 6px;
+    --gap: 2px;
+    --grid-size: calc(var(--cell-size) + var(--gap));
+    background-image:
+      radial-gradient(
+        square,
+        rgba(20, 80, 90, 0.5) 0%,
+        rgba(10, 40, 50, 0.4) 40%,
+        transparent 50%
+      );
+    background-size: var(--grid-size) var(--grid-size);
+    background-position: calc(var(--gap) / 2) calc(var(--gap) / 2);
+    pointer-events: none;
+  }
+  .led-cells {
+    --cell-size: 6px;
+    --gap: 2px;
+    --grid-size: calc(var(--cell-size) + var(--gap));
+    background:
+      repeating-linear-gradient(
+        to right,
+        transparent 0px,
+        transparent var(--cell-size),
+        rgba(0, 0, 0, 0.9) var(--cell-size),
+        rgba(0, 0, 0, 0.9) var(--grid-size)
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent var(--cell-size),
+        rgba(0, 0, 0, 0.9) var(--cell-size),
+        rgba(0, 0, 0, 0.9) var(--grid-size)
+      );
+    background-size: var(--grid-size) var(--grid-size);
+    pointer-events: none;
+  }
+  .led-glow {
+    --cell-size: 6px;
+    --gap: 2px;
+    --grid-size: calc(var(--cell-size) + var(--gap));
+    background-image:
+      radial-gradient(
+        circle at center,
+        rgba(30, 90, 100, 0.35) 0%,
+        rgba(20, 60, 70, 0.2) 35%,
+        transparent 55%
+      );
+    background-size: var(--grid-size) var(--grid-size);
+    pointer-events: none;
+  }
+  .retro-screen {
+    box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.75);
+  }
+  .marquee {
+    animation: retro-marquee 20s linear infinite;
+    will-change: transform;
+  }
+  @keyframes retro-marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+@layer utilities {
+  .neon-card-border {
+    border-color: #ff00ff;
+  }
+  .neon-card-bg {
+    background-color: rgba(20, 10, 30, 0.9);
+  }
+  .neon-card-shadow {
+    box-shadow: 
+      0 0 10px #ff00ff,
+      inset 0 0 20px rgba(255, 0, 255, 0.3);
+  }
+  .neon-card-shadow-thick {
+    box-shadow: 
+      0 0 25px #ff00ff,
+      0 0 50px rgba(255, 0, 255, 0.6),
+      inset 0 0 30px rgba(255, 0, 255, 0.4);
+  }
+  .neon-orange {
+    color: #ffaa00;
+  }
+  .neon-cyan-glow {
+    color: #00ffff;
+    text-shadow: 
+      0 0 10px #00ffff,
+      0 0 20px rgba(0, 255, 255, 0.5);
+  }
 }
 
 @media (pointer: fine) {
