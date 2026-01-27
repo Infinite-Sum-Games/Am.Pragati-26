@@ -360,7 +360,9 @@ code {
   body,
   a,
   button,
-  input {
+  input,
+  img,
+  div {
     cursor: none !important;
   }
 }
