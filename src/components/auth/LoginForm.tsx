@@ -93,7 +93,7 @@ const LoginForm = ({ onSubmit, isSubmitting }: LoginFormProps) => {
                                 </FormControl>
                                 <FormMessage className="text-[8px] text-red-500" />
                                 <div className="flex justify-end mt-1">
-                                    <Link to="/" className="text-[8px] text-[#a855f7] hover:text-[#d8b4fe] hover:underline">
+                                    <Link to="/reset-password" className="text-[8px] text-[#a855f7] hover:text-[#d8b4fe] hover:underline">
                                         FORGOT PASSWORD?
                                     </Link>
                                 </div>

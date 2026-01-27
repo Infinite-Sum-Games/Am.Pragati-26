@@ -29,6 +29,7 @@ import { Route as EventsIndexRouteImport } from './routes/events/index'
 import { Route as ComingSoonIndexRouteImport } from './routes/coming-soon/index'
 import { Route as CeoConnectIndexRouteImport } from './routes/ceo-connect/index'
 import { Route as BrochureIndexRouteImport } from './routes/brochure/index'
+import { Route as ResetPasswordVerifyRouteImport } from './routes/reset-password/verify'
 
 const NotFoundRoute = NotFoundRouteImport.update({
   id: '/not-found',
@@ -130,11 +131,17 @@ const BrochureIndexRoute = BrochureIndexRouteImport.update({
   path: '/brochure/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResetPasswordVerifyRoute = ResetPasswordVerifyRouteImport.update({
+  id: '/reset-password/verify',
+  path: '/reset-password/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
   '/not-found': typeof NotFoundRoute
+  '/reset-password/verify': typeof ResetPasswordVerifyRoute
   '/brochure/': typeof BrochureIndexRoute
   '/ceo-connect/': typeof CeoConnectIndexRoute
   '/coming-soon/': typeof ComingSoonIndexRoute
@@ -157,6 +164,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
   '/not-found': typeof NotFoundRoute
+  '/reset-password/verify': typeof ResetPasswordVerifyRoute
   '/brochure': typeof BrochureIndexRoute
   '/ceo-connect': typeof CeoConnectIndexRoute
   '/coming-soon': typeof ComingSoonIndexRoute
@@ -180,6 +188,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/home': typeof HomeRoute
   '/not-found': typeof NotFoundRoute
+  '/reset-password/verify': typeof ResetPasswordVerifyRoute
   '/brochure/': typeof BrochureIndexRoute
   '/ceo-connect/': typeof CeoConnectIndexRoute
   '/coming-soon/': typeof ComingSoonIndexRoute
@@ -204,6 +213,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home'
     | '/not-found'
+    | '/reset-password/verify'
     | '/brochure/'
     | '/ceo-connect/'
     | '/coming-soon/'
@@ -226,6 +236,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home'
     | '/not-found'
+    | '/reset-password/verify'
     | '/brochure'
     | '/ceo-connect'
     | '/coming-soon'
@@ -248,6 +259,7 @@ export interface FileRouteTypes {
     | '/'
     | '/home'
     | '/not-found'
+    | '/reset-password/verify'
     | '/brochure/'
     | '/ceo-connect/'
     | '/coming-soon/'
@@ -271,6 +283,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   HomeRoute: typeof HomeRoute
   NotFoundRoute: typeof NotFoundRoute
+  ResetPasswordVerifyRoute: typeof ResetPasswordVerifyRoute
   BrochureIndexRoute: typeof BrochureIndexRoute
   CeoConnectIndexRoute: typeof CeoConnectIndexRoute
   ComingSoonIndexRoute: typeof ComingSoonIndexRoute
@@ -432,6 +445,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BrochureIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reset-password/verify': {
+      id: '/reset-password/verify'
+      path: '/reset-password/verify'
+      fullPath: '/reset-password/verify'
+      preLoaderRoute: typeof ResetPasswordVerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -439,6 +459,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   HomeRoute: HomeRoute,
   NotFoundRoute: NotFoundRoute,
+  ResetPasswordVerifyRoute: ResetPasswordVerifyRoute,
   BrochureIndexRoute: BrochureIndexRoute,
   CeoConnectIndexRoute: CeoConnectIndexRoute,
   ComingSoonIndexRoute: ComingSoonIndexRoute,
