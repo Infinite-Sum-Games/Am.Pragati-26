@@ -1,6 +1,11 @@
+import AboutTerminal from "../AboutTerminal";
+
 const About = () => {
   return (
     <section className="relative w-screen h-screen bg-black bg-[url(about/bg2.webp)] bg-cover bg-no-repeat overflow-hidden">
+      <div className="absolute top-[15%] left-1/2 -translate-x-1/2 z-20">
+        <AboutTerminal />
+      </div>
       <img
         src="about/comp.png"
         alt=""
