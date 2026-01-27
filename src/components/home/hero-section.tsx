@@ -77,7 +77,7 @@ function HeroSection() {
 	);
 
 	return (
-		<section className="relative h-screen w-full overflow-hidden flex flex-col items-center">
+		<section className="relative min-h-screen w-full flex flex-col items-center">
 			{/* Background Image */}
 			<div
 				className="absolute inset-0 z-0 bg-cover bg-position-[center_top] md:bg-center bg-no-repeat"
