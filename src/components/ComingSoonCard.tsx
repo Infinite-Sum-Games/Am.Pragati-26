@@ -7,7 +7,7 @@ export default function ComingSoonCard({
   eventTitle = "PRAGATI '26",
   subtitle = 'COMING SOON',
   avatarSrc = 'https://speugdv1vi.ufs.sh/f/y8q1VPJuKeA15lDZB7A8rw7ncvuMsAbNajoyg3PxkVXmhJ1p',
-  backgroundSrc = 'https://speugdv1vi.ufs.sh/f/y8q1VPJuKeA1L66tgmSvdUMY5qaSXW4QxN1gAbjzDvfFGlPn'
+  backgroundSrc = 'https://speugdv1vi.ufs.sh/f/y8q1VPJuKeA1MQWzuniYTK9mleh6Z8jb0Lvy3H5oDOXGgxap'
 }: ComingSoonCardProps) {
   const timeLeft = useCountdown(targetDate)
 
