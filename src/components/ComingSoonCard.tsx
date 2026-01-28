@@ -1,20 +1,12 @@
-import { useCountdown } from '../hooks/useCountdown'
 import type { ComingSoonCardProps } from '../types/comingSoonTypes'
 import { motion } from "framer-motion";
 
 export default function ComingSoonCard({
-  targetDate,
   eventTitle = "PRAGATI '26",
   subtitle = 'COMING SOON',
   avatarSrc = 'https://speugdv1vi.ufs.sh/f/y8q1VPJuKeA15lDZB7A8rw7ncvuMsAbNajoyg3PxkVXmhJ1p',
-  backgroundSrc = 'https://speugdv1vi.ufs.sh/f/y8q1VPJuKeA1MQWzuniYTK9mleh6Z8jb0Lvy3H5oDOXGgxap'
+  backgroundSrc = 'https://speugdv1vi.ufs.sh/f/y8q1VPJuKeA1NLaAdJHmqkl0bXdSA3toVy62LrUIvQhGaWuc'
 }: ComingSoonCardProps) {
-  const timeLeft = useCountdown(targetDate)
-
-  const formatTime = (value: number): string => {
-    return value.toString().padStart(2, '0')
-  }
-
   const SponsorBadge = ({ title, logo, color, borderColor }: any) => (
     <div className="flex flex-col items-center group">
       <div className="flex items-center gap-2 mb-1">
@@ -44,7 +36,7 @@ export default function ComingSoonCard({
         </motion.div>
       </div>
       <div className="relative flex flex-col items-center justify-center w-187.5 h-112.5 max-md:w-11/12 max-md:scale-75 mt-28">
-        <div className="w-125 h-50 flex justify-center items-center relative rounded-2xl border-[5px] z-10 neon-card-border neon-card-bg neon-card-shadow-thick -left-20 max-md:left-0">
+        <div className="w-125 h-50 flex justify-center items-center relative rounded-2xl border-[5px] z-10 neon-card-border neon-card-bg neon-card-shadow-thick -left-20 -top-10 max-md:left-0">
           <div className="text-center">
             <h1 className="m-0 leading-relaxed text-4xl tracking-wide neon-orange max-md:text-4xl" style={{ fontFamily: "'Press Start 2P', 'VT323', monospace", textShadow: '4px 4px 0px #000' }}>
               {eventTitle}
@@ -56,25 +48,16 @@ export default function ComingSoonCard({
         </div>
 
         {avatarSrc && (
-          <img 
-            src={avatarSrc} 
-            alt="Event Mascot" 
-            className="absolute -right-20 -top-20 z-20 max-md:-right-15" 
-            style={{ height: '580px', width: 'auto', filter: 'drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.8))' }}
-          />
+          <picture>
+            <source media="(max-width: 400px)" srcSet="https://speugdv1vi.ufs.sh/f/y8q1VPJuKeA1whaKxZCmfJ1SAq3KTGnXB8DFs9ZpRrOylbdt" />
+            <img
+              src={avatarSrc}
+              alt="Event Mascot"
+              className="absolute -right-20 -top-20 z-20 max-md:-right-30 md:z-20 h-145 w-auto"
+              style={{ filter: 'drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.8))' }}
+            />
+          </picture>
         )}
-
-        <div className="mt-10 rounded-lg px-5 py-2.5 bg-[#111] border-2 border-[#333] z-5" style={{ boxShadow: '0 0 15px rgba(0, 255, 255, 0.2)' }}>
-          <div className="font-bold tracking-[0.15em] flex items-center gap-2 text-3xl neon-cyan-glow max-md:text-xl" style={{ fontFamily: "'Courier New', 'Press Start 2P', monospace" }}>
-            <span>{formatTime(timeLeft.days)}d</span>
-            <span>:</span>
-            <span>{formatTime(timeLeft.hours)}h</span>
-            <span>:</span>
-            <span>{formatTime(timeLeft.minutes)}m</span>
-            <span>:</span>
-            <span>{formatTime(timeLeft.seconds)}s</span>
-          </div>
-        </div>
       </div>
     </div>
   )

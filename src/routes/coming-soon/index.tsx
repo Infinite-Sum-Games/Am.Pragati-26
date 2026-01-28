@@ -8,7 +8,6 @@ export const Route = createFileRoute('/coming-soon/')({
 function ComingSoonPage() {
   return (
     <ComingSoonCard
-      targetDate="2026-01-28T20:34:00"
       eventTitle="PRAGATI '26"
       subtitle="COMING SOON"
     />
