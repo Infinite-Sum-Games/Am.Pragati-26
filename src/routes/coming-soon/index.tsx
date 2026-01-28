@@ -6,10 +6,5 @@ export const Route = createFileRoute("/coming-soon/")({
 });
 
 function ComingSoonPage() {
-  return (
-    <ComingSoonCard
-      eventTitle="PRAGATI '26"
-      subtitle="COMING SOON"
-    />
-  )
+	return <ComingSoonCard eventTitle="PRAGATI '26" subtitle="COMING SOON" />;
 }
