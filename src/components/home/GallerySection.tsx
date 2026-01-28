@@ -389,9 +389,6 @@ function InfiniteScrollRow({
 		>
 			<div className="absolute top-0 left-0 right-0 h-1 z-10 bg-linear-to-r from-transparent via-amber-700/90 to-transparent shadow-md" />
 
-			<div className="absolute inset-y-0 left-0 w-16 sm:w-24 md:w-40 z-30 pointer-events-none bg-linear-to-r from-[#0f0f2e] via-[#0f0f2e]/80 to-transparent" />
-			<div className="absolute inset-y-0 right-0 w-16 sm:w-24 md:w-40 z-30 pointer-events-none bg-linear-to-l from-[#0f0f2e] via-[#0f0f2e]/80 to-transparent" />
-
 			<div
 				ref={trackRef}
 				className="flex gap-4 sm:gap-6 md:gap-8 lg:gap-10 pt-1 items-end w-fit"
@@ -447,12 +444,9 @@ export function GallerySection() {
 	return (
 		<section
 			ref={sectionRef}
-			className="relative min-h-125 sm:min-h-150 md:min-h-175 lg:min-h-187.5 overflow-hidden py-8 sm:py-10 md:py-12 bg-[#0f0f2e]"
+			className="relative min-h-125 sm:min-h-150 md:min-h-175 lg:min-h-187.5 overflow-hidden py-8 sm:py-10 md:py-12 bg-gradient-to-b from-[#0c0c24] to-black"
 		>
 			<div className="absolute inset-0 pointer-events-none">
-				<div className="absolute w-48 h-48 sm:w-80 sm:h-80 md:w-125 md:h-125 lg:w-150 lg:h-150 rounded-full blur-[80px] sm:blur-[120px] md:blur-[150px] opacity-30 -top-[10%] sm:-top-[15%] md:-top-[20%] -left-[5%] sm:-left-[8%] md:-left-[10%] bg-linear-to-br from-pink-500 to-fuchsia-600" />
-				<div className="absolute w-40 h-40 sm:w-64 sm:h-64 md:w-100 md:h-100 lg:w-125 lg:h-125 rounded-full blur-[80px] sm:blur-[120px] md:blur-[150px] opacity-30 -bottom-[10%] sm:-bottom-[15%] md:-bottom-[20%] -right-[5%] sm:-right-[8%] md:-right-[10%] bg-linear-to-br from-cyan-400 to-violet-500" />
-				<div className="absolute w-64 h-32 sm:w-125 sm:h-62.5 md:w-150 md:h-75 lg:w-200 lg:h-100 rounded-full blur-[100px] sm:blur-[150px] md:blur-[200px] opacity-15 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-400" />
 				{[...Array(20)].map((_, i) => (
 					<div
 						key={i}
@@ -470,7 +464,7 @@ export function GallerySection() {
 			<AnimatePresence>
 				{(phase === "loading" || phase === "exploding") && (
 					<motion.div
-						className="absolute inset-0 flex flex-col items-center justify-center z-50 bg-[#0f0f2e]/95"
+						className="absolute inset-0 flex flex-col items-center justify-center z-50 bg-black/95"
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.4 }}
 					>
@@ -503,7 +497,7 @@ export function GallerySection() {
 							animate={{ y: 0, opacity: 1 }}
 							transition={{ delay: 0.2 }}
 						>
-							<h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-linear-to-r from-yellow-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent animate-pulse">
+							<h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-amber-700">
 								Moments That Shine
 							</h2>
 						</motion.div>
