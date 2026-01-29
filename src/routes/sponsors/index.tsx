@@ -52,10 +52,25 @@ function SponsorsPage() {
             transition={{ duration: 1, ease: "easeInOut", delay: 1.2 }}
             className="relative w-12/15 max-w-6xl my-8 mb-20 max-lg:w-[85%] max-lg:max-w-md"
           >
+            {/* Desktop */}
             <img
-              src="sponsors-page/card-long.png"
+              src="sponsors-page/card-long-desktop.png"
               alt=""
-              className="w-full h-auto lg:scale-y-[1.4] max-lg:rotate-90 max-lg:scale-y-[2] max-lg:scale-x-[1.3] max-lg:my-[50%]"
+              className="hidden lg:block w-full h-auto scale-y-[1.4]"
+            />
+
+            {/* Tablet */}
+            <img
+              src="sponsors-page/card-med.png"
+              alt=""
+              className="hidden md:block lg:hidden w-full h-auto"
+            />
+
+            {/* Mobile */}
+            <img
+              src="sponsors-page/card-long-mobile.webp"
+              alt=""
+              className="block md:hidden w-full h-auto"
             />
             <div className="absolute inset-0 flex justify-center items-center gap-8 px-16 py-12 max-lg:flex-col max-lg:px-6 max-lg:py-8 max-lg:gap-4">
               <img
