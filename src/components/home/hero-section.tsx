@@ -157,8 +157,8 @@ function HeroSection() {
 						transition={{ duration: 0.8, type: "spring", bounce: 0.5 }}
 						className="relative flex-none text-center"
 					>
-						<h1 className="font-jersey15 text-[100px] md:text-[180px] lg:text-[240px] text-retro-yellow drop-shadow-[3px_3px_0px_rgba(168,85,247,0.8)] md:drop-shadow-[4px_4px_0px_rgba(168,85,247,0.8)] tracking-tighter uppercase leading-none select-none">
-							Pragati' 26
+						<h1 className="font-jersey15 text-[90px] md:text-[180px] lg:text-[240px] text-retro-yellow drop-shadow-[3px_3px_0px_rgba(168,85,247,0.8)] md:drop-shadow-[4px_4px_0px_rgba(168,85,247,0.8)] tracking-tighter uppercase leading-none select-none">
+							Pragati '26
 						</h1>
 
 						<motion.img
