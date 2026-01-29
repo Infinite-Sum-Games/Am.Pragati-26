@@ -23,9 +23,13 @@ const Card = (props: {
         {name}
       </p>
 
-      <img src={img} className={`z-20 rounded-xl ${extraStyling ?? ""}`} />
-    </motion.div>
-  );
+			<img
+				src={img}
+				alt={name}
+				className={`z-20 rounded-xl ${extraStyling ?? ""}`}
+			/>
+		</motion.div>
+	);
 };
 
 export default Card;

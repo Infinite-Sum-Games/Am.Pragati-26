@@ -4,38 +4,32 @@ import { useCallback, useEffect, useRef, useState } from "react";
 const row1Images = [
 	{
 		id: 1,
-		src: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&h=400&fit=crop",
-		caption: "Opening Night",
+		src: "https://cemmqkyp6r.ufs.sh/f/ARrrFNxAQO2d7BKaXqlYhxmf7KGgre3XpuStqMobiV20vwEP",
 		colorClass: "bg-pink-500",
 	},
 	{
 		id: 2,
-		src: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500&h=400&fit=crop",
-		caption: "Main Stage",
+		src: "https://cemmqkyp6r.ufs.sh/f/ARrrFNxAQO2dfoFgyzGplW6poDmg0S2QcJRTnOuCVNIvrhy3",
 		colorClass: "bg-cyan-400",
 	},
 	{
 		id: 3,
-		src: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=500&h=400&fit=crop",
-		caption: "The Crowd",
+		src: "https://cemmqkyp6r.ufs.sh/f/ARrrFNxAQO2dr4k0eY7Ik0EquVt93CSAfJZWnU6oPLicjdwB",
 		colorClass: "bg-yellow-400",
 	},
 	{
 		id: 4,
-		src: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500&h=400&fit=crop",
-		caption: "Live Show",
+		src: "https://cemmqkyp6r.ufs.sh/f/ARrrFNxAQO2dxsIHPp9qmkLjxWTSrivIXcEayYdpN042nVP3",
 		colorClass: "bg-fuchsia-600",
 	},
 	{
 		id: 5,
-		src: "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=500&h=400&fit=crop",
-		caption: "Dance Floor",
+		src: "https://cemmqkyp6r.ufs.sh/f/ARrrFNxAQO2dCKxhFRnFibrWxX19qfQAl5hUtSpOZdYPHBTu",
 		colorClass: "bg-teal-400",
 	},
 	{
 		id: 6,
-		src: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=500&h=400&fit=crop",
-		caption: "Concert Vibes",
+		src: "https://cemmqkyp6r.ufs.sh/f/ARrrFNxAQO2dPZq3Bz82Z9EReKUJkN5aMnizyGI867ohdxsB",
 		colorClass: "bg-violet-500",
 	},
 ];
@@ -43,38 +37,32 @@ const row1Images = [
 const row2Images = [
 	{
 		id: 7,
-		src: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=500&h=400&fit=crop",
-		caption: "Night Sky",
+		src: "https://cemmqkyp6r.ufs.sh/f/ARrrFNxAQO2dvD87wfLS9FVewDazNbv0GZsxmLOE1qQCTko5",
 		colorClass: "bg-cyan-400",
 	},
 	{
 		id: 8,
-		src: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500&h=400&fit=crop",
-		caption: "Festival Fun",
+		src: "https://cemmqkyp6r.ufs.sh/f/ARrrFNxAQO2d4AfbaAtmsB9OpjxvbnPLVaK0QzAdt3GlTZku",
 		colorClass: "bg-pink-500",
 	},
 	{
 		id: 9,
-		src: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=500&h=400&fit=crop",
-		caption: "Memories",
+		src: "https://cemmqkyp6r.ufs.sh/f/ARrrFNxAQO2df3gPn0plW6poDmg0S2QcJRTnOuCVNIvrhy3P",
 		colorClass: "bg-yellow-400",
 	},
 	{
 		id: 10,
-		src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=500&h=400&fit=crop",
-		caption: "Backstage",
+		src: "https://cemmqkyp6r.ufs.sh/f/ARrrFNxAQO2dYT2YVQU7WUPVbFermhXvNkzuATfp082CGJEg",
 		colorClass: "bg-fuchsia-600",
 	},
 	{
 		id: 11,
-		src: "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=500&h=400&fit=crop",
-		caption: "Spotlight",
+		src: "https://cemmqkyp6r.ufs.sh/f/ARrrFNxAQO2dtLCBJBYQKTH6FGEzS45DoUdrxWCtVmafvOP2",
 		colorClass: "bg-teal-400",
 	},
 	{
 		id: 12,
-		src: "https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=500&h=400&fit=crop",
-		caption: "Energy",
+		src: "https://cemmqkyp6r.ufs.sh/f/ARrrFNxAQO2dTyx0yPWGP1qdZ6LDschUoWjxbKy0EM5QAVf3",
 		colorClass: "bg-violet-500",
 	},
 ];
@@ -114,6 +102,7 @@ function ColorfulDiscoBall({ phase }: { phase: Phase }) {
 				{[...Array(8)].map((_, lat) =>
 					[...Array(16)].map((_, lon) => (
 						<div
+							// biome-ignore lint/suspicious/noArrayIndexKey: lat and lon are stable indices for disco ball panels
 							key={`${lat}-${lon}`}
 							className={`absolute w-1.5 h-1.5 sm:w-2 sm:h-2 left-1/2 top-1/2 -ml-1 -mt-1 rounded-sm ${DISCO_COLOR_CLASSES[(lat + lon) % 6]} animate-pulse shadow-lg`}
 							style={{
@@ -138,6 +127,7 @@ function ExplosionParticles({ active }: { active: boolean }) {
 				const velocity = 120 + Math.random() * 150;
 				return (
 					<motion.div
+						// biome-ignore lint/suspicious/noArrayIndexKey: static explosion particles
 						key={i}
 						className={`absolute rounded-full w-2 h-2 sm:w-3 sm:h-3 ${DISCO_COLOR_CLASSES[i % 6]} shadow-lg`}
 						initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
@@ -250,7 +240,6 @@ function PolaroidCard({
 						<div className="relative aspect-4/3 overflow-hidden bg-gray-900 mt-3 sm:mt-4">
 							<img
 								src={image.src}
-								alt={image.caption}
 								className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
 							/>
 						</div>
@@ -275,10 +264,11 @@ function InfiniteScrollRow({
 	const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 	const positionRef = useRef(direction === "left" ? 0 : -33.33);
 	const animationRef = useRef<number | undefined>(undefined);
-	const containerCacheRef = useRef<{
-		centerX: number;
-		maxDistance: number;
-	} | null>(null);
+	  const containerCacheRef = useRef<{
+    centerX: number;
+    maxDistance: number;
+  } | null>(null);
+  const isAnimating = useRef(false);
 
 	useEffect(() => {
 		const updateContainerCache = () => {
@@ -342,41 +332,43 @@ function InfiniteScrollRow({
 		}
 	}, []);
 
-	useEffect(() => {
-		const speed = 0.15;
-		let lastTime = performance.now();
+	  useEffect(() => {
+    const speed = 0.15;
+    let lastTime = performance.now();
 
-		const animate = (currentTime: number) => {
-			const delta = currentTime - lastTime;
-			lastTime = currentTime;
+    const animate = (currentTime: number) => {
+      const delta = currentTime - lastTime;
+      lastTime = currentTime;
 
-			if (direction === "left") {
-				positionRef.current -= speed * delta * 0.01;
-				positionRef.current =
-					(((positionRef.current % 33.33) + 33.33) % 33.33) - 33.33;
-			} else {
-				positionRef.current += speed * delta * 0.01;
-				positionRef.current =
-					(((positionRef.current % 33.33) + 33.33) % 33.33) - 33.33;
-			}
+      if (direction === "left") {
+        positionRef.current -= speed * delta * 0.01;
+        positionRef.current =
+          ((positionRef.current % 33.33) + 33.33) % 33.33 - 33.33;
+      } else {
+        positionRef.current += speed * delta * 0.01;
+        positionRef.current =
+          ((positionRef.current % 33.33) + 33.33) % 33.33 - 33.33;
+      }
 
-			if (trackRef.current) {
-				trackRef.current.style.transform = `translate3d(${positionRef.current}%, 0, 0)`;
-			}
+      if (trackRef.current) {
+        trackRef.current.style.transform = `translate3d(${positionRef.current}%, 0, 0)`;
+      }
 
-			updateScales();
+      updateScales();
 
-			animationRef.current = requestAnimationFrame(animate);
-		};
+      animationRef.current = requestAnimationFrame(animate);
+    };
 
-		animationRef.current = requestAnimationFrame(animate);
-
-		return () => {
-			if (animationRef.current) {
-				cancelAnimationFrame(animationRef.current);
-			}
-		};
-	}, [direction, updateScales]);
+    // Prevent multiple animations in React StrictMode
+    if (!isAnimating.current) {
+      isAnimating.current = true;
+      animationRef.current = requestAnimationFrame(animate);
+    }
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      isAnimating.current = false;
+    };
+  }, [direction, updateScales]);
 
 	const setCardRef = (index: number) => (el: HTMLDivElement | null) => {
 		cardRefs.current[index] = el;
@@ -388,9 +380,6 @@ function InfiniteScrollRow({
 			ref={containerRef}
 		>
 			<div className="absolute top-0 left-0 right-0 h-1 z-10 bg-linear-to-r from-transparent via-amber-700/90 to-transparent shadow-md" />
-
-			<div className="absolute inset-y-0 left-0 w-16 sm:w-24 md:w-40 z-30 pointer-events-none bg-linear-to-r from-[#0f0f2e] via-[#0f0f2e]/80 to-transparent" />
-			<div className="absolute inset-y-0 right-0 w-16 sm:w-24 md:w-40 z-30 pointer-events-none bg-linear-to-l from-[#0f0f2e] via-[#0f0f2e]/80 to-transparent" />
 
 			<div
 				ref={trackRef}
@@ -447,14 +436,12 @@ export function GallerySection() {
 	return (
 		<section
 			ref={sectionRef}
-			className="relative min-h-125 sm:min-h-150 md:min-h-175 lg:min-h-187.5 overflow-hidden py-8 sm:py-10 md:py-12 bg-[#0f0f2e]"
+			className="relative min-h-125 sm:min-h-150 md:min-h-175 lg:min-h-187.5 overflow-hidden py-8 sm:py-10 md:py-12 bg-gradient-to-b from-[#0c0c24] to-black"
 		>
 			<div className="absolute inset-0 pointer-events-none">
-				<div className="absolute w-48 h-48 sm:w-80 sm:h-80 md:w-125 md:h-125 lg:w-150 lg:h-150 rounded-full blur-[80px] sm:blur-[120px] md:blur-[150px] opacity-30 -top-[10%] sm:-top-[15%] md:-top-[20%] -left-[5%] sm:-left-[8%] md:-left-[10%] bg-linear-to-br from-pink-500 to-fuchsia-600" />
-				<div className="absolute w-40 h-40 sm:w-64 sm:h-64 md:w-100 md:h-100 lg:w-125 lg:h-125 rounded-full blur-[80px] sm:blur-[120px] md:blur-[150px] opacity-30 -bottom-[10%] sm:-bottom-[15%] md:-bottom-[20%] -right-[5%] sm:-right-[8%] md:-right-[10%] bg-linear-to-br from-cyan-400 to-violet-500" />
-				<div className="absolute w-64 h-32 sm:w-125 sm:h-62.5 md:w-150 md:h-75 lg:w-200 lg:h-100 rounded-full blur-[100px] sm:blur-[150px] md:blur-[200px] opacity-15 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-400" />
 				{[...Array(20)].map((_, i) => (
 					<div
+						// biome-ignore lint/suspicious/noArrayIndexKey: static background particles
 						key={i}
 						className={`absolute w-1 h-1 rounded-full ${DISCO_COLOR_CLASSES[i % 6]} animate-pulse shadow-sm`}
 						style={{
@@ -470,7 +457,7 @@ export function GallerySection() {
 			<AnimatePresence>
 				{(phase === "loading" || phase === "exploding") && (
 					<motion.div
-						className="absolute inset-0 flex flex-col items-center justify-center z-50 bg-[#0f0f2e]/95"
+						className="absolute inset-0 flex flex-col items-center justify-center z-50 bg-black/95"
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.4 }}
 					>
@@ -503,7 +490,7 @@ export function GallerySection() {
 							animate={{ y: 0, opacity: 1 }}
 							transition={{ delay: 0.2 }}
 						>
-							<h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold bg-linear-to-r from-yellow-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent animate-pulse">
+							<h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-amber-700">
 								Moments That Shine
 							</h2>
 						</motion.div>
