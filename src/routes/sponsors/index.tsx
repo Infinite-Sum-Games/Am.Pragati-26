@@ -52,76 +52,84 @@ function SponsorsPage() {
 						Title Sponsor – BNY
 					</motion.p>
 
-					{/* Sponsor Card */}
 					<motion.div
 						initial={{ translateY: 120, opacity: 0 }}
 						animate={{ translateY: 0, opacity: 1 }}
 						transition={{ duration: 1, ease: "easeInOut", delay: 1.2 }}
 						className="relative w-full max-w-6xl px-6 mb-28"
 					>
-						{/* Desktop Card */}
-						<img
-							src="sponsors-page/card-long.png"
-							alt="Sponsor Card Desktop"
-							className="hidden lg:block w-full h-auto"
-						/>
-
-						{/* Tablet Card */}
-						<img
-							src="sponsors-page/card-med.png"
-							alt="Sponsor Card Tablet"
-							className="hidden md:block lg:hidden w-full h-auto"
-						/>
-
-						{/* Mobile Card */}
-						<img
-							src="sponsors-page/card-long-mobile.webp"
-							alt="Sponsor Card Mobile"
-							className="block md:hidden w-full h-auto"
-						/>
-
-						{/* Card Content */}
-						<div
-							className="
-                absolute inset-0
-                flex flex-col lg:flex-row
-                items-center justify-center
-                gap-6
-                px-6 md:px-10 lg:px-20
-                py-8 md:py-10 lg:py-14
-                text-center lg:text-left
-              "
-						>
-							{/* Sponsor Logo */}
+						{/* CARD IMAGE STACK */}
+						<div className="relative w-full">
+							{/* Desktop */}
 							<img
-								src="sponsors-page/bny.jpeg"
-								alt="BNY Logo"
-								className="
-                  w-32 md:w-40 lg:w-52
-                  h-auto object-contain
-                  rounded-xl shrink-0
-                "
+								src="sponsors-page/card-long.png"
+								alt="Sponsor Card Desktop"
+								className="hidden lg:block w-full h-auto"
 							/>
 
-							{/* Sponsor Description */}
-							<div className="flex flex-col gap-4 w-full">
-								<p className="text-white font-jersey leading-relaxed text-sm md:text-base lg:text-xl">
-									BNY is a global financial services platform company and the
-									world's largest custodian bank. Founded in 1784 by Alexander
-									Hamilton, BNY supports how capital moves, settles, and stays
-									secure across markets. At its core, BNY provides the
-									infrastructure for safekeeping assets, processing
-									transactions, and supporting clients across the full
-									investment lifecycle.
-								</p>
+							{/* Tablet */}
+							<img
+								src="sponsors-page/card-med.png"
+								alt="Sponsor Card Tablet"
+								className="hidden md:block lg:hidden w-full h-auto"
+							/>
 
-								<p className="text-white font-jersey leading-relaxed text-sm md:text-base lg:text-xl">
-									Amrita School of Business shares a strong and growing
-									association with BNY. Over the years, BNY has supported Amrita
-									students through meaningful internship opportunities and
-									continues its support as the title sponsor for Pragati’25 and
-									Pragati’26.
-								</p>
+							{/* Mobile */}
+							<img
+								src="sponsors-page/card-long-mobile.webp"
+								alt="Sponsor Card Mobile"
+								className="block md:hidden w-full h-auto"
+							/>
+
+							{/* CONTENT LAYER */}
+							<div
+								className="
+        absolute inset-0
+        flex flex-col lg:flex-row
+        items-center justify-center
+        text-center lg:text-left
+      "
+							>
+								{/* SAFE CONTENT FRAME */}
+								<div
+									className="
+          w-full h-full
+          flex flex-col lg:flex-row
+          items-center justify-center
+          gap-4 lg:gap-8
+          px-[8%] py-[10%]
+          md:px-[10%] md:py-[10%]
+          lg:px-[12%] lg:py-[12%]
+        "
+								>
+									{/* LOGO */}
+									<img
+										src="sponsors-page/bny.jpeg"
+										alt="BNY Logo"
+										className="w-28 md:w-36 lg:w-52 h-auto object-contain rounded-xl shrink-0"
+									/>
+
+									{/* TEXT */}
+									<div className="flex flex-col gap-3">
+										<p className="text-white font-jersey leading-relaxed text-sm md:text-base lg:text-xl">
+											BNY is a global financial services platform company and
+											the world's largest custodian bank. Founded in 1784 by
+											Alexander Hamilton, BNY supports how capital moves,
+											settles, and stays secure across markets. At its core, BNY
+											provides the infrastructure for safekeeping assets,
+											processing transactions, and supporting clients across the
+											full investment lifecycle.
+										</p>
+
+										<p className="text-white font-jersey leading-relaxed text-sm md:text-base lg:text-xl">
+											Amrita School of Business shares a strong and growing
+											association with BNY. Over the years, BNY has supported
+											Amrita students through meaningful internship
+											opportunities and continues its support as the title
+											sponsor for Pragati’25 and Pragati’26.
+										</p>
+									</div>
+								</div>
 							</div>
 						</div>
 					</motion.div>
