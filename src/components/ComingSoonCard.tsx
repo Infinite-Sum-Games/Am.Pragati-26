@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import type { ComingSoonCardProps } from "../types/comingSoonTypes";
 
 interface SponsorBadgeProps {
@@ -46,6 +47,8 @@ export default function ComingSoonCard({
 	avatarSrc = "https://speugdv1vi.ufs.sh/f/y8q1VPJuKeA15lDZB7A8rw7ncvuMsAbNajoyg3PxkVXmhJ1p",
 	backgroundSrc = "https://speugdv1vi.ufs.sh/f/y8q1VPJuKeA1cTVlnXeX8hDe73ritmZAEkpSBVFowYx2vRLc",
 }: ComingSoonCardProps) {
+	const [bgLoaded, setBgLoaded] = useState(false);
+
 	return (
 		<div
 			className="h-screen w-screen bg-cover bg-center bg-no-repeat flex flex-col justify-center items-center relative"
@@ -55,68 +58,78 @@ export default function ComingSoonCard({
 				fontFamily: "'Orbitron', 'Roboto', sans-serif",
 			}}
 		>
-			<div className="hidden md:flex absolute top-0 left-0 z-30 w-full max-w-2xl p-8 flex-row items-center gap-8">
-				<motion.div
-					initial={{ opacity: 0, x: -50 }}
-					animate={{ opacity: 1, x: 0 }}
-					transition={{ duration: 0.8, delay: 0.5 }}
-				>
-					<SponsorBadge
-						title="ORGANIZED BY"
-						logo="/logos/ASB.webp"
-						color="text-retro-pink"
-						borderColor="border-retro-pink/50"
-					/>
-				</motion.div>
-				<motion.div
-					initial={{ opacity: 0, x: -50 }}
-					animate={{ opacity: 1, x: 0 }}
-					transition={{ duration: 0.8, delay: 0.7 }}
-				>
-					<SponsorBadge
-						title="TITLE SPONSOR"
-						logo="/logos/BNY.webp"
-						color="text-retro-cyan"
-						borderColor="border-retro-cyan/50"
-					/>
-				</motion.div>
-			</div>
-			<div className="relative flex flex-col items-center justify-center w-187.5 h-112.5 max-md:w-11/12 max-md:scale-75 mt-28">
-				<div className="w-125 h-50 flex justify-center items-center relative rounded-2xl border-[5px] z-10 neon-card-border neon-card-bg neon-card-shadow-thick -left-20 -top-10 max-md:left-0">
-					<div className="text-center">
-						<h1
-							className="m-0 leading-relaxed text-4xl tracking-wide neon-orange max-md:text-4xl"
-							style={{
-								fontFamily: "'Press Start 2P', 'VT323', monospace",
-								textShadow: "4px 4px 0px #000",
-							}}
+			<img
+				src={backgroundSrc}
+				alt=""
+				className="hidden"
+				onLoad={() => setBgLoaded(true)}
+			/>
+			{bgLoaded && (
+				<>
+					<div className="hidden md:flex absolute top-0 left-0 z-30 w-full max-w-2xl p-8 flex-row items-center gap-8">
+						<motion.div
+							initial={{ opacity: 0, x: -50 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.8, delay: 0.5 }}
 						>
-							{eventTitle}
-						</h1>
-						<h2
-							className="mt-4 uppercase tracking-[0.2em] text-3xl font-bold neon-cyan-glow max-md:text-3xl"
-							style={{ fontFamily: "'Orbitron', 'Roboto', sans-serif" }}
+							<SponsorBadge
+								title="ORGANIZED BY"
+								logo="/logos/ASB.webp"
+								color="text-retro-pink"
+								borderColor="border-retro-pink/50"
+							/>
+						</motion.div>
+						<motion.div
+							initial={{ opacity: 0, x: -50 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.8, delay: 0.7 }}
 						>
-							{subtitle}
-						</h2>
+							<SponsorBadge
+								title="TITLE SPONSOR"
+								logo="/logos/BNY.webp"
+								color="text-retro-cyan"
+								borderColor="border-retro-cyan/50"
+							/>
+						</motion.div>
 					</div>
-				</div>
+					<div className="relative flex flex-col items-center justify-center w-187.5 h-112.5 max-md:w-11/12 max-md:scale-75 mt-28">
+						<div className="w-125 h-50 flex justify-center items-center relative rounded-2xl border-[5px] z-10 neon-card-border neon-card-bg neon-card-shadow-thick -left-20 -top-10 max-md:left-0">
+							<div className="text-center">
+								<h1
+									className="m-0 leading-relaxed text-4xl tracking-wide neon-orange max-md:text-4xl"
+									style={{
+										fontFamily: "'Press Start 2P', 'VT323', monospace",
+										textShadow: "4px 4px 0px #000",
+									}}
+								>
+									{eventTitle}
+								</h1>
+								<h2
+									className="mt-4 uppercase tracking-[0.2em] text-3xl font-bold neon-cyan-glow max-md:text-3xl"
+									style={{ fontFamily: "'Orbitron', 'Roboto', sans-serif" }}
+								>
+									{subtitle}
+								</h2>
+							</div>
+						</div>
 
-				{avatarSrc && (
-					<picture>
-						<source
-							media="(max-width: 400px)"
-							srcSet="https://speugdv1vi.ufs.sh/f/y8q1VPJuKeA1whaKxZCmfJ1SAq3KTGnXB8DFs9ZpRrOylbdt"
-						/>
-						<img
-							src={avatarSrc}
-							alt="Event Mascot"
-							className="absolute -right-20 -top-20 z-20 max-md:-right-30 md:z-20 h-145 w-auto"
-							style={{ filter: "drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.8))" }}
-						/>
-					</picture>
-				)}
-			</div>
+						{avatarSrc && (
+							<picture>
+								<source
+									media="(max-width: 400px)"
+									srcSet="https://speugdv1vi.ufs.sh/f/y8q1VPJuKeA1whaKxZCmfJ1SAq3KTGnXB8DFs9ZpRrOylbdt"
+								/>
+								<img
+									src={avatarSrc}
+									alt="Event Mascot"
+									className="absolute -right-20 -top-20 z-20 max-md:-right-30 md:z-20 h-145 w-auto"
+									style={{ filter: "drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.8))" }}
+								/>
+							</picture>
+						)}
+					</div>
+				</>
+			)}
 		</div>
 	);
 }
