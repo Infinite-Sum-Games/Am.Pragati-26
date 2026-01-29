@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
+import Navbar from "@/components/Navbar";
 import Card from "@/components/sponsors/Card";
 import Noise from "@/components/sponsors/Noise";
-import Navbar from "@/components/Navbar";
 import "./style.css";
 
 export const Route = createFileRoute("/sponsors/")({
