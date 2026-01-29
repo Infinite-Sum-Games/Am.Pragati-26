@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+const STARS = Array.from({ length: 30 }, (_, i) => i);
+
 export const RadianceLoader = () => {
 	const [loadingText, setLoadingText] = useState("LOADING CARTRIDGE");
 	const [dots, setDots] = useState("");
@@ -20,7 +22,7 @@ export const RadianceLoader = () => {
 		}, 2000);
 
 		const dotsInterval = setInterval(() => {
-			setDots((prev) => (prev.length >= 3 ? "" : prev + "."));
+			setDots((prev) => (prev.length >= 3 ? "" : `${prev}.`));
 		}, 500);
 
 		return () => {
@@ -41,7 +43,7 @@ export const RadianceLoader = () => {
 					transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
 					className="absolute inset-0 opacity-20"
 				>
-					{[...Array(30)].map((_, i) => (
+					{STARS.map((i) => (
 						<div
 							key={i}
 							className="absolute w-1 h-1 bg-[#2de2e6] rounded-full"

@@ -23,7 +23,11 @@ const Card = (props: {
 				{name}
 			</p>
 
-			<img src={img} className={`z-20 rounded-xl ${extraStyling ?? ""}`} />
+			<img
+				src={img}
+				alt={name}
+				className={`z-20 rounded-xl ${extraStyling ?? ""}`}
+			/>
 		</motion.div>
 	);
 };

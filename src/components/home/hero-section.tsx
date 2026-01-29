@@ -32,8 +32,8 @@ const TypewriterText = ({ text }: { text: string }) => {
 			animate="visible"
 			className="font-vcr text-retro-cyan text-sm md:text-xl tracking-[0.2em] md:tracking-[0.5em] uppercase drop-shadow-[0_0_5px_rgba(0,255,255,0.8)]"
 		>
-			{letters.map((letter, index) => (
-				<motion.span variants={child} key={index}>
+			{letters.map((letter) => (
+				<motion.span variants={child} key={`${letter}-${Math.random()}`}>
 					{letter === " " ? "\u00A0" : letter}
 				</motion.span>
 			))}
@@ -41,40 +41,40 @@ const TypewriterText = ({ text }: { text: string }) => {
 	);
 };
 
+// biome-ignore lint/suspicious/noExplicitAny: reason
+const SponsorBadge = ({ title, logo, color, borderColor }: any) => (
+	<div className="flex flex-col items-center group cursor-default">
+		<div className="flex items-center gap-2 mb-1">
+			<div
+				className={`h-0.5 w-3 md:w-6 ${color} shadow-[0_0_10px_currentColor]`}
+			/>
+			<span
+				className={`font-vcr text-[9px] md:text-xs ${color} tracking-widest drop-shadow-[0_0_5px_currentColor] whitespace-nowrap`}
+			>
+				{title}
+			</span>
+		</div>
+		<div
+			className={`relative p-1.5 md:p-2 bg-black/30 border-l-2 ${borderColor} backdrop-blur-sm rounded-tr-lg`}
+		>
+			<img
+				src={logo}
+				alt={title}
+				className="h-6 md:h-10 w-auto object-contain drop-shadow-md"
+			/>
+			<div
+				className={`absolute top-0 right-0 w-1 h-1 md:w-1.5 md:h-1.5 ${color.replace("text-", "bg-")}`}
+			/>
+		</div>
+	</div>
+);
+
 function HeroSection() {
 	const stats = [
 		{ label: "Events", value: "30+" },
 		{ label: "Participants", value: "500+" },
 		{ label: "Colleges", value: "15+" },
 	];
-
-	// Reusable Sponsor Badge
-	const SponsorBadge = ({ title, logo, color, borderColor }: any) => (
-		<div className="flex flex-col items-center group cursor-default">
-			<div className="flex items-center gap-2 mb-1">
-				<div
-					className={`h-0.5 w-3 md:w-6 ${color} shadow-[0_0_10px_currentColor]`}
-				/>
-				<span
-					className={`font-vcr text-[9px] md:text-xs ${color} tracking-widest drop-shadow-[0_0_5px_currentColor] whitespace-nowrap`}
-				>
-					{title}
-				</span>
-			</div>
-			<div
-				className={`relative p-1.5 md:p-2 bg-black/30 border-l-2 ${borderColor} backdrop-blur-sm rounded-tr-lg`}
-			>
-				<img
-					src={logo}
-					alt={title}
-					className="h-6 md:h-10 w-auto object-contain drop-shadow-md"
-				/>
-				<div
-					className={`absolute top-0 right-0 w-1 h-1 md:w-1.5 md:h-1.5 ${color.replace("text-", "bg-")}`}
-				/>
-			</div>
-		</div>
-	);
 
 	return (
 		<section className="relative min-h-screen h-screen w-full flex flex-col items-center">
@@ -209,8 +209,8 @@ function HeroSection() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.9, duration: 0.5 }}
 				>
-					{stats.map((stat, index) => (
-						<div key={index} className="flex flex-col items-center group">
+					{stats.map((stat) => (
+						<div key={stat.label} className="flex flex-col items-center group">
 							<div className="relative w-full bg-black/40 border md:border-2 border-retro-cyan/50 p-2 md:p-5 rounded-sm backdrop-blur-sm group-hover:border-retro-pink group-hover:-translate-y-2 transition-all duration-300">
 								<span className="font-jersey15 text-3xl md:text-6xl text-white drop-shadow-[1px_1px_0px_#00ffff] md:drop-shadow-[2px_2px_0px_#00ffff] flex justify-center">
 									{stat.value}

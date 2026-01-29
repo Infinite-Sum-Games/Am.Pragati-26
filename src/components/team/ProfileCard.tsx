@@ -126,12 +126,12 @@ const ProfileCard = ({
 					{/* Speaker grilles */}
 					<div className="absolute top-2 left-4 right-4 flex justify-between opacity-30">
 						<div className="flex gap-0.5">
-							{[...Array(8)].map((_, i) => (
+							{[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
 								<div key={i} className="w-0.5 h-2 bg-gray-600 rounded-full" />
 							))}
 						</div>
 						<div className="flex gap-0.5">
-							{[...Array(8)].map((_, i) => (
+							{[0, 1, 2, 3, 4, 5, 6, 7].map((i) => (
 								<div key={i} className="w-0.5 h-2 bg-gray-600 rounded-full" />
 							))}
 						</div>

@@ -114,6 +114,7 @@ function ColorfulDiscoBall({ phase }: { phase: Phase }) {
 				{[...Array(8)].map((_, lat) =>
 					[...Array(16)].map((_, lon) => (
 						<div
+							// biome-ignore lint/suspicious/noArrayIndexKey: lat and lon are stable indices for disco ball panels
 							key={`${lat}-${lon}`}
 							className={`absolute w-1.5 h-1.5 sm:w-2 sm:h-2 left-1/2 top-1/2 -ml-1 -mt-1 rounded-sm ${DISCO_COLOR_CLASSES[(lat + lon) % 6]} animate-pulse shadow-lg`}
 							style={{
@@ -138,6 +139,7 @@ function ExplosionParticles({ active }: { active: boolean }) {
 				const velocity = 120 + Math.random() * 150;
 				return (
 					<motion.div
+						// biome-ignore lint/suspicious/noArrayIndexKey: static explosion particles
 						key={i}
 						className={`absolute rounded-full w-2 h-2 sm:w-3 sm:h-3 ${DISCO_COLOR_CLASSES[i % 6]} shadow-lg`}
 						initial={{ x: 0, y: 0, scale: 1, opacity: 1 }}
@@ -455,6 +457,7 @@ export function GallerySection() {
 				<div className="absolute w-64 h-32 sm:w-125 sm:h-62.5 md:w-150 md:h-75 lg:w-200 lg:h-100 rounded-full blur-[100px] sm:blur-[150px] md:blur-[200px] opacity-15 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-yellow-400" />
 				{[...Array(20)].map((_, i) => (
 					<div
+						// biome-ignore lint/suspicious/noArrayIndexKey: static background particles
 						key={i}
 						className={`absolute w-1 h-1 rounded-full ${DISCO_COLOR_CLASSES[i % 6]} animate-pulse shadow-sm`}
 						style={{

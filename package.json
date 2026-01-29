@@ -7,9 +7,10 @@
     "build": "vite build && tsc",
     "preview": "vite preview",
     "test": "vitest run",
-    "format": "biome format",
-    "lint": "biome lint",
-    "check": "biome check"
+    "format": "biome format --write",
+    "lint": "biome lint --write",
+    "check": "biome check --write",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -50,6 +51,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.4",
+    "husky": "^9.1.7",
     "jsdom": "^27.0.0",
     "typescript": "^5.7.2",
     "vite": "^7.1.7",

@@ -19,6 +19,7 @@ const Noise: React.FC<NoiseProps> = ({
 }) => {
 	const grainRef = useRef<HTMLCanvasElement | null>(null);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: static noise pattern
 	useEffect(() => {
 		const canvas = grainRef.current;
 		if (!canvas) return;
