@@ -41,15 +41,16 @@ const Card = (props: {
           flex justify-center items-center
           bg-[url(/sponsors-page/card.png)]
           bg-center bg-contain bg-no-repeat
-          py-[12%]
+          py-[15%] px-[8%]
         "
 			>
 				<img
 					src={img}
 					alt={name}
 					className={`
-            w-[70%] md:w-[60%]
+            w-[65%] md:w-[55%]
             object-contain
+            mx-auto
             ${extraStyling ?? ""}
           `}
 				/>

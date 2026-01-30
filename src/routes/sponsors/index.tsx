@@ -123,7 +123,7 @@ function SponsorsPage() {
                       association with BNY. Over the years, BNY has supported
                       Amrita students through meaningful internship
                       opportunities and continues its support as the title
-                      sponsor for Pragati’25 and Pragati’26.
+                      sponsor for Pragati'25 and Pragati'26.
                     </p>
                   </div>
                 </div>
@@ -136,17 +136,17 @@ function SponsorsPage() {
             initial={{ translateY: 120, opacity: 0 }}
             animate={{ translateY: 0, opacity: 1 }}
             transition={{ duration: 1, ease: "easeInOut", delay: 1.4 }}
-            className="z-20 mt-10 mb-8 text-[#E6E6FA] text-5xl font-jersey
+            className="z-20 mt-16 mb-8 text-[#E6E6FA] text-5xl font-jersey
               text-shadow-[2px_2px_0px_#7b3aec]"
           >
             Other Sponsors
           </motion.p>
 
-          <div className="w-full px-10 py-16 flex flex-wrap justify-center gap-8">
+          <div className="w-full px-10 py-8 pb-20 flex flex-wrap justify-center items-center gap-8">
             <Card
               name="Banconus"
               img="sponsors-page/banconus.jpeg"
-              extraStyling="w-2/5"
+              extraStyling=""
               appearDelay={1.6}
             />
           </div>
