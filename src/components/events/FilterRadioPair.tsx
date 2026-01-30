@@ -2,7 +2,9 @@ interface FilterRadioPairProps {
 	a: string;
 	b: string;
 	value: string | null;
-	setValue: React.Dispatch<React.SetStateAction<any>>;
+	// Accept a plain function that receives the new string|null value.
+	// Callers will wrap their strongly-typed setters to match this signature.
+	setValue: (value: string | null) => void;
 }
 
 export const FilterRadioPair = ({ a, b, value, setValue }: FilterRadioPairProps) => (
@@ -14,7 +16,7 @@ export const FilterRadioPair = ({ a, b, value, setValue }: FilterRadioPairProps)
 				<button
 					type="button"
 					key={label}
-					onClick={() => setValue((prev: any) => prev === v ? null : v)}
+					onClick={() => setValue(value === v ? null : v)}
 					className={`px-4 py-2 border-2 font-vcr text-sm transition-all duration-300 ${
 						isActive
 							? "border-retro-cyan text-retro-cyan bg-retro-cyan/20 shadow-[0_0_15px_rgba(0,255,255,0.5)]"

@@ -358,28 +358,28 @@ export const EventsPage = () => {
 							{/* Radio Pairs */}
 							<div className="flex flex-wrap gap-3 items-center">
 								<FilterRadioPair
-								a="Workshop"
-								b="Event"
-								value={eventType}
-								setValue={setEventType}
-							/>
+									a="Workshop"
+									b="Event"
+									value={eventType}
+									setValue={(v) => setEventType(v as "event" | "workshop" | null)}
+								/>
 							<FilterRadioPair
 								a="Individual"
 								b="Group"
 								value={teamType}
-								setValue={setTeamType}
+								setValue={(v) => setTeamType(v as "individual" | "group" | null)}
 							/>
 							<FilterRadioPair
 								a="Management"
 								b="Non-Management"
 								value={managementType}
-								setValue={setManagementType}
+								setValue={(v) => setManagementType(v as "management" | "non-management" | null)}
 							/>
 							<FilterRadioPair
 								a="Registered"
 								b="Not Registered"
 								value={regType}
-								setValue={setRegType}
+								setValue={(v) => setRegType(v as "registered" | "not-registered" | null)}
 							/>
 
 							<button
