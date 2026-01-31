@@ -56,7 +56,7 @@ function Barcode({ id }: { id: string }) {
         if (width === 0) return <div key={`bar-${i}`} className="w-1" />;
         const barWidth = width === 1 ? "w-0.5" : width === 2 ? "w-1" : "w-1.5";
         // biome-ignore lint/suspicious/noArrayIndexKey: Barcode bars are static visual elements that never reorder
-        return <div key={`bar-${i}`} className={`${barWidth} bg-black`} />;
+        return <div key={`bar-${i}`} className={`${barWidth} bg-white`} />;
       })}
     </div>
   );
