@@ -21,7 +21,11 @@ export const FilterDropdown = ({
 		<button
 			type="button"
 			onClick={() => setOpen(!open)}
-			className="px-4 py-2 bg-black/80 border-2 border-retro-yellow/60 text-retro-yellow font-vcr text-sm hover:bg-retro-yellow/10 hover:shadow-[0_0_15px_rgba(244,208,62,0.4)] transition-all duration-300"
+			className={`px-4 py-2 border-2 font-vcr text-sm transition-all duration-200 ${
+				open 
+					? "bg-[#7c3aed] border-black text-white shadow-[4px_4px_0_rgba(0,0,0,1)]"
+					: "bg-black/40 backdrop-blur-sm border-retro-cyan/30 text-retro-cyan hover:border-[#a855f7]/50 hover:text-[#a855f7]"
+			}`}
 		>
 			{label} {open ? "▲" : "▼"}
 		</button>
@@ -29,12 +33,14 @@ export const FilterDropdown = ({
 			<motion.div
 				initial={{ opacity: 0, y: -10 }}
 				animate={{ opacity: 1, y: 0 }}
-				className="absolute z-20 mt-2 bg-black/95 border-2 border-retro-yellow/60 p-3 space-y-2 min-w-50 shadow-[0_0_20px_rgba(244,208,62,0.3)]"
+				className="absolute z-20 mt-2 p-3 space-y-2 min-w-50 bg-black/80 backdrop-blur-md border border-retro-cyan/30 shadow-[0_0_15px_rgba(0,0,0,0.5)]"
 			>
 				{items.map((item: string) => (
 					<label
 						key={item}
-						className="flex gap-2 text-gray-300 font-vcr text-sm cursor-pointer hover:text-retro-yellow transition-colors"
+						className={`flex gap-2 font-vcr text-sm cursor-pointer transition-colors ${
+							selected.includes(item) ? "text-[#a855f7]" : "text-white/80 hover:text-retro-cyan"
+						}`}
 					>
 						<input
 							type="checkbox"
@@ -46,7 +52,7 @@ export const FilterDropdown = ({
 										: [...prev, item],
 								)
 							}
-							className="accent-retro-cyan"
+							className="accent-[#a855f7]"
 						/>
 						{item}
 					</label>

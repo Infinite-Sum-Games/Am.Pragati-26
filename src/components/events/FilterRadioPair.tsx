@@ -15,10 +15,10 @@ export const FilterRadioPair = ({ a, b, value, setValue }: FilterRadioPairProps)
 					type="button"
 					key={label}
 					onClick={() => setValue(value === v ? null : v)}
-					className={`px-4 py-2 border-2 font-vcr text-sm transition-all duration-300 ${
+					className={`px-4 py-2 border-2 font-vcr text-sm transition-all duration-200 ${
 						isActive
-							? "border-retro-cyan text-retro-cyan bg-retro-cyan/20 shadow-[0_0_15px_rgba(0,255,255,0.5)]"
-							: "border-gray-600/60 text-gray-400 hover:border-retro-cyan/40 hover:text-gray-300"
+							? "bg-[#7c3aed] border-black text-white shadow-[4px_4px_0_rgba(0,0,0,1)]"
+							: "bg-black/40 backdrop-blur-sm border-retro-cyan/30 text-white/60 hover:border-[#a855f7]/50 hover:text-[#a855f7]"
 					}`}
 				>
 					{label}
