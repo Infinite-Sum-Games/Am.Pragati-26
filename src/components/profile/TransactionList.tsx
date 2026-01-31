@@ -14,6 +14,30 @@ const mockTransactions = [
 		registration_fee: 300.0,
 		txn_status: "PENDING",
 	},
+	{
+		txn_id: "TXN123456789",
+		created_at: "2026-03-10T10:30:00Z",
+		registration_fee: 500.0,
+		txn_status: "SUCCESS",
+	},
+	{
+		txn_id: "TXN987654321",
+		created_at: "2026-03-08T14:20:00Z",
+		registration_fee: 300.0,
+		txn_status: "PENDING",
+	},
+	{
+		txn_id: "TXN123456789",
+		created_at: "2026-03-10T10:30:00Z",
+		registration_fee: 500.0,
+		txn_status: "SUCCESS",
+	},
+	{
+		txn_id: "TXN987654321",
+		created_at: "2026-03-08T14:20:00Z",
+		registration_fee: 300.0,
+		txn_status: "PENDING",
+	},
 ];
 
 function formatDateTime(dateString: string) {
@@ -200,77 +224,79 @@ export default function TransactionList() {
 				</div>
 			</div>
 
-			{/* Mobile Cards */}
-			<div className="md:hidden pb-4 space-y-3">
-				{data.map((tx) => (
-					<div
-						key={tx.txn_id}
-						className="bg-gradient-to-br from-black/90 via-[#0a0015]/95 to-black/90 border-2 border-[#00f0ff]/50 rounded-xl p-4 shadow-lg shadow-[#00f0ff]/20"
-					>
-						<div className="grid grid-cols-3 gap-2 text-xs">
-							<div className="col-span-2">
-								<span className="text-[#00f0ff] font-medium font-vcr uppercase text-xs">
-									Transaction ID:
-								</span>
-								<p className="text-white/90 font-mono mt-1 break-all text-xs">{tx.txn_id}</p>
-							</div>
-							<div className="col-span-1">
-								<span className="text-[#00f0ff] font-medium font-vcr uppercase text-xs">Amount:</span>
-								<p className="text-white font-bold mt-1 text-[#00f0ff] text-sm">
-									₹{tx.registration_fee?.toFixed(2) ?? "0.00"}
-								</p>
-							</div>
-							<div className="col-span-2">
-								<span className="text-[#00f0ff] font-medium font-vcr uppercase text-xs">
-									Date/Time:
-								</span>
-								<p className="text-white/80 mt-1 text-xs">{formatDateTime(tx.created_at)}</p>
-							</div>
-							<div>
-								<span className="text-[#00f0ff] font-medium font-vcr uppercase text-xs">Status:</span>
-								<div className="mt-1.5">
-									<span
-										className={`px-2 py-1 rounded-lg text-xs font-bold font-vcr uppercase border-2 ${
-											tx.txn_status === "SUCCESS"
-												? "bg-green-500/20 border-green-500/60 text-green-400"
-												: tx.txn_status === "FAILED"
-													? "bg-red-500/20 border-red-500/60 text-red-400"
-													: "bg-yellow-500/20 border-yellow-500/60 text-yellow-400"
+			{/* Mobile Cards - Now with scrolling */}
+			<div className="md:hidden">
+				<div className="max-h-[32rem] overflow-y-auto pb-4 space-y-3 pr-1">
+					{data.map((tx, index) => (
+						<div
+							key={`${tx.txn_id}-${index}`}
+							className="bg-gradient-to-br from-black/90 via-[#0a0015]/95 to-black/90 border-2 border-[#00f0ff]/50 rounded-xl p-4 shadow-lg shadow-[#00f0ff]/20"
+						>
+							<div className="grid grid-cols-3 gap-2 text-xs">
+								<div className="col-span-2">
+									<span className="text-[#00f0ff] font-medium font-vcr uppercase text-xs">
+										Transaction ID:
+									</span>
+									<p className="text-white/90 font-mono mt-1 break-all text-xs">{tx.txn_id}</p>
+								</div>
+								<div className="col-span-1">
+									<span className="text-[#00f0ff] font-medium font-vcr uppercase text-xs">Amount:</span>
+									<p className="text-white font-bold mt-1 text-[#00f0ff] text-sm">
+										₹{tx.registration_fee?.toFixed(2) ?? "0.00"}
+									</p>
+								</div>
+								<div className="col-span-2">
+									<span className="text-[#00f0ff] font-medium font-vcr uppercase text-xs">
+										Date/Time:
+									</span>
+									<p className="text-white/80 mt-1 text-xs">{formatDateTime(tx.created_at)}</p>
+								</div>
+								<div>
+									<span className="text-[#00f0ff] font-medium font-vcr uppercase text-xs">Status:</span>
+									<div className="mt-1.5">
+										<span
+											className={`px-2 py-1 rounded-lg text-xs font-bold font-vcr uppercase border-2 ${
+												tx.txn_status === "SUCCESS"
+													? "bg-green-500/20 border-green-500/60 text-green-400"
+													: tx.txn_status === "FAILED"
+														? "bg-red-500/20 border-red-500/60 text-red-400"
+														: "bg-yellow-500/20 border-yellow-500/60 text-yellow-400"
+											}`}
+										>
+											{tx.txn_status}
+										</span>
+									</div>
+								</div>
+								<div className="col-span-3 flex justify-center mt-2">
+									<button
+										onClick={async () => {
+											if (tx.txn_status === "PENDING") {
+												setVerifyingTxId(tx.txn_id);
+												try {
+													await onVerify(tx.txn_id);
+												} finally {
+													setVerifyingTxId(null);
+												}
+											}
+										}}
+										disabled={tx.txn_status !== "PENDING" || verifyingTxId === tx.txn_id}
+										className={`flex items-center justify-center text-xs py-2 px-5 rounded-lg font-bold transition-all duration-300 w-full max-w-[160px] font-vcr uppercase border-2 ${
+											tx.txn_status === "PENDING"
+												? "bg-green-500/20 border-green-500/60 text-green-400 hover:bg-green-500/30 hover:scale-105 cursor-pointer"
+												: "bg-black/40 border-white/20 text-white/30 cursor-not-allowed"
 										}`}
 									>
-										{tx.txn_status}
-									</span>
+										{verifyingTxId === tx.txn_id ? (
+											<Loader2 className="h-4 w-4 animate-spin mx-auto" />
+										) : (
+											"Verify"
+										)}
+									</button>
 								</div>
 							</div>
-							<div className="col-span-3 flex justify-center mt-2">
-								<button
-									onClick={async () => {
-										if (tx.txn_status === "PENDING") {
-											setVerifyingTxId(tx.txn_id);
-											try {
-												await onVerify(tx.txn_id);
-											} finally {
-												setVerifyingTxId(null);
-											}
-										}
-									}}
-									disabled={tx.txn_status !== "PENDING" || verifyingTxId === tx.txn_id}
-									className={`flex items-center justify-center text-xs py-2 px-5 rounded-lg font-bold transition-all duration-300 w-full max-w-[160px] font-vcr uppercase border-2 ${
-										tx.txn_status === "PENDING"
-											? "bg-green-500/20 border-green-500/60 text-green-400 hover:bg-green-500/30 hover:scale-105 cursor-pointer"
-											: "bg-black/40 border-white/20 text-white/30 cursor-not-allowed"
-									}`}
-								>
-									{verifyingTxId === tx.txn_id ? (
-										<Loader2 className="h-4 w-4 animate-spin mx-auto" />
-									) : (
-										"Verify"
-									)}
-								</button>
-							</div>
 						</div>
-					</div>
-				))}
+					))}
+				</div>
 			</div>
 		</div>
 	);

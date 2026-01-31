@@ -10,7 +10,7 @@ import { profileFormSchema } from "@/types/profileTypes";
 import TicketSection from "./TicketSection";
 import Navbar from "../Navbar";
 
-const BACKGROUND_IMAGE_URL = "https://s63kyli3m9.ufs.sh/f/1VhMoqev0KlPDOtfjDUA08yCHSODYE4TjXlbuNIrQqJhxmaL";
+const BACKGROUND_IMAGE_URL = "https://s63kyli3m9.ufs.sh/f/1VhMoqev0KlPOPCFLYsVs2cHu93gP8v0qI6OzjfNY5Adxaen";
 
 const mockProfile: Profile = {
 	name: "John Doe",
@@ -23,9 +23,9 @@ const mockProfile: Profile = {
 };
 
 const PROFILE_TABS = [
-	{ id: "profile", label: "Profile" },
-	{ id: "events", label: "Tickets" },
-	{ id: "transactions", label: "Transactions" },
+	{ id: "profile", label: "PROFILE" },
+	{ id: "events", label: "TICKETS" },
+	{ id: "transactions", label: "TRANSACTIONS" },
 ] as const;
 
 export function ProfileForm() {
@@ -152,91 +152,11 @@ export function ProfileForm() {
 				</div>
 			</div>
 
-			{/* Content Container */}
+			{/* Content Container - Everything scrolls together */}
 			<div className="relative z-10 py-8 px-4 md:py-12">
 				<div className="max-w-7xl mx-auto">
-					{/* DJ CONSOLE NAVIGATION */}
-					<div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
-						<div className="relative">
-							{/* Console Base */}
-							<div className="bg-gradient-to-b from-[#1a0033]/95 to-black/95 rounded-2xl border-4 border-[#00f0ff]/60 shadow-2xl shadow-[#00f0ff]/30 backdrop-blur-sm p-4">
-								{/* Top Accent Line */}
-								<div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#ff00ff] via-[#00f0ff] to-[#ff00ff] rounded-t-xl"></div>
-								
-								{/* Screens Container */}
-								<div className="flex gap-3 md:gap-6 mb-4">
-									{PROFILE_TABS.map((tab) => {
-										const isActive = activeTab === tab.id;
-										return (
-											<button
-												key={tab.id}
-												onClick={() => setActiveTab(tab.id as any)}
-												className="group relative"
-											>
-												{/* Monitor Screen */}
-												<div
-													className={`
-														relative w-24 h-20 md:w-32 md:h-24 rounded-lg transition-all duration-300
-														border-4 overflow-hidden
-														${
-															isActive
-																? "border-[#00f0ff] bg-gradient-to-br from-[#00f0ff]/30 to-[#ff00ff]/20 shadow-lg shadow-[#00f0ff]/60"
-																: "border-[#00f0ff]/40 bg-gradient-to-br from-black/80 to-[#1a0033]/80 hover:border-[#00f0ff]/70 hover:shadow-md hover:shadow-[#00f0ff]/40"
-														}
-													`}
-												>
-													{/* Screen Content */}
-													<div className="absolute inset-0 flex items-center justify-center">
-														<span
-															className={`
-																text-xs md:text-sm font-vcr uppercase tracking-wider transition-colors duration-300
-																${isActive ? "text-[#00f0ff] font-bold" : "text-white/60 group-hover:text-white/80"}
-															`}
-														>
-															{tab.label}
-														</span>
-													</div>
-
-													{/* Scanlines */}
-													<div
-														className="absolute inset-0 pointer-events-none"
-														style={{
-															backgroundImage:
-																"repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 240, 255, 0.05) 2px, rgba(0, 240, 255, 0.05) 4px)",
-														}}
-													></div>
-
-													{/* Active Glow */}
-													{isActive && (
-														<div className="absolute inset-0 bg-gradient-to-t from-[#00f0ff]/20 via-transparent to-transparent animate-pulse"></div>
-													)}
-												</div>
-
-												{/* Screen Stand */}
-												<div className={`w-2 h-2 mx-auto mt-1 rounded-full transition-colors duration-300 ${
-													isActive ? "bg-[#00f0ff] shadow-lg shadow-[#00f0ff]/60" : "bg-[#00f0ff]/30"
-												}`}></div>
-											</button>
-										);
-									})}
-								</div>
-
-								{/* Console Buttons Row */}
-								<div className="flex justify-center gap-2 px-2">
-									<div className="w-6 h-2 rounded-full bg-green-500/80 shadow-md shadow-green-500/50"></div>
-									<div className="w-6 h-2 rounded-full bg-[#ff00ff]/80 shadow-md shadow-[#ff00ff]/50"></div>
-									<div className="w-6 h-2 rounded-full bg-yellow-500/80 shadow-md shadow-yellow-500/50"></div>
-									<div className="w-6 h-2 rounded-full bg-blue-500/80 shadow-md shadow-blue-500/50"></div>
-								</div>
-
-								{/* Bottom Accent */}
-								<div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-red-500/40 via-[#ff00ff]/40 to-red-500/40 rounded-b-xl"></div>
-							</div>
-						</div>
-					</div>
-
-					{/* Tab Content - Positioned in upper area */}
-					<div className="min-h-[70vh] mb-32">
+					{/* Tab Content */}
+					<div className="min-h-[70vh] mb-8 lg:mb-12">
 						{activeTab === "profile" && (
 							<ProfileCard
 								avatarEmail={data.email}
@@ -271,6 +191,172 @@ export function ProfileForm() {
 								<TransactionList />
 							</div>
 						)}
+					</div>
+					
+					{/* Navigation - Scrolls with content */}
+					
+					{/* Small Screens (< 1024px) - Compact DJ Console */}
+					<div className="lg:hidden flex justify-center mb-8">
+						<div className="relative">
+							{/* Console Base */}
+							<div className="bg-gradient-to-b from-[#1a0033]/95 to-black/95 rounded-xl border-3 border-[#00f0ff]/60 shadow-2xl shadow-[#00f0ff]/30 backdrop-blur-sm p-3">
+								{/* Top Accent Line */}
+								<div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#ff00ff] via-[#00f0ff] to-[#ff00ff] rounded-t-xl"></div>
+								
+								{/* Screens Container */}
+								<div className="flex gap-2 mb-3">
+									{PROFILE_TABS.map((tab) => {
+										const isActive = activeTab === tab.id;
+										return (
+											<button
+												key={tab.id}
+												onClick={() => setActiveTab(tab.id as any)}
+												className="group relative"
+											>
+												{/* Monitor Screen */}
+												<div
+													className={`
+														relative w-20 h-16 rounded-md transition-all duration-300
+														border-2 overflow-hidden
+														${
+															isActive
+																? "border-[#00f0ff] bg-gradient-to-br from-[#00f0ff]/30 to-[#ff00ff]/20 shadow-lg shadow-[#00f0ff]/60"
+																: "border-[#00f0ff]/40 bg-gradient-to-br from-black/80 to-[#1a0033]/80 hover:border-[#00f0ff]/70 hover:shadow-md hover:shadow-[#00f0ff]/40"
+														}
+													`}
+												>
+													{/* Screen Content */}
+													<div className="absolute inset-0 flex items-center justify-center px-1">
+														<span
+															className={`
+																text-[0.6rem] font-vcr uppercase tracking-tight transition-colors duration-300 text-center leading-tight
+																${isActive ? "text-[#00f0ff] font-bold" : "text-white/60 group-hover:text-white/80"}
+															`}
+														>
+															{tab.label}
+														</span>
+													</div>
+
+													{/* Scanlines */}
+													<div
+														className="absolute inset-0 pointer-events-none"
+														style={{
+															backgroundImage:
+																"repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 240, 255, 0.05) 2px, rgba(0, 240, 255, 0.05) 4px)",
+														}}
+													></div>
+
+													{/* Active Glow */}
+													{isActive && (
+														<div className="absolute inset-0 bg-gradient-to-t from-[#00f0ff]/20 via-transparent to-transparent animate-pulse"></div>
+													)}
+												</div>
+
+												{/* Screen Stand */}
+												<div className={`w-1.5 h-1.5 mx-auto mt-1 rounded-full transition-colors duration-300 ${
+													isActive ? "bg-[#00f0ff] shadow-lg shadow-[#00f0ff]/60" : "bg-[#00f0ff]/30"
+												}`}></div>
+											</button>
+										);
+									})}
+								</div>
+
+								{/* Console Buttons Row */}
+								<div className="flex justify-center gap-1.5 px-1">
+									<div className="w-4 h-1.5 rounded-full bg-green-500/80 shadow-sm shadow-green-500/50"></div>
+									<div className="w-4 h-1.5 rounded-full bg-[#ff00ff]/80 shadow-sm shadow-[#ff00ff]/50"></div>
+									<div className="w-4 h-1.5 rounded-full bg-yellow-500/80 shadow-sm shadow-yellow-500/50"></div>
+									<div className="w-4 h-1.5 rounded-full bg-blue-500/80 shadow-sm shadow-blue-500/50"></div>
+								</div>
+
+								{/* Bottom Accent */}
+								<div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500/40 via-[#ff00ff]/40 to-red-500/40 rounded-b-xl"></div>
+							</div>
+						</div>
+					</div>
+
+					{/* Large Screens (>= 1024px) - Separate Cards */}
+					<div className="hidden lg:block mb-8">
+						<div className="w-full px-4">
+							{/* Container for the three screens */}
+							<div className="relative w-full max-w-[1920px] mx-auto">
+								<div className="flex justify-center items-end pb-8">
+									<div className="flex gap-[1.5vw] xl:gap-[2vw] 2xl:gap-[2.5vw]">
+										{PROFILE_TABS.map((tab, index) => {
+											const isActive = activeTab === tab.id;
+											return (
+												<button
+													key={tab.id}
+													onClick={() => setActiveTab(tab.id as any)}
+													className="group relative"
+													style={{
+														marginLeft: index === 0 ? '0' : index === 1 ? '0.5vw' : '1vw',
+														marginRight: index === 2 ? '0' : index === 1 ? '0.5vw' : '1vw',
+													}}
+												>
+													{/* Screen Card */}
+													<div
+														className={`
+															relative rounded-lg transition-all duration-300
+															border-[3px] overflow-hidden
+															${
+																isActive
+																	? "border-[#00f0ff] bg-gradient-to-br from-[#00f0ff]/30 to-[#ff00ff]/20 shadow-xl shadow-[#00f0ff]/60"
+																	: "border-[#00f0ff]/40 bg-gradient-to-br from-black/80 to-[#1a0033]/80 hover:border-[#00f0ff]/70 hover:shadow-lg hover:shadow-[#00f0ff]/40"
+															}
+														`}
+														style={{
+															width: 'clamp(120px, 9vw, 180px)',
+															height: 'clamp(90px, 7vw, 140px)',
+														}}
+													>
+														{/* Screen Content */}
+														<div className="absolute inset-0 flex items-center justify-center px-2">
+															<span
+																className={`
+																	font-vcr uppercase tracking-wide transition-colors duration-300 text-center
+																	${isActive ? "text-[#00f0ff] font-bold" : "text-white/60 group-hover:text-white/80"}
+																`}
+																style={{
+																	fontSize: 'clamp(0.65rem, 0.9vw, 1rem)',
+																}}
+															>
+																{tab.label}
+															</span>
+														</div>
+
+														{/* Scanlines effect */}
+														<div
+															className="absolute inset-0 pointer-events-none"
+															style={{
+																backgroundImage:
+																	"repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 240, 255, 0.05) 2px, rgba(0, 240, 255, 0.05) 4px)",
+															}}
+														></div>
+
+														{/* Active Glow */}
+														{isActive && (
+															<div className="absolute inset-0 bg-gradient-to-t from-[#00f0ff]/20 via-transparent to-transparent animate-pulse"></div>
+														)}
+													</div>
+
+													{/* Screen indicator dot */}
+													<div 
+														className={`mx-auto mt-2 rounded-full transition-colors duration-300 ${
+															isActive ? "bg-[#00f0ff] shadow-lg shadow-[#00f0ff]/60" : "bg-[#00f0ff]/30"
+														}`}
+														style={{
+															width: 'clamp(6px, 0.6vw, 10px)',
+															height: 'clamp(6px, 0.6vw, 10px)',
+														}}
+													></div>
+												</button>
+											);
+										})}
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
