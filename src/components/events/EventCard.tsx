@@ -179,15 +179,18 @@ export const EventCard = ({
 					className={`absolute top-3 right-3 z-30 p-2 backdrop-blur-md
 						border-2 transition-all duration-200 
 						${isEventClosed ? "cursor-default opacity-50" : "hover:scale-105 cursor-pointer"}
-						${isStarred 
-							? "bg-retro-yellow/20 border-retro-yellow" 
-							: "bg-black/70 border-white/30 hover:border-[#a855f7]"
+						${
+							isStarred
+								? "bg-retro-yellow/20 border-retro-yellow"
+								: "bg-black/70 border-white/30 hover:border-[#a855f7]"
 						}
 					`}
 				>
 					<Star
 						className={`w-4 h-4 transition-all duration-200 ${
-							isStarred ? "text-retro-yellow fill-retro-yellow" : "text-white/70 hover:text-[#a855f7]"
+							isStarred
+								? "text-retro-yellow fill-retro-yellow"
+								: "text-white/70 hover:text-[#a855f7]"
 						}`}
 					/>
 				</button>
