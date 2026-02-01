@@ -114,106 +114,106 @@ const About = () => {
         }
       `}</style>
 
-      <div className="sticky top-0 w-screen h-screen overflow-hidden flex items-center justify-center">
-        <section className="relative w-full h-full bg-black max-sm:bg-[url(about/bg-small.webp)] max-md:bg-[url(about/bg-medium.webp)] bg-[url(about/bg.webp)] bg-cover bg-no-repeat bg-center">
-          <motion.div
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-275 origin-center z-10"
-            style={{ scale: computerScale, opacity: compImageOpacity }}
-          >
-            <img
-              src="/about/comp.webp"
-              alt="Retro computer"
-              className="w-full h-auto"
-            />
-            <div className="absolute top-[12%] left-[15%] w-[70%] h-[40%] flex items-center justify-center">
-              <span className="text-white text-6xl font-bold tracking-wider font-jersey15 text-shadow-[2px_2px_0px_var(--color-purple-500)]">
-                About Us
-              </span>
-            </div>
-          </motion.div>
+			<div className="sticky top-0 w-screen h-screen overflow-hidden flex items-center justify-center">
+				<section className="relative w-full h-full bg-black max-sm:bg-[url(about/bg-small.webp)] max-md:bg-[url(about/bg-medium.webp)] bg-[url(about/bg.webp)] bg-cover bg-no-repeat bg-center">
+					<motion.div
+						className="absolute bottom-0 left-1/2 -translate-x-1/2 w-275 origin-center z-10"
+						style={{ scale: computerScale, opacity: compImageOpacity }}
+					>
+						<img
+							src="/about/comp.webp"
+							alt="Retro computer"
+							className="w-full h-auto"
+						/>
+						<div className="absolute top-[12%] left-[15%] w-[70%] h-[40%] flex items-center justify-center">
+							<span className="text-white text-6xl font-bold tracking-wider font-jersey15 text-shadow-[2px_2px_0px_var(--color-purple-500)]">
+								About Us
+							</span>
+						</div>
+					</motion.div>
 
-          <motion.div
-            className="absolute inset-0 z-0"
-            style={{ opacity: blackOverlayOpacity }}
-          >
-            <LetterGlitch
-              glitchSpeed={50}
-              centerVignette={true}
-              outerVignette={true}
-              glitchColors={["#2b4539", "#61dca3", "#61b3dc"]}
-              smooth={true}
-              characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789"
-            />
-            <div className="absolute inset-0 bg-radial-gradient from-transparent to-black opacity-85" />
-          </motion.div>
+					<motion.div
+						className="absolute inset-0 z-0"
+						style={{ opacity: blackOverlayOpacity }}
+					>
+						<LetterGlitch
+							glitchSpeed={50}
+							centerVignette={true}
+							outerVignette={true}
+							glitchColors={["#2b4539", "#61dca3", "#61b3dc"]}
+							smooth={true}
+							characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>.,0123456789"
+						/>
+						<div className="absolute inset-0 bg-radial-gradient from-transparent to-black opacity-85" />
+					</motion.div>
 
-          {aboutSections.map((section, index) => (
-            <motion.div
-              key={section.title}
-              className="absolute inset-0 flex items-center justify-center p-6 md:p-12 z-20"
-              style={{ opacity: sectionAnimations[index].opacity }}
-            >
-              <div className="win95-border w-full max-w-5xl lg:max-w-6xl lg:min-h-125">
-                {/* Title Bar with >> Icon */}
-                <div className="win95-title-bar mb-1 lg:h-8">
-                  <div className="flex items-center gap-2">
-                    <span className="text-green-400 font-mono font-bold text-xs lg:text-sm tracking-tighter">
-                      {`>>`}
-                    </span>
-                    <span className="text-white font-bold text-[10px] md:text-xs lg:text-sm font-sans tracking-tight">
-                      C:\PRAGATI\DOCS\
-                    </span>
-                  </div>
-                  <div className="flex gap-px lg:gap-1">
-                    <div className="win95-btn lg:w-6 lg:h-6">_</div>
-                    <div className="win95-btn lg:w-6 lg:h-6">□</div>
-                    <div className="win95-btn lg:w-6 lg:h-6 text-black">x</div>
-                  </div>
-                </div>
+					{aboutSections.map((section, index) => (
+						<motion.div
+							key={section.title}
+							className="absolute inset-0 flex items-center justify-center p-6 md:p-12 z-20"
+							style={{ opacity: sectionAnimations[index].opacity }}
+						>
+							<div className="win95-border w-full max-w-5xl lg:max-w-6xl lg:min-h-125">
+								{/* Title Bar with >> Icon */}
+								<div className="win95-title-bar mb-1 lg:h-8">
+									<div className="flex items-center gap-2">
+										<span className="text-green-400 font-mono font-bold text-xs lg:text-sm tracking-tighter">
+											{`>>`}
+										</span>
+										<span className="text-white font-bold text-[10px] md:text-xs lg:text-sm font-sans tracking-tight">
+											C:\PRAGATI\DOCS\
+										</span>
+									</div>
+									<div className="flex gap-px lg:gap-1">
+										<div className="win95-btn lg:w-6 lg:h-6">_</div>
+										<div className="win95-btn lg:w-6 lg:h-6">□</div>
+										<div className="win95-btn lg:w-6 lg:h-6 text-black">x</div>
+									</div>
+								</div>
 
-                {/* Content Area: Fixed starting position */}
-                <div className="win95-screen p-8 md:p-12 lg:p-16 lg:min-h-112.5">
-                  <div className="crt-scanlines" />
+								{/* Content Area: Fixed starting position */}
+								<div className="win95-screen p-8 md:p-12 lg:p-16 lg:min-h-112.5">
+									<div className="crt-scanlines" />
 
-                  <div className="relative z-10">
-                    {/* Consistent Title Height */}
-                    <h2 className="text-xl md:text-2xl lg:text-4xl font-bold mb-4 lg:mb-8 win95-text font-mono uppercase tracking-widest min-h-[1.5em] flex items-center">
-                      <span className="text-green-500/50 mr-3 text-sm lg:text-2xl">
-                        $
-                      </span>
-                      {section.title}
-                    </h2>
+									<div className="relative z-10">
+										{/* Consistent Title Height */}
+										<h2 className="text-xl md:text-2xl lg:text-4xl font-bold mb-4 lg:mb-8 win95-text font-mono uppercase tracking-widest min-h-[1.5em] flex items-center">
+											<span className="text-green-500/50 mr-3 text-sm lg:text-2xl">
+												$
+											</span>
+											{section.title}
+										</h2>
 
-                    <div className="h-px w-full bg-green-500/20 mb-6 lg:mb-10" />
+										<div className="h-px w-full bg-green-500/20 mb-6 lg:mb-10" />
 
-                    <p className="win95-text text-base md:text-lg lg:text-2xl leading-relaxed font-mono opacity-90 text-left">
-                      {section.content}
-                      <motion.span
-                        animate={{ opacity: [1, 0] }}
-                        transition={{ repeat: Infinity, duration: 0.8 }}
-                        className="inline-block w-2 h-4 lg:w-3 lg:h-6 bg-green-400 ml-2 align-middle"
-                      />
-                    </p>
-                  </div>
-                </div>
+										<p className="win95-text text-base md:text-lg lg:text-2xl leading-relaxed font-mono opacity-90 text-left">
+											{section.content}
+											<motion.span
+												animate={{ opacity: [1, 0] }}
+												transition={{ repeat: Infinity, duration: 0.8 }}
+												className="inline-block w-2 h-4 lg:w-3 lg:h-6 bg-green-400 ml-2 align-middle"
+											/>
+										</p>
+									</div>
+								</div>
 
-                {/* Footer Bar */}
-                <div className="flex justify-between items-center px-3 py-1 lg:py-2 bg-[#c0c0c0] font-sans text-[10px] md:text-xs text-gray-700 font-bold border-t border-[#808080]">
-                  <div className="flex gap-4">
-                    <span>STATUS: ACTIVE</span>
-                    <span className="text-green-900 animate-pulse uppercase">
-                      Disk Read OK
-                    </span>
-                  </div>
-                  <span>PAGE {index + 1} / 3</span>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </section>
-      </div>
-    </div>
-  );
+								{/* Footer Bar */}
+								<div className="flex justify-between items-center px-3 py-1 lg:py-2 bg-[#c0c0c0] font-sans text-[10px] md:text-xs text-gray-700 font-bold border-t border-[#808080]">
+									<div className="flex gap-4">
+										<span>STATUS: ACTIVE</span>
+										<span className="text-green-900 animate-pulse uppercase">
+											Disk Read OK
+										</span>
+									</div>
+									<span>PAGE {index + 1} / 3</span>
+								</div>
+							</div>
+						</motion.div>
+					))}
+				</section>
+			</div>
+		</div>
+	);
 };
 
 export default About;
