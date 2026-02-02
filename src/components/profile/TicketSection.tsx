@@ -155,7 +155,7 @@ export default function TicketSection() {
 								{/* Price badge */}
 								<div className="px-3 py-1 bg-[#16a34a] border border-black shadow-[2px_2px_0_rgba(0,0,0,1)] flex-shrink-0">
 									<span className="text-white font-bold font-vcr text-xs tracking-widest uppercase">
-										₹{currentTicket.event_price}
+										₹{currentTicket.price}
 									</span>
 								</div>
 							</div>
