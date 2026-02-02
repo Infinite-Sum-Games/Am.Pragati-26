@@ -10,7 +10,7 @@ function ResetPasswordPage() {
 	const mutation = useResetPassword();
 
 	return (
-		<div className="min-h-screen flex items-center justify-center p-4 bg-black">
+		<div className="min-h-screen flex items-center justify-center p-4 bg-[url('/generated_login_bg.png')] bg-cover bg-center bg-no-repeat fixed w-full h-full">
 			<div className="absolute inset-0 bg-[url('/grid.svg')] bg-center mask-[linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20 pointer-events-none"></div>
 			<ResetPasswordForm
 				onSubmit={(values) => mutation.mutate(values)}
