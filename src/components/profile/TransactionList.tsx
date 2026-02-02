@@ -73,7 +73,9 @@ export default function TransactionList() {
 		return (
 			<div className="text-center py-12">
 				<div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[#a855f7] border-t-transparent"></div>
-				<p className="mt-4 text-white/70 font-vcr text-sm">Loading transactions...</p>
+				<p className="mt-4 text-white/70 font-vcr text-sm">
+					Loading transactions...
+				</p>
 			</div>
 		);
 	}
@@ -82,7 +84,9 @@ export default function TransactionList() {
 		return (
 			<div className="text-center py-12">
 				<p className="text-red-400 font-vcr">Unable to load Transactions</p>
-				<p className="text-white/70 text-sm mt-2 font-vcr">Please try again later</p>
+				<p className="text-white/70 text-sm mt-2 font-vcr">
+					Please try again later
+				</p>
 			</div>
 		);
 	}
@@ -112,7 +116,9 @@ export default function TransactionList() {
 						<h3 className="text-xl font-bold text-[#a855f7] mb-2 font-vcr tracking-wider">
 							NO TRANSACTIONS
 						</h3>
-						<p className="font-vcr text-sm">You haven't made any transactions yet.</p>
+						<p className="font-vcr text-sm">
+							You haven't made any transactions yet.
+						</p>
 					</div>
 				</div>
 			</div>
@@ -134,7 +140,11 @@ export default function TransactionList() {
 					{/* Top Neon Line */}
 					<div className="h-0.5 w-full bg-linear-to-r from-transparent via-[#a855f7] to-transparent"></div>
 
-					<div className={isScrollable ? "max-h-80 overflow-y-auto custom-scrollbar" : ""}>
+					<div
+						className={
+							isScrollable ? "max-h-80 overflow-y-auto custom-scrollbar" : ""
+						}
+					>
 						<table className="min-w-full text-sm">
 							<thead className="bg-black/40 border-b border-white/10 sticky top-0 z-10 backdrop-blur-md">
 								<tr>
@@ -161,7 +171,10 @@ export default function TransactionList() {
 										key={tx.txn_id}
 										className="hover:bg-white/5 transition-colors duration-200"
 									>
-										<td className="py-4 px-4 text-white/70 font-vcr truncate" title={tx.txn_id}>
+										<td
+											className="py-4 px-4 text-white/70 font-vcr truncate"
+											title={tx.txn_id}
+										>
 											{tx.txn_id}
 										</td>
 										<td className="py-4 px-4 text-white/60 font-vcr">
@@ -199,13 +212,16 @@ export default function TransactionList() {
 															}
 														}
 													}}
-													disabled={tx.txn_status !== "PENDING" || verifyingTxId === tx.txn_id}
+													disabled={
+														tx.txn_status !== "PENDING" ||
+														verifyingTxId === tx.txn_id
+													}
 													className={`text-[10px] py-1.5 px-3 font-bold transition-all duration-100 min-w-16 font-vcr uppercase tracking-wider border-2 border-black 
 														${
-														tx.txn_status === "PENDING"
-															? "bg-[#7c3aed] text-white hover:bg-[#6d28d9] cursor-pointer shadow-[2px_2px_0_rgba(0,0,0,1)] hover:shadow-[3px_3px_0_rgba(0,0,0,1)] hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
-															: "bg-gray-700 text-gray-500 border-gray-900 shadow-none cursor-not-allowed hidden"
-													}`}
+															tx.txn_status === "PENDING"
+																? "bg-[#7c3aed] text-white hover:bg-[#6d28d9] cursor-pointer shadow-[2px_2px_0_rgba(0,0,0,1)] hover:shadow-[3px_3px_0_rgba(0,0,0,1)] hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
+																: "bg-gray-700 text-gray-500 border-gray-900 shadow-none cursor-not-allowed hidden"
+														}`}
 												>
 													{verifyingTxId === tx.txn_id ? (
 														<Loader2 className="h-3 w-3 animate-spin mx-auto" />
@@ -232,7 +248,7 @@ export default function TransactionList() {
 							className="bg-black/60 backdrop-blur-sm border border-retro-cyan/30 p-5 shadow-[0_0_10px_rgba(0,0,0,0.3)] relative overflow-hidden"
 						>
 							<div className="absolute top-0 left-0 w-1 h-full bg-linear-to-b from-[#a855f7] to-transparent"></div>
-							
+
 							<div className="grid grid-cols-3 gap-3 text-xs">
 								<div className="col-span-3 pb-2 border-b border-white/10 flex justify-between items-center">
 									<span className="text-retro-cyan font-bold font-vcr uppercase tracking-widest text-[10px]">
@@ -250,18 +266,22 @@ export default function TransactionList() {
 										{tx.txn_status}
 									</span>
 								</div>
-								
+
 								<div className="col-span-3 pt-1">
-									<p className="text-white font-vcr text-xs tracking-wider break-all">{tx.txn_id}</p>
+									<p className="text-white font-vcr text-xs tracking-wider break-all">
+										{tx.txn_id}
+									</p>
 								</div>
 
 								<div className="col-span-2">
 									<span className="text-white/40 font-bold font-vcr uppercase text-[10px] block mb-1">
 										Date
 									</span>
-									<p className="text-white/80 text-xs font-vcr">{formatDateTime(tx.created_at)}</p>
+									<p className="text-white/80 text-xs font-vcr">
+										{formatDateTime(tx.created_at)}
+									</p>
 								</div>
-								
+
 								<div className="col-span-1 text-right">
 									<span className="text-white/40 font-bold font-vcr uppercase text-[10px] block mb-1">
 										Amount

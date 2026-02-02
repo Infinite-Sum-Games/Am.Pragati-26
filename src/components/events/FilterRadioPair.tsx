@@ -5,7 +5,12 @@ interface FilterRadioPairProps {
 	setValue: (value: string | null) => void;
 }
 
-export const FilterRadioPair = ({ a, b, value, setValue }: FilterRadioPairProps) => (
+export const FilterRadioPair = ({
+	a,
+	b,
+	value,
+	setValue,
+}: FilterRadioPairProps) => (
 	<div className="flex gap-2">
 		{[a, b].map((label) => {
 			const v = label.toLowerCase().replace(" ", "-");

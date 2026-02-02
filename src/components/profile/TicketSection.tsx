@@ -7,11 +7,19 @@ const mockTickets = [
 		event_name: "Tech Workshop 2026",
 		event_type: "Workshop",
 		schedules: [
-			{ date: "2026-03-15", time: "10:00 AM - 12:00 PM", venue: "Main Hall, Building A" },
-			{ date: "2026-03-16", time: "2:00 PM - 4:00 PM", venue: "Lab 2, Building A" },
+			{
+				date: "2026-03-15",
+				time: "10:00 AM - 12:00 PM",
+				venue: "Main Hall, Building A",
+			},
+			{
+				date: "2026-03-16",
+				time: "2:00 PM - 4:00 PM",
+				venue: "Lab 2, Building A",
+			},
 		],
 		team_name: "Code Warriors",
-		price: 590
+		price: 590,
 	},
 	{
 		event_id: "2",
@@ -21,45 +29,52 @@ const mockTickets = [
 			{ date: "2026-03-20", time: "2:00 PM - 6:00 PM", venue: "Tech Center" },
 		],
 		team_name: "Solo Entry",
-		price: 250
+		price: 250,
 	},
 	{
 		event_id: "3",
 		event_name: "AI Summit",
 		event_type: "Conference",
 		schedules: [
-			{ date: "2026-03-25", time: "9:00 AM - 11:00 AM", venue: "Conference Hall" },
-			{ date: "2026-03-25", time: "2:00 PM - 5:00 PM", venue: "Conference Hall" },
+			{
+				date: "2026-03-25",
+				time: "9:00 AM - 11:00 AM",
+				venue: "Conference Hall",
+			},
+			{
+				date: "2026-03-25",
+				time: "2:00 PM - 5:00 PM",
+				venue: "Conference Hall",
+			},
 			{ date: "2026-03-26", time: "10:00 AM - 1:00 PM", venue: "Auditorium" },
 			{ date: "2026-03-27", time: "10:00 AM - 1:00 PM", venue: "Auditorium" },
-
 		],
 		team_name: "Tech Innovators",
-		price: 1000
+		price: 1000,
 	},
 ];
 
 // Generates a pseudo-random barcode visual seeded from a string
 function Barcode({ id }: { id: string }) {
-  const bars: number[] = [];
-  let seed = 0;
-  for (let i = 0; i < id.length; i++) seed += id.charCodeAt(i);
-  for (let i = 0; i < 48; i++) {
-    seed = (seed * 1664525 + 1013904223) & 0x7fffffff;
-    bars.push(seed % 4);
-  }
+	const bars: number[] = [];
+	let seed = 0;
+	for (let i = 0; i < id.length; i++) seed += id.charCodeAt(i);
+	for (let i = 0; i < 48; i++) {
+		seed = (seed * 1664525 + 1013904223) & 0x7fffffff;
+		bars.push(seed % 4);
+	}
 
-  return (
-    <div className="flex items-stretch gap-px h-14">
-      {bars.map((width, i) => {
-        // biome-ignore lint/suspicious/noArrayIndexKey: Barcode bars are static visual elements that never reorder
-        if (width === 0) return <div key={`bar-${i}`} className="w-1" />;
-        const barWidth = width === 1 ? "w-0.5" : width === 2 ? "w-1" : "w-1.5";
-        // biome-ignore lint/suspicious/noArrayIndexKey: Barcode bars are static visual elements that never reorder
-        return <div key={`bar-${i}`} className={`${barWidth} bg-white`} />;
-      })}
-    </div>
-  );
+	return (
+		<div className="flex items-stretch gap-px h-14">
+			{bars.map((width, i) => {
+				// biome-ignore lint/suspicious/noArrayIndexKey: Barcode bars are static visual elements that never reorder
+				if (width === 0) return <div key={`bar-${i}`} className="w-1" />;
+				const barWidth = width === 1 ? "w-0.5" : width === 2 ? "w-1" : "w-1.5";
+				// biome-ignore lint/suspicious/noArrayIndexKey: Barcode bars are static visual elements that never reorder
+				return <div key={`bar-${i}`} className={`${barWidth} bg-white`} />;
+			})}
+		</div>
+	);
 }
 
 export default function TicketSection() {
@@ -80,7 +95,9 @@ export default function TicketSection() {
 		return (
 			<div className="text-center py-12">
 				<div className="inline-block animate-spin rounded-full h-12 w-12 border-4 border-[#a855f7] border-t-transparent"></div>
-				<p className="mt-4 text-white/70 font-vcr text-sm">Loading tickets...</p>
+				<p className="mt-4 text-white/70 font-vcr text-sm">
+					Loading tickets...
+				</p>
 			</div>
 		);
 	}
@@ -92,17 +109,28 @@ export default function TicketSection() {
 					<div className="text-center text-white/50">
 						<div className="w-16 h-16 mx-auto mb-4 rounded-full bg-black/40 border border-[#a855f7]/30 flex items-center justify-center">
 							<svg
-						className="w-8 h-8 text-[#a855f7]/50"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-						role="img"
-						aria-label="No tickets icon"
-					>			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12V8a2 2 0 00-2-2H4a2 2 0 00-2 2v1a2 2 0 012 2v1a2 2 0 01-2 2v1a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2zM16 12a1 1 0 11-2 0 1 1 0 012 0zM16 16a1 1 0 11-2 0 1 1 0 012 0z" />
+								className="w-8 h-8 text-[#a855f7]/50"
+								fill="none"
+								stroke="currentColor"
+								viewBox="0 0 24 24"
+								role="img"
+								aria-label="No tickets icon"
+							>
+								{" "}
+								<path
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									strokeWidth={2}
+									d="M20 12V8a2 2 0 00-2-2H4a2 2 0 00-2 2v1a2 2 0 012 2v1a2 2 0 01-2 2v1a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2zM16 12a1 1 0 11-2 0 1 1 0 012 0zM16 16a1 1 0 11-2 0 1 1 0 012 0z"
+								/>
 							</svg>
 						</div>
-						<h3 className="text-xl font-bold text-retro-cyan mb-2 font-vcr tracking-wider">NO TICKETS FOUND</h3>
-						<p className="font-vcr text-sm">You haven't registered for any events yet.</p>
+						<h3 className="text-xl font-bold text-retro-cyan mb-2 font-vcr tracking-wider">
+							NO TICKETS FOUND
+						</h3>
+						<p className="font-vcr text-sm">
+							You haven't registered for any events yet.
+						</p>
 					</div>
 				</div>
 			</div>
@@ -112,8 +140,12 @@ export default function TicketSection() {
 	if (error) {
 		return (
 			<div className="text-center py-12">
-				<p className="text-red-400 font-vcr">Unable to load Registered Events</p>
-				<p className="text-white/70 text-sm mt-2 font-vcr">Please try again later</p>
+				<p className="text-red-400 font-vcr">
+					Unable to load Registered Events
+				</p>
+				<p className="text-white/70 text-sm mt-2 font-vcr">
+					Please try again later
+				</p>
 			</div>
 		);
 	}
@@ -159,7 +191,6 @@ export default function TicketSection() {
 					<div className="relative rounded-xl overflow-visible">
 						{/* Outer shadow & border for ticket itself */}
 						<div className="relative rounded-xl overflow-hidden shadow-2xl shadow-[#a855f7]/20 border border-[#a855f7]/40">
-
 							{/* ---- HEADER BAR ---- */}
 							<div className="relative bg-[#1a0033] px-6 py-4 flex items-center justify-between border-b border-[#a855f7]/20">
 								{/* Event name and team */}
@@ -197,14 +228,13 @@ export default function TicketSection() {
 										boxShadow: "inset -2px 0 4px rgba(0,0,0,0.5)",
 									}}
 								></div>
-								
+
 								{/* Divider Line */}
 								<div className="border-t-2 border-dashed border-[#a855f7]/30 mx-4"></div>
 							</div>
 
 							{/* ---- BODY ---- */}
 							<div className="bg-[#0f001f]/95 px-6 py-4">
-
 								{/* SCHEDULES - Conditional rendering based on count */}
 								{currentTicket.schedules.length > 1 ? (
 									<>
@@ -215,7 +245,10 @@ export default function TicketSection() {
 										</div>
 										<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 											{currentTicket.schedules.map((schedule, idx) => (
-												<div key={`session-${idx}-${schedule.date}-${schedule.time}`} className="bg-[#1a0033]/50 border border-[#a855f7]/20 rounded-lg p-3">
+												<div
+													key={`session-${idx}-${schedule.date}-${schedule.time}`}
+													className="bg-[#1a0033]/50 border border-[#a855f7]/20 rounded-lg p-3"
+												>
 													<div className="text-[10px] text-retro-cyan/50 font-vcr uppercase tracking-widest mb-2 pb-2 border-b border-[#a855f7]/10">
 														Session {idx + 1}
 													</div>
@@ -293,11 +326,13 @@ export default function TicketSection() {
 										<span className="text-white/40 font-vcr text-[0.6rem] uppercase tracking-widest block mb-1">
 											Ticket No.
 										</span>
-										<span className="text-retro-cyan font-vcr text-sm md:text-lg tracking-widest">{ticketNumber}</span>
+										<span className="text-retro-cyan font-vcr text-sm md:text-lg tracking-widest">
+											{ticketNumber}
+										</span>
 									</div>
 									<div className="opacity-70">
-                                        <Barcode id={currentTicket.event_id + ticketNumber} />
-                                    </div>
+										<Barcode id={currentTicket.event_id + ticketNumber} />
+									</div>
 								</div>
 							</div>
 						</div>

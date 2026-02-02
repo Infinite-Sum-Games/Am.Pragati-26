@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 import { useProfileStore } from "@/store/profileStore";
 import type { PROFILE_CARD_PROPS } from "@/types/profileTypes";
-import { cn } from "@/lib/utils";
 
 async function sha256(message: string) {
 	const msgBuffer = new TextEncoder().encode(message.trim().toLowerCase());
@@ -97,7 +97,10 @@ export function ProfileCard({
 
 		return (
 			<div key={`${field}-group`} className="space-y-2 w-full">
-				<label htmlFor={field} className="text-retro-cyan text-xs font-bold block uppercase tracking-widest font-vcr mb-1">
+				<label
+					htmlFor={field}
+					className="text-retro-cyan text-xs font-bold block uppercase tracking-widest font-vcr mb-1"
+				>
 					{label}
 				</label>
 				<Input
@@ -118,7 +121,6 @@ export function ProfileCard({
 		<div className="w-full mx-auto max-w-4xl px-4">
 			{/* New Glassmorphism Container */}
 			<div className="bg-black/60 backdrop-blur-sm border border-retro-cyan/30 p-8 md:p-12 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
-				
 				{/* Profile Header Section */}
 				<div className="flex flex-col md:flex-row gap-8 items-center md:items-start mb-10">
 					{/* Avatar with Arcade Glow - Simplified for new look but keeping some essence */}
@@ -150,18 +152,19 @@ export function ProfileCard({
 				<div className="max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
 					<div className="space-y-6">
 						{/* Name Field - Full Width */}
-						<div className="w-full">
-							{renderInput("name")}
-						</div>
+						<div className="w-full">{renderInput("name")}</div>
 
 						{/* Email & Phone Grid */}
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 							<div className="space-y-2 w-full">
-								<label htmlFor="email" className="text-retro-cyan text-xs font-bold block uppercase tracking-widest font-vcr mb-1">
-								Email
-							</label>
+								<label
+									htmlFor="email"
+									className="text-retro-cyan text-xs font-bold block uppercase tracking-widest font-vcr mb-1"
+								>
+									Email
+								</label>
 								<Input
-								type="email"
+									type="email"
 									value={email}
 									disabled
 									className="bg-black/40 border border-white/10 text-white/50 cursor-not-allowed text-sm h-12 font-vcr rounded-md"
@@ -188,7 +191,7 @@ export function ProfileCard({
 						className={cn(
 							"relative px-8 py-3 bg-[#7c3aed] border-2 border-black text-white font-vcr font-bold text-lg uppercase tracking-wider transition-all",
 							// Hard shadow initial state
-							"shadow-[4px_4px_0_rgba(0,0,0,1)]", 
+							"shadow-[4px_4px_0_rgba(0,0,0,1)]",
 							// Hover state: lift button (translate) and increase shadow
 							"hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0_rgba(0,0,0,1)]",
 							// Active state: press down (reduce shadow)

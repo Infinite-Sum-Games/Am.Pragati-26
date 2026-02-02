@@ -44,4 +44,3 @@ export const useProfileStore = create<EditProfileState>((set) => ({
 	setIsEditMode: (mode) => set({ isEditMode: mode }),
 	toggleEditMode: () => set((state) => ({ isEditMode: !state.isEditMode })),
 }));
-

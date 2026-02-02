@@ -22,7 +22,7 @@ export const FilterDropdown = ({
 			type="button"
 			onClick={() => setOpen(!open)}
 			className={`px-4 py-2 border-2 font-vcr text-sm transition-all duration-200 ${
-				open 
+				open
 					? "bg-[#7c3aed] border-black text-white shadow-[4px_4px_0_rgba(0,0,0,1)]"
 					: "bg-black/40 backdrop-blur-sm border-retro-cyan/30 text-retro-cyan hover:border-[#a855f7]/50 hover:text-[#a855f7]"
 			}`}
@@ -39,7 +39,9 @@ export const FilterDropdown = ({
 					<label
 						key={item}
 						className={`flex gap-2 font-vcr text-sm cursor-pointer transition-colors ${
-							selected.includes(item) ? "text-[#a855f7]" : "text-white/80 hover:text-retro-cyan"
+							selected.includes(item)
+								? "text-[#a855f7]"
+								: "text-white/80 hover:text-retro-cyan"
 						}`}
 					>
 						<input
