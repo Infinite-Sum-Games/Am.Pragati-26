@@ -21,13 +21,11 @@ import { Route as ResetOtpIndexRouteImport } from './routes/reset-otp/index'
 import { Route as ProshowIndexRouteImport } from './routes/proshow/index'
 import { Route as ProfileIndexRouteImport } from './routes/profile/index'
 import { Route as OtpIndexRouteImport } from './routes/otp/index'
-import { Route as MbaFairIndexRouteImport } from './routes/mba-fair/index'
 import { Route as MaintenanceIndexRouteImport } from './routes/maintenance/index'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
 import { Route as ForgotPasswordIndexRouteImport } from './routes/forgot-password/index'
 import { Route as EventsIndexRouteImport } from './routes/events/index'
 import { Route as ComingSoonIndexRouteImport } from './routes/coming-soon/index'
-import { Route as CeoConnectIndexRouteImport } from './routes/ceo-connect/index'
 import { Route as BrochureIndexRouteImport } from './routes/brochure/index'
 import { Route as SignupVerifyRouteImport } from './routes/signup/verify'
 import { Route as ResetPasswordVerifyRouteImport } from './routes/reset-password/verify'
@@ -93,11 +91,6 @@ const OtpIndexRoute = OtpIndexRouteImport.update({
   path: '/otp/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MbaFairIndexRoute = MbaFairIndexRouteImport.update({
-  id: '/mba-fair/',
-  path: '/mba-fair/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const MaintenanceIndexRoute = MaintenanceIndexRouteImport.update({
   id: '/maintenance/',
   path: '/maintenance/',
@@ -121,11 +114,6 @@ const EventsIndexRoute = EventsIndexRouteImport.update({
 const ComingSoonIndexRoute = ComingSoonIndexRouteImport.update({
   id: '/coming-soon/',
   path: '/coming-soon/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CeoConnectIndexRoute = CeoConnectIndexRouteImport.update({
-  id: '/ceo-connect/',
-  path: '/ceo-connect/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BrochureIndexRoute = BrochureIndexRouteImport.update({
@@ -157,13 +145,11 @@ export interface FileRoutesByFullPath {
   '/reset-password/verify': typeof ResetPasswordVerifyRoute
   '/signup/verify': typeof SignupVerifyRoute
   '/brochure/': typeof BrochureIndexRoute
-  '/ceo-connect/': typeof CeoConnectIndexRoute
   '/coming-soon/': typeof ComingSoonIndexRoute
   '/events/': typeof EventsIndexRoute
   '/forgot-password/': typeof ForgotPasswordIndexRoute
   '/login/': typeof LoginIndexRoute
   '/maintenance/': typeof MaintenanceIndexRoute
-  '/mba-fair/': typeof MbaFairIndexRoute
   '/otp/': typeof OtpIndexRoute
   '/profile/': typeof ProfileIndexRoute
   '/proshow/': typeof ProshowIndexRoute
@@ -182,13 +168,11 @@ export interface FileRoutesByTo {
   '/reset-password/verify': typeof ResetPasswordVerifyRoute
   '/signup/verify': typeof SignupVerifyRoute
   '/brochure': typeof BrochureIndexRoute
-  '/ceo-connect': typeof CeoConnectIndexRoute
   '/coming-soon': typeof ComingSoonIndexRoute
   '/events': typeof EventsIndexRoute
   '/forgot-password': typeof ForgotPasswordIndexRoute
   '/login': typeof LoginIndexRoute
   '/maintenance': typeof MaintenanceIndexRoute
-  '/mba-fair': typeof MbaFairIndexRoute
   '/otp': typeof OtpIndexRoute
   '/profile': typeof ProfileIndexRoute
   '/proshow': typeof ProshowIndexRoute
@@ -208,13 +192,11 @@ export interface FileRoutesById {
   '/reset-password/verify': typeof ResetPasswordVerifyRoute
   '/signup/verify': typeof SignupVerifyRoute
   '/brochure/': typeof BrochureIndexRoute
-  '/ceo-connect/': typeof CeoConnectIndexRoute
   '/coming-soon/': typeof ComingSoonIndexRoute
   '/events/': typeof EventsIndexRoute
   '/forgot-password/': typeof ForgotPasswordIndexRoute
   '/login/': typeof LoginIndexRoute
   '/maintenance/': typeof MaintenanceIndexRoute
-  '/mba-fair/': typeof MbaFairIndexRoute
   '/otp/': typeof OtpIndexRoute
   '/profile/': typeof ProfileIndexRoute
   '/proshow/': typeof ProshowIndexRoute
@@ -235,13 +217,11 @@ export interface FileRouteTypes {
     | '/reset-password/verify'
     | '/signup/verify'
     | '/brochure/'
-    | '/ceo-connect/'
     | '/coming-soon/'
     | '/events/'
     | '/forgot-password/'
     | '/login/'
     | '/maintenance/'
-    | '/mba-fair/'
     | '/otp/'
     | '/profile/'
     | '/proshow/'
@@ -260,13 +240,11 @@ export interface FileRouteTypes {
     | '/reset-password/verify'
     | '/signup/verify'
     | '/brochure'
-    | '/ceo-connect'
     | '/coming-soon'
     | '/events'
     | '/forgot-password'
     | '/login'
     | '/maintenance'
-    | '/mba-fair'
     | '/otp'
     | '/profile'
     | '/proshow'
@@ -285,13 +263,11 @@ export interface FileRouteTypes {
     | '/reset-password/verify'
     | '/signup/verify'
     | '/brochure/'
-    | '/ceo-connect/'
     | '/coming-soon/'
     | '/events/'
     | '/forgot-password/'
     | '/login/'
     | '/maintenance/'
-    | '/mba-fair/'
     | '/otp/'
     | '/profile/'
     | '/proshow/'
@@ -311,13 +287,11 @@ export interface RootRouteChildren {
   ResetPasswordVerifyRoute: typeof ResetPasswordVerifyRoute
   SignupVerifyRoute: typeof SignupVerifyRoute
   BrochureIndexRoute: typeof BrochureIndexRoute
-  CeoConnectIndexRoute: typeof CeoConnectIndexRoute
   ComingSoonIndexRoute: typeof ComingSoonIndexRoute
   EventsIndexRoute: typeof EventsIndexRoute
   ForgotPasswordIndexRoute: typeof ForgotPasswordIndexRoute
   LoginIndexRoute: typeof LoginIndexRoute
   MaintenanceIndexRoute: typeof MaintenanceIndexRoute
-  MbaFairIndexRoute: typeof MbaFairIndexRoute
   OtpIndexRoute: typeof OtpIndexRoute
   ProfileIndexRoute: typeof ProfileIndexRoute
   ProshowIndexRoute: typeof ProshowIndexRoute
@@ -415,13 +389,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OtpIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/mba-fair/': {
-      id: '/mba-fair/'
-      path: '/mba-fair'
-      fullPath: '/mba-fair/'
-      preLoaderRoute: typeof MbaFairIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/maintenance/': {
       id: '/maintenance/'
       path: '/maintenance'
@@ -455,13 +422,6 @@ declare module '@tanstack/react-router' {
       path: '/coming-soon'
       fullPath: '/coming-soon/'
       preLoaderRoute: typeof ComingSoonIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ceo-connect/': {
-      id: '/ceo-connect/'
-      path: '/ceo-connect'
-      fullPath: '/ceo-connect/'
-      preLoaderRoute: typeof CeoConnectIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/brochure/': {
@@ -503,13 +463,11 @@ const rootRouteChildren: RootRouteChildren = {
   ResetPasswordVerifyRoute: ResetPasswordVerifyRoute,
   SignupVerifyRoute: SignupVerifyRoute,
   BrochureIndexRoute: BrochureIndexRoute,
-  CeoConnectIndexRoute: CeoConnectIndexRoute,
   ComingSoonIndexRoute: ComingSoonIndexRoute,
   EventsIndexRoute: EventsIndexRoute,
   ForgotPasswordIndexRoute: ForgotPasswordIndexRoute,
   LoginIndexRoute: LoginIndexRoute,
   MaintenanceIndexRoute: MaintenanceIndexRoute,
-  MbaFairIndexRoute: MbaFairIndexRoute,
   OtpIndexRoute: OtpIndexRoute,
   ProfileIndexRoute: ProfileIndexRoute,
   ProshowIndexRoute: ProshowIndexRoute,

@@ -297,26 +297,10 @@ const BeatDropOverlay: React.FC<OverlayProps> = ({ isOpen, onClose }) => {
 							</button>
 						</div>
 
-						<div className="flex-1 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 px-6 content-center">
-							<div className="flex flex-col gap-10 border-r-0 md:border-r border-white/20 pr-0 md:pr-12 items-center text-center md:items-end md:text-right">
-								<MenuItem text="HOME" align="right" href="/" />
-
-								<MenuItem text="EVENTS" align="right" href="/coming-soon" />
-
-								<MenuItem
-									text="Business Fair"
-									align="right"
-									href="/coming-soon"
-								/>
-							</div>
-
-							<div className="flex flex-col gap-10 pl-0 md:pl-12 items-center text-center md:items-start md:text-left">
-								<MenuItem text="TEAM" align="left" href="/coming-soon" />
-
-								<MenuItem text="SPONSORS" align="left" href="/sponsors" />
-
-								<MenuItem text="CEO CONNECT" align="left" href="/coming-soon" />
-							</div>
+						<div className="flex-1 max-w-7xl mx-auto w-full flex flex-col gap-10 px-6 content-center items-center justify-center">
+							<MenuItem text="HOME" href="/" />
+							<MenuItem text="EVENTS" href="/coming-soon" />
+							<MenuItem text="SPONSORS" href="/sponsors" />
 						</div>
 
 						<div className="p-8 text-center bg-black/20 backdrop-blur-sm border-t border-white/10">
