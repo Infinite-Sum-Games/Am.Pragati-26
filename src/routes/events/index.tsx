@@ -7,6 +7,9 @@ import { FilterRadioPair } from "@/components/events/FilterRadioPair";
 import Navbar from "@/components/Navbar";
 import type { Event } from "@/types/eventTypes";
 
+const BACKGROUND_IMAGE_URL =
+	"https://speugdv1vi.ufs.sh/f/y8q1VPJuKeA1TTlZtKwkMt4sZaGR2pLP37qUHNQlgKObDVmf";
+
 /* ---------------- SAMPLE EVENT DATA ---------------- */
 const sampleEvents: Event[] = [
 	{
@@ -258,16 +261,17 @@ export const EventsPage = () => {
 	return (
 		<>
 			<Navbar />
-			<div className="min-h-screen w-full bg-black relative overflow-hidden pt-20">
-				{/* Grid overlay */}
-				<div
-					className="absolute inset-0 opacity-[0.04] pointer-events-none"
-					style={{
-						backgroundImage:
-							"linear-gradient(rgba(168,85,247,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.4) 1px, transparent 1px)",
-						backgroundSize: "50px 50px",
-					}}
-				/>
+			<div
+				className="min-h-screen w-full relative overflow-hidden pt-20"
+				style={{
+					backgroundImage: `url(${BACKGROUND_IMAGE_URL})`,
+					backgroundSize: "cover",
+					backgroundPosition: "center",
+					backgroundRepeat: "no-repeat",
+					backgroundAttachment: "fixed",
+				}}
+			>
+				<div className="absolute inset-0 bg-black/70 pointer-events-none" />
 				<div className="relative z-10 p-4 md:p-8">
 					{/* HEADER */}
 					<motion.div
