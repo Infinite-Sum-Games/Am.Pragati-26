@@ -152,7 +152,9 @@ function PriceSection({
 						className={`font-press-start text-[#00ffff] ${isMobile ? "text-xs" : "text-sm"}`}
 					>
 						{event.is_group
-							? (event.min_teamsize !== event.max_teamsize) ? `${event.min_teamsize}-${event.max_teamsize}` : event.min_teamsize
+							? event.min_teamsize !== event.max_teamsize
+								? `${event.min_teamsize}-${event.max_teamsize}`
+								: event.min_teamsize
 							: "SOLO"}
 					</span>
 				</div>
@@ -462,7 +464,15 @@ export default function EventDetail({
 										<div className="flex items-center gap-2 text-sm">
 											<Clock className="w-4 h-4 text-[#00ffff]" />
 											<span className="text-[#00ffff] font-press-start text-xs">
-												{new Date(schedule.start_time).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })} - {new Date(schedule.end_time).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
+												{new Date(schedule.start_time).toLocaleTimeString(
+													"en-US",
+													{ hour: "numeric", minute: "2-digit" },
+												)}{" "}
+												-{" "}
+												{new Date(schedule.end_time).toLocaleTimeString(
+													"en-US",
+													{ hour: "numeric", minute: "2-digit" },
+												)}
 											</span>
 										</div>
 										<div className="flex items-center gap-2 text-sm">
@@ -599,7 +609,15 @@ export default function EventDetail({
 											<div className="flex items-center gap-2 text-sm">
 												<Clock className="w-4 h-4 text-[#00ffff]" />
 												<span className="text-[#00ffff] font-press-start text-xs">
-													{new Date(schedule.start_time).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })} - {new Date(schedule.end_time).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" })}
+													{new Date(schedule.start_time).toLocaleTimeString(
+														"en-US",
+														{ hour: "numeric", minute: "2-digit" },
+													)}{" "}
+													-{" "}
+													{new Date(schedule.end_time).toLocaleTimeString(
+														"en-US",
+														{ hour: "numeric", minute: "2-digit" },
+													)}
 												</span>
 											</div>
 											<div className="flex items-center gap-2 text-sm">
