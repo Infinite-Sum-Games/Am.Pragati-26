@@ -132,21 +132,10 @@ function PriceSection({
 					className={`flex items-center justify-between ${isMobile ? "py-2" : "py-3"} border-2 border-[#00ffff]/30 bg-gray-950/50 px-3`}
 				>
 					<div className="flex items-center gap-2 text-[#00ffff]">
-						{event.is_group ? (
-							<>
-								<Users className="w-5 h-5 drop-shadow-[0_0_6px_rgba(0,255,255,0.8)]" />
-								<span className="font-joystix uppercase tracking-wide text-sm">
-									Team Size
-								</span>
-							</>
-						) : (
-							<>
-								<Users className="w-5 h-5 drop-shadow-[0_0_6px_rgba(0,255,255,0.8)]" />
-								<span className="font-joystix uppercase tracking-wide text-sm">
-									Individual
-								</span>
-							</>
-						)}
+						<Users className="w-5 h-5 drop-shadow-[0_0_6px_rgba(0,255,255,0.8)]" />
+						<span className="font-joystix uppercase tracking-wide text-sm">
+							Team Size
+						</span>
 					</div>
 					<span
 						className={`font-press-start text-[#00ffff] ${isMobile ? "text-xs" : "text-sm"}`}
@@ -155,7 +144,7 @@ function PriceSection({
 							? event.min_teamsize !== event.max_teamsize
 								? `${event.min_teamsize}-${event.max_teamsize}`
 								: event.min_teamsize
-							: "SOLO"}
+							: "1"}
 					</span>
 				</div>
 			</div>
@@ -388,31 +377,33 @@ export default function EventDetail({
 					</h1>
 				</div>
 
-				<div className="flex flex-wrap gap-2">
-					{event.tags.map((tag) => (
-						<span
-							key={tag}
-							className="px-3 py-1 bg-gray-950 border-2 border-[#00ffff] text-[#00ffff] text-xs font-joystix uppercase tracking-wider shadow-[2px_2px_0_rgba(0,255,255,1)] relative"
-						>
-							<div className="absolute -top-0.5 -left-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
-							<div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
-							<div className="absolute -bottom-0.5 -left-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
-							<div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
-							{tag}
-						</span>
-					))}
-					{event.is_management && (
-						<span
-							className={`px-3 py-1 text-xs font-joystix uppercase tracking-wider relative shadow-[2px_2px_0_rgba(0,0,0,1)] bg-purple-950 border-2 border-[#7e22ce] text-[#7e22ce]`}
-						>
-							<div className="absolute -top-0.5 -left-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
-							<div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
-							<div className="absolute -bottom-0.5 -left-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
-							<div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
-							Management
-						</span>
-					)}
-				</div>
+				{event.tags && event.tags.length > 0 && (
+					<div className="flex flex-wrap gap-2">
+						{event.tags.map((tag) => (
+							<span
+								key={tag}
+								className="px-3 py-1 bg-gray-950 border-2 border-[#00ffff] text-[#00ffff] text-xs font-joystix uppercase tracking-wider shadow-[2px_2px_0_rgba(0,255,255,1)] relative"
+							>
+								<div className="absolute -top-0.5 -left-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
+								<div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
+								<div className="absolute -bottom-0.5 -left-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
+								<div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
+								{tag}
+							</span>
+						))}
+						{event.is_management && (
+							<span
+								className={`px-3 py-1 text-xs font-joystix uppercase tracking-wider relative shadow-[2px_2px_0_rgba(0,0,0,1)] bg-purple-950 border-2 border-[#7e22ce] text-[#7e22ce]`}
+							>
+								<div className="absolute -top-0.5 -left-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
+								<div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
+								<div className="absolute -bottom-0.5 -left-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
+								<div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
+								Management
+							</span>
+						)}
+					</div>
+				)}
 
 				<div ref={priceSectionRef} className="sticky top-0 z-40 pt-2">
 					<PriceSection
@@ -546,31 +537,33 @@ export default function EventDetail({
 						<h1 className="text-5xl font-jersey15 text-white mb-3 uppercase drop-shadow-[4px_4px_0_rgba(168,85,247,0.8)]">
 							{event.event_name}
 						</h1>
-						<div className="flex flex-wrap gap-2">
-							{event.tags.map((tag) => (
-								<span
-									key={tag}
-									className="px-3 py-1.5 bg-gray-950 border-2 border-[#00ffff] text-[#00ffff] text-sm font-joystix uppercase tracking-wider shadow-[2px_2px_0_rgba(0,255,255,1)] relative"
-								>
-									<div className="absolute -top-0.5 -left-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
-									<div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
-									<div className="absolute -bottom-0.5 -left-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
-									<div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
-									{tag}
-								</span>
-							))}
-							{event.is_management && (
-								<span
-									className={`px-3 py-1.5 text-sm font-joystix uppercase tracking-wider relative shadow-[2px_2px_0_rgba(0,0,0,1)] bg-blue-950 border-2 border-[#7e22ce] text-white`}
-								>
-									<div className="absolute -top-0.5 -left-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
-									<div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
-									<div className="absolute -bottom-0.5 -left-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
-									<div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
-									Management
-								</span>
-							)}
-						</div>
+						{event.tags && event.tags.length > 0 && (
+							<div className="flex flex-wrap gap-2">
+								{event.tags.map((tag) => (
+									<span
+										key={tag}
+										className="px-3 py-1.5 bg-gray-950 border-2 border-[#00ffff] text-[#00ffff] text-sm font-joystix uppercase tracking-wider shadow-[2px_2px_0_rgba(0,255,255,1)] relative"
+									>
+										<div className="absolute -top-0.5 -left-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
+										<div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
+										<div className="absolute -bottom-0.5 -left-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
+										<div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 bg-[#7e22ce]" />
+										{tag}
+									</span>
+								))}
+								{event.is_management && (
+									<span
+										className={`px-3 py-1.5 text-sm font-joystix uppercase tracking-wider relative shadow-[2px_2px_0_rgba(0,0,0,1)] bg-blue-950 border-2 border-[#7e22ce] text-white`}
+									>
+										<div className="absolute -top-0.5 -left-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
+										<div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
+										<div className="absolute -bottom-0.5 -left-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
+										<div className="absolute -bottom-0.5 -right-0.5 w-1.5 h-1.5 bg-[#00ffff]" />
+										Management
+									</span>
+								)}
+							</div>
+						)}
 					</div>
 
 					<div className="flex w-full gap-4 flex-col md:flex-row">
