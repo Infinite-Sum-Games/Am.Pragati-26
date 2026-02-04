@@ -3,8 +3,8 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import EventDetail from "@/components/EventDetail";
 import EventDetailSkeleton from "@/components/EventDetailSkeleton";
-import CheckoutSummaryDialog from "@/components/events/CheckoutSummaryDialog";
-import { GroupRegistrationForm } from "@/components/events/GroupRegistrationForm";
+import CheckoutSummaryDialog from "@/components/events/CheckoutSummaryDialog"; //1
+import { GroupRegistrationForm } from "@/components/events/GroupRegistrationForm"; //2
 import Navbar from "@/components/Navbar";
 import {
 	Dialog,
