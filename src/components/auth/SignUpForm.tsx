@@ -56,7 +56,7 @@ const SignUpForm = ({
 						style={{ width: `${((step + 1) / 3) * 100}%` }}
 					/>
 				</div>
-				<span className="text-xs md:text-sm text-white/50" style={pixelFont}>
+				<span className="text-[10px] text-white/50" style={pixelFont}>
 					{step + 1}/3
 				</span>
 			</div>
@@ -84,7 +84,10 @@ const SignUpForm = ({
 											style={pixelFont}
 										/>
 									</FormControl>
-									<FormMessage className="text-[8px] text-red-500" />
+									<FormMessage
+										className="text-[8px] text-red-500"
+										style={pixelFont}
+									/>
 								</FormItem>
 							)}
 						/>
@@ -107,7 +110,10 @@ const SignUpForm = ({
 											style={pixelFont}
 										/>
 									</FormControl>
-									<FormMessage className="text-[8px] text-red-500" />
+									<FormMessage
+										className="text-[8px] text-red-500"
+										style={pixelFont}
+									/>
 								</FormItem>
 							)}
 						/>
@@ -130,7 +136,10 @@ const SignUpForm = ({
 											style={pixelFont}
 										/>
 									</FormControl>
-									<FormMessage className="text-[8px] text-red-500" />
+									<FormMessage
+										className="text-[8px] text-red-500"
+										style={pixelFont}
+									/>
 								</FormItem>
 							)}
 						/>
@@ -138,24 +147,27 @@ const SignUpForm = ({
 							control={form.control}
 							name="is_amrita_student"
 							render={({ field }) => (
-								<FormItem className="flex flex-row items-start space-x-3 space-y-0 p-4 rounded-md">
+								<FormItem className="flex flex-row items-start space-x-3 space-y-0 px-4 py-0 rounded-md">
 									<FormControl>
 										<input
 											type="checkbox"
 											checked={field.value}
 											onChange={field.onChange}
-											className="mr-2 h-4 w-4 shrink-0 cursor-pointer rounded-sm border border-[#7e22ce]/40 bg-black/40 text-[#a855f7] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#a855f7] disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-[#a855f7]"
-											style={{ transform: "scale(1.2)" }}
+											className="mr-2 h-4 w-4 shrink-0 cursor-pointer rounded-sm border border-[#7e22ce]/40 bg-black/40 text-[#a855f7] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#a855f7] disabled:cursor-not-allowed disabled:opacity-50 checked:bg-[#a855f7] checked:text-white accent-[#a855f7]"
+											style={{ transform: "scale(1.0)" }}
 										/>
 									</FormControl>
 									<div className="space-y-1 leading-none">
 										<FormLabel
-											className="text-white text-sm cursor-pointer"
+											className="text-white text-[10px] cursor-pointer"
 											style={pixelFont}
 										>
 											Are you from Amrita Coimbatore?
 										</FormLabel>
-										<FormMessage className="text-[8px] text-red-500" />
+										<FormMessage
+											className="text-[8px] text-red-500"
+											style={pixelFont}
+										/>
 									</div>
 								</FormItem>
 							)}
@@ -186,7 +198,10 @@ const SignUpForm = ({
 											disabled={is_amrita_student}
 										/>
 									</FormControl>
-									<FormMessage className="text-[8px] text-red-500" />
+									<FormMessage
+										className="text-[8px] text-red-500"
+										style={pixelFont}
+									/>
 								</FormItem>
 							)}
 						/>
@@ -210,7 +225,10 @@ const SignUpForm = ({
 											disabled={is_amrita_student}
 										/>
 									</FormControl>
-									<FormMessage className="text-[8px] text-red-500" />
+									<FormMessage
+										className="text-[8px] text-red-500"
+										style={pixelFont}
+									/>
 								</FormItem>
 							)}
 						/>
@@ -254,7 +272,10 @@ const SignUpForm = ({
 											</button>
 										</div>
 									</FormControl>
-									<FormMessage className="text-[8px] text-red-500" />
+									<FormMessage
+										className="text-[8px] text-red-500"
+										style={pixelFont}
+									/>
 								</FormItem>
 							)}
 						/>
@@ -292,7 +313,10 @@ const SignUpForm = ({
 											</button>
 										</div>
 									</FormControl>
-									<FormMessage className="text-[8px] text-red-500" />
+									<FormMessage
+										className="text-[8px] text-red-500"
+										style={pixelFont}
+									/>
 								</FormItem>
 							)}
 						/>
@@ -300,7 +324,7 @@ const SignUpForm = ({
 				)}
 
 				{/* Navigation Buttons */}
-				<div className="flex justify-between pt-4 gap-2">
+				<div className="flex justify-between pt-1 gap-2">
 					{step > 0 && (
 						<Button
 							type="button"

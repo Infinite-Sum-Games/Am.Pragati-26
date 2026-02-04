@@ -109,11 +109,7 @@ export function OtpVerificationView({
 					</Button>
 				) : (
 					<div className="text-center">
-						<p
-							className="text-sm text-white/50"
-							style={pixelFont}
-						>{`DIDN'T RECEIVE THE CODE?`}</p>
-						<p className="text-sm font-medium text-white" style={pixelFont}>
+						<p className="text-[10px] font-medium text-white" style={pixelFont}>
 							RESEND IN {formatCountdown(countdown)}
 						</p>
 					</div>

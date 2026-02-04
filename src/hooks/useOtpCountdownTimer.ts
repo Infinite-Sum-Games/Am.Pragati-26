@@ -18,6 +18,17 @@ export function useOtpCountdownTimer({
 			if (typeof window !== "undefined") {
 				const stored = window.localStorage.getItem(storageKey);
 				const val = stored ? parseInt(stored, 10) : 0;
+				const now = Date.now();
+				// If no stored time, or if the stored time + duration has passed (timer expired),
+				// start a fresh timer immediately.
+				if (!val || Math.floor((now - val) / 1000) >= duration) {
+					// We'll update storage in the effect to avoid side effects in render/init
+					// But we return 0 here to trigger the "start fresh" effect logic or
+					// ideally we could just return 'now' and set storage immediately?
+					// Better to let the effect handle the "start fresh" logic if value is invalid.
+					// Actually, let's return 0 so the effect sees it as "needs start"
+					return 0;
+				}
 				inMemoryStartRef.current = val;
 				return val;
 			}

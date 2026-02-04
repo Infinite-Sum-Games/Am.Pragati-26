@@ -27,6 +27,10 @@ const baseRoutesWithoutChrome = [
 	"/coming-soon",
 	"/maintenance",
 	"/404",
+	"/signup/verify",
+	"/signup/verify/",
+	"/reset-password/verify",
+	"/reset-password/verify/",
 ];
 
 const routesWithoutFooter = new Set([...baseRoutesWithoutChrome]);
