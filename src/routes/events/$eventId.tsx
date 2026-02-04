@@ -3,8 +3,8 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import EventDetail from "@/components/EventDetail";
 import EventDetailSkeleton from "@/components/EventDetailSkeleton";
-import CheckoutSummaryDialog from "@/components/events/CheckoutSummaryDialog"; //1
-import { GroupRegistrationForm } from "@/components/events/GroupRegistrationForm"; //2
+import CheckoutSummaryDialog from "@/components/events/CheckoutSummaryDialog"; //1 done!
+import { GroupRegistrationForm } from "@/components/events/GroupRegistrationForm"; //2  done
 import Navbar from "@/components/Navbar";
 import {
 	Dialog,
@@ -12,7 +12,7 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from "@/components/ui/dialog";
-import { useBookGroupEvent, useBookIndividualEvent } from "@/hooks/useBooking"; //3
+import { useBookGroupEvent, useBookIndividualEvent } from "@/hooks/useBooking"; //3 done
 import { useEventById } from "@/hooks/useEventById";
 import { usePaymentFromBooking } from "@/hooks/usePaymentFromBooking"; //4
 import { useStarSingleEvent } from "@/hooks/useStarSingleEvent";
