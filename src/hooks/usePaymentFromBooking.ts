@@ -32,7 +32,7 @@ export function usePaymentFromBooking() {
 		const paymentUrl = PAYU_URL;
 
 		// Construct success and failure URLs
-	  const baseUrl = import.meta.env.VITE_APP_URL || window.location.origin;
+		const baseUrl = import.meta.env.VITE_APP_URL || window.location.origin;
 		const successUrl = `${baseUrl}/api/transactions/success`;
 		const failureUrl = `${baseUrl}/api/transactions/failure`;
 
