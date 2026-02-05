@@ -72,14 +72,14 @@ const SponsorBadge = ({ title, logo, color, borderColor }: any) => (
 
 function HeroSection() {
 	const stats = [
-		{ label: "Events", value: "30+" },
-		{ label: "Participants", value: "500+" },
-		{ label: "Colleges", value: "15+" },
+		{ label: "EVENTS", value: "30+" },
+		{ label: "PARTICIPANTS", value: "500+" },
+		{ label: "COLLEGES", value: "15+" },
 	];
 	const navigate = useNavigate();
 
 	return (
-		<section className="relative min-h-screen h-screen max-w-screen w-full flex flex-col items-center">
+		<section className="relative min-h-screen h-screen max-w-screen w-full flex flex-col items-center overflow-hidden">
 			{/* Background Image */}
 			<div
 				className="absolute inset-0 z-0 bg-cover bg-position-[center_top] md:bg-center bg-no-repeat"
@@ -120,8 +120,7 @@ function HeroSection() {
 			</div>
 
 			{/* MAIN CONTENT CONTAINER */}
-			{/* FIX: justify-center for Mobile (centers vertically), justify-start + pt-36 for Desktop (locks title top) */}
-			<div className="relative z-10 flex flex-col items-center w-full h-full justify-center md:justify-start md:pt-36">
+			<div className="relative z-10 flex flex-col items-center w-full h-full justify-center md:pt-20">
 				{/* Inner Content Wrapper */}
 				<div className="flex flex-col items-center w-full">
 					{/* MOBILE SPONSORS (Visible only on Mobile) */}
@@ -174,8 +173,7 @@ function HeroSection() {
 					</motion.div>
 
 					{/* Typewriter Filler Text */}
-					{/* FIX: mt-12 for Mobile (small gap), mt-32 for Desktop (huge gap) */}
-					<div className="mt-12 md:mt-16 lg:mt-20 xl:mt-28 flex flex-col items-center justify-center">
+					<div className="mt-8 md:mt-20 lg:mt-24 flex flex-col items-center justify-center">
 						<div className="bg-black/60 backdrop-blur-sm border border-retro-cyan/30 rounded-lg px-4 py-3 md:px-8 md:py-4 shadow-[0_0_15px_rgba(0,0,0,0.5)]">
 							<TypewriterText text="PRESS EXPLORE TO UNLOCK" />
 							<div className="h-2" />
@@ -188,7 +186,7 @@ function HeroSection() {
 						initial={{ opacity: 0, scale: 0.8 }}
 						animate={{ opacity: 1, scale: 1 }}
 						transition={{ delay: 2.5, duration: 0.5 }}
-						className="mt-8 md:mt-12 lg:mt-16 xl:mt-20 flex-none"
+						className="mt-5 md:mt-4 flex-none"
 					>
 						<motion.button
 							whileHover={{ y: -2 }}
@@ -208,9 +206,8 @@ function HeroSection() {
 				</div>
 
 				{/* BOTTOM STATS SECTION */}
-				{/* FIX: Only force to bottom (mt-auto) on Desktop. On mobile, just let it flow with margin (mt-12) */}
 				<motion.div
-					className="flex-none w-full justify-end max-w-sm md:max-w-none grid grid-cols-3 gap-3 md:flex md:flex-wrap md:justify-center md:gap-16 px-4 mt-12 md:mt-auto pb-8"
+					className="flex-none w-full justify-end max-w-sm md:max-w-none grid grid-cols-3 gap-3 md:flex md:flex-wrap md:justify-center md:gap-16 px-4 mt-8 md:mt-6 pb-6 md:pb-8"
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.9, duration: 0.5 }}
