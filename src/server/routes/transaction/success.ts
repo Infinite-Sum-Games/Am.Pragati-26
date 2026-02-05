@@ -1,4 +1,4 @@
-import { Elysia } from 'elysia';
+import { Elysia } from "elysia";
 
 /**
  * PayU Success Callback Handler
@@ -8,51 +8,50 @@ import { Elysia } from 'elysia';
  * Then redirect user to success page.
  */
 export const successRoute = new Elysia()
-  .post('/transaction/success', async ({ request, set }) => {
-    try {
-      const formData = await request.formData();
+	.post("/transaction/success", async ({ request, set }) => {
+		try {
+			const formData = await request.formData();
 
-      // Extract PayU response data
-      const txnId = formData.get('txnid') as string;
-      const status = formData.get('status') as string;
-      const amount = formData.get('amount') as string;
-      const hash = formData.get('hash') as string;
-      const firstname = formData.get('firstname') as string;
-      const email = formData.get('email') as string;
-      const productinfo = formData.get('productinfo') as string;
-      const mihpayid = formData.get('mihpayid') as string;
-      const mode = formData.get('mode') as string;
+			// Extract PayU response data
+			const txnId = formData.get("txnid") as string;
+			const status = formData.get("status") as string;
+			const amount = formData.get("amount") as string;
+			const hash = formData.get("hash") as string;
+			const firstname = formData.get("firstname") as string;
+			const email = formData.get("email") as string;
+			const productinfo = formData.get("productinfo") as string;
+			const mihpayid = formData.get("mihpayid") as string;
+			const mode = formData.get("mode") as string;
 
-      // Redirect to success page with transaction ID
-      const baseUrl =
-        process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+			// Redirect to success page with transaction ID
+			const baseUrl =
+				process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
-      const redirectUrl = txnId
-        ? `${baseUrl}/transactions/verify/${encodeURIComponent(txnId)}`
-        : `${baseUrl}/transactions/success`;
+			const redirectUrl = txnId
+				? `${baseUrl}/transactions/verify/${encodeURIComponent(txnId)}`
+				: `${baseUrl}/transactions/success`;
 
-      set.status = 303;
-      set.headers.location = redirectUrl;
-    } catch (error) {
-      const baseUrl =
-        process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+			set.status = 303;
+			set.headers.location = redirectUrl;
+		} catch (error) {
+			const baseUrl =
+				process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
-      set.status = 303;
-      set.headers.location = `${baseUrl}/transactions/pending`;
-    }
-  })
+			set.status = 303;
+			set.headers.location = `${baseUrl}/transactions/pending`;
+		}
+	})
 
-  // Handle GET requests (in case PayU redirects via GET)
-  .get('/transaction/success', ({ query, set }) => {
-    const txnId = query.txnid as string | undefined;
+	// Handle GET requests (in case PayU redirects via GET)
+	.get("/transaction/success", ({ query, set }) => {
+		const txnId = query.txnid as string | undefined;
 
-    const baseUrl =
-      process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+		const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
-    const redirectUrl = txnId
-      ? `${baseUrl}/transactions/verify/${encodeURIComponent(txnId)}`
-      : `${baseUrl}/transactions/success`;
+		const redirectUrl = txnId
+			? `${baseUrl}/transactions/verify/${encodeURIComponent(txnId)}`
+			: `${baseUrl}/transactions/success`;
 
-    set.status = 303;
-    set.headers.location = redirectUrl;
-  });
+		set.status = 303;
+		set.headers.location = redirectUrl;
+	});
