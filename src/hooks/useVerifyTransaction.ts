@@ -1,7 +1,5 @@
-"use client";
-
 import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { useNavigate } from "@tanstack/react-router";
 import toast from "react-hot-toast";
 import { TransactionService } from "@/services/TransactionVerificationService";
 import type {
@@ -15,7 +13,7 @@ import type {
  * Shows toast notifications for errors
  */
 export function useVerifyTransaction() {
-	const router = useRouter();
+	const navigate = useNavigate();
 
 	return useMutation({
 		mutationFn: async (
@@ -39,7 +37,7 @@ export function useVerifyTransaction() {
 						redirectPath = "/transactions/pending";
 				}
 
-				router.push(redirectPath);
+				navigate({ to: redirectPath });
 			}, 2000);
 		},
 		onError: (error: Error) => {
@@ -49,7 +47,7 @@ export function useVerifyTransaction() {
 
 			// Redirect to pending page on error after a delay
 			setTimeout(() => {
-				router.push("/transactions/pending");
+				navigate({ to: "/transactions/pending" });
 			}, 3000);
 		},
 	});
