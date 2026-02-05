@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 // Import your failure animation
 import animationData from "../../../../public/lotties/transactionFailed.json";
 
-export const Route = createRoute("/transactions/failure/")({
-	path: "/transactions/failure",
+export const Route = createFileRoute("/transactions/failure/")({
 	component: PaymentFailure,
 });
 

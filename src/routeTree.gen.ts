@@ -33,7 +33,7 @@ import { Route as EventsEventIdRouteImport } from './routes/events/$eventId'
 import { Route as TransactionsSuccessIndexRouteImport } from './routes/transactions/success/index'
 import { Route as TransactionsPendingIndexRouteImport } from './routes/transactions/pending/index'
 import { Route as TransactionsFailureIndexRouteImport } from './routes/transactions/failure/index'
-import { Route as TransactionsVerifyTxnIdIndexRouteImport } from './routes/transactions/verify/[txnId]/index'
+import { Route as TransactionsVerifyTxnIdIndexRouteImport } from './routes/transactions/verify/$txnId/index'
 
 const NotFoundRoute = NotFoundRouteImport.update({
   id: '/not-found',
@@ -160,8 +160,8 @@ const TransactionsFailureIndexRoute =
   } as any)
 const TransactionsVerifyTxnIdIndexRoute =
   TransactionsVerifyTxnIdIndexRouteImport.update({
-    id: '/transactions/verify/txnId/',
-    path: '/transactions/verify/txnId/',
+    id: '/transactions/verify/$txnId/',
+    path: '/transactions/verify/$txnId/',
     getParentRoute: () => rootRouteImport,
   } as any)
 
@@ -190,7 +190,7 @@ export interface FileRoutesByFullPath {
   '/transactions/failure/': typeof TransactionsFailureIndexRoute
   '/transactions/pending/': typeof TransactionsPendingIndexRoute
   '/transactions/success/': typeof TransactionsSuccessIndexRoute
-  '/transactions/verify/txnId/': typeof TransactionsVerifyTxnIdIndexRoute
+  '/transactions/verify/$txnId/': typeof TransactionsVerifyTxnIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -217,7 +217,7 @@ export interface FileRoutesByTo {
   '/transactions/failure': typeof TransactionsFailureIndexRoute
   '/transactions/pending': typeof TransactionsPendingIndexRoute
   '/transactions/success': typeof TransactionsSuccessIndexRoute
-  '/transactions/verify/txnId': typeof TransactionsVerifyTxnIdIndexRoute
+  '/transactions/verify/$txnId': typeof TransactionsVerifyTxnIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -245,7 +245,7 @@ export interface FileRoutesById {
   '/transactions/failure/': typeof TransactionsFailureIndexRoute
   '/transactions/pending/': typeof TransactionsPendingIndexRoute
   '/transactions/success/': typeof TransactionsSuccessIndexRoute
-  '/transactions/verify/txnId/': typeof TransactionsVerifyTxnIdIndexRoute
+  '/transactions/verify/$txnId/': typeof TransactionsVerifyTxnIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -274,7 +274,7 @@ export interface FileRouteTypes {
     | '/transactions/failure/'
     | '/transactions/pending/'
     | '/transactions/success/'
-    | '/transactions/verify/txnId/'
+    | '/transactions/verify/$txnId/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -301,7 +301,7 @@ export interface FileRouteTypes {
     | '/transactions/failure'
     | '/transactions/pending'
     | '/transactions/success'
-    | '/transactions/verify/txnId'
+    | '/transactions/verify/$txnId'
   id:
     | '__root__'
     | '/'
@@ -328,7 +328,7 @@ export interface FileRouteTypes {
     | '/transactions/failure/'
     | '/transactions/pending/'
     | '/transactions/success/'
-    | '/transactions/verify/txnId/'
+    | '/transactions/verify/$txnId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -529,10 +529,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TransactionsFailureIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/transactions/verify/txnId/': {
-      id: '/transactions/verify/txnId/'
-      path: '/transactions/verify/txnId'
-      fullPath: '/transactions/verify/txnId/'
+    '/transactions/verify/$txnId/': {
+      id: '/transactions/verify/$txnId/'
+      path: '/transactions/verify/$txnId'
+      fullPath: '/transactions/verify/$txnId/'
       preLoaderRoute: typeof TransactionsVerifyTxnIdIndexRouteImport
       parentRoute: typeof rootRouteImport
     }

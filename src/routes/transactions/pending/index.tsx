@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 // Import your pending animation
 import animationData from "../../../../public/lotties/transactionPending.json";
 
-export const Route = createRoute("/transactions/pending/")({
-	path: "/transactions/pending",
+export const Route = createFileRoute("/transactions/pending/")({
 	component: PaymentPending,
 });
 

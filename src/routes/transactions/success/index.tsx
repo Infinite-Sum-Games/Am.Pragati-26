@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 // Import your success animation
 import animationData from "../../../../public/lotties/transactionSuccess.json";
 
-export const Route = createRoute("/transactions/success/")({
-	path: "/transactions/success",
+export const Route = createFileRoute("/transactions/success/")({
 	component: PaymentSuccess,
 });
 

@@ -1,14 +1,16 @@
 import { createFileRoute, createRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
-import Lottie from "react-lottie";
+import Lottie from "lottie-react";
 import { useVerifyTransaction } from "@/hooks/useVerifyTransaction";
+
 // Import your verifying animation
 import animationData from "../../../../../public/lotties/transactionVerify.json";
 
-export const Route = createRoute("/transactions/verify/txnId/")({
-	path: "/transactions/verify/$txnId",
-	component: PaymentVerifying,
+export const Route = createFileRoute("/transactions/verify/$txnId/")({
+  component: PaymentVerifying,
 });
+
+
 
 function PaymentVerifying() {
 	const { txnId } = Route.useParams();
@@ -27,7 +29,7 @@ function PaymentVerifying() {
 		rendererSettings: {
 			preserveAspectRatio: "xMidYMid slice",
 		},
-	};
+	}
 
 	const getStatusText = () => {
 		if (status === "success" && data?.status === "success") {
@@ -35,7 +37,7 @@ function PaymentVerifying() {
 				title: "Verification Complete!",
 				subtitle: "Redirecting to success page...",
 				description: "Your payment has been successfully verified.",
-			};
+			}
 		}
 
 		if (status === "success" && data?.status === "failed") {
@@ -43,7 +45,7 @@ function PaymentVerifying() {
 				title: "Verification Failed",
 				subtitle: "Redirecting...",
 				description: "There was an issue with your payment verification.",
-			};
+			}
 		}
 
 		if (status === "error") {
@@ -51,15 +53,15 @@ function PaymentVerifying() {
 				title: "Verification Error",
 				subtitle: "Redirecting to pending page...",
 				description: "Unable to verify transaction at this time.",
-			};
+			}
 		}
 
 		return {
 			title: "Verifying Payment",
 			subtitle: "Please wait while we process your transaction...",
 			description: "Do not close this page or navigate away.",
-		};
-	};
+		}
+	}
 
 	const statusText = getStatusText();
 
@@ -97,5 +99,5 @@ function PaymentVerifying() {
 				)}
 			</div>
 		</main>
-	);
+	)
 }
