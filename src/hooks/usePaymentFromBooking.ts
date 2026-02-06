@@ -42,7 +42,7 @@ export function usePaymentFromBooking() {
 
 		// Backend base URL (for PayU callbacks)
 		const backendBaseUrl =
-			import.meta.env.VITE_API_URL || "http://localhost:8081";
+			import.meta.env.VITE_API_URL || window.location.origin;
 
 		const successUrl = `${backendBaseUrl}/transaction/success`;
 		const failureUrl = `${backendBaseUrl}/transaction/failure`;
