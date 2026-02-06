@@ -44,8 +44,8 @@ export function usePaymentFromBooking() {
 		const backendBaseUrl =
 			import.meta.env.VITE_API_URL || "http://localhost:8081";
 
-		const successUrl = `${backendBaseUrl}/success`;
-		const failureUrl = `${backendBaseUrl}/failure`;
+		const successUrl = `${backendBaseUrl}/transaction/success`;
+		const failureUrl = `${backendBaseUrl}/transaction/failure`;
 
 		// Create PayU payment form with data from booking response
 		const paymentForm = {
