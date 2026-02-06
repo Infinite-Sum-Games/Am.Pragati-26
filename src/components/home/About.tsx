@@ -21,6 +21,14 @@ const aboutSections = [
 const About = () => {
 	const containerRef = useRef<HTMLDivElement>(null);
 
+	// Background Image Links (from UploadThing)
+	const smallBG: string =
+		"https://opj7uxu66w.ufs.sh/f/XMzv0gw46JTORI1rf2PiOIseJAhc96xGdTzPv2B0nbaoV5uw";
+	const mediumBg: string =
+		"https://opj7uxu66w.ufs.sh/f/XMzv0gw46JTORxcwOsPiOIseJAhc96xGdTzPv2B0nbaoV5uw";
+	const largeBg: string =
+		"https://opj7uxu66w.ufs.sh/f/XMzv0gw46JTOH6R3UpXMo3neaLFpTcstZvlYkOWRqPIEd6Kg";
+
 	const { scrollYProgress } = useScroll({
 		target: containerRef,
 		offset: ["start start", "end end"],
@@ -59,6 +67,19 @@ const About = () => {
 	return (
 		<div ref={containerRef} className="relative h-[450vh] bg-[#020502]">
 			<style>{`
+        :root {
+          --about-bg-image: url("${smallBG}");
+        }
+        @media (min-width: 768px) {
+          :root {
+            --about-bg-image: url("${mediumBg}");
+          }
+        }
+        @media (min-width: 1024px) {
+          :root {
+            --about-bg-image: url("${largeBg}");
+          }
+        }
         .win95-border {
           border: 4px solid;
           border-color: #dfdfdf #404040 #404040 #dfdfdf;
@@ -115,7 +136,10 @@ const About = () => {
       `}</style>
 
 			<div className="sticky top-0 w-screen h-screen overflow-hidden flex items-center justify-center">
-				<section className="relative w-full h-full bg-black max-sm:bg-[url(about/bg-small.webp)] max-md:bg-[url(about/bg-medium.webp)] bg-[url(about/bg.webp)] bg-cover bg-no-repeat bg-center">
+				<section
+					className="relative w-full h-full bg-black bg-cover bg-no-repeat bg-center"
+					style={{ backgroundImage: "var(--about-bg-image)" }}
+				>
 					<motion.div
 						className="absolute bottom-0 left-1/2 -translate-x-1/2 w-275 origin-center z-10"
 						style={{ scale: computerScale, opacity: compImageOpacity }}

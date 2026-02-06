@@ -97,7 +97,16 @@ function EventsPage() {
 					"20TH FEB": 20,
 					"21ST FEB": 21,
 				};
-				console.log("Filtering by days:", selectedDays, "Event date:", eventDate, "Day:", day, "daymap:", dayMap);
+				console.log(
+					"Filtering by days:",
+					selectedDays,
+					"Event date:",
+					eventDate,
+					"Day:",
+					day,
+					"daymap:",
+					dayMap,
+				);
 				return selectedDays.some((d) => dayMap[d] === day);
 			});
 		}
