@@ -1,5 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import EventDetail from "@/components/EventDetail";
 import EventDetailSkeleton from "@/components/EventDetailSkeleton";
@@ -252,6 +253,19 @@ function RouteComponent() {
 							: "container mx-auto px-4 py-8"
 					}
 				>
+					<motion.button
+						initial={{ opacity: 0, x: -20 }}
+						animate={{ opacity: 1, x: 0 }}
+						transition={{ duration: 0.5 }}
+						onClick={() => navigate({ to: "/events" })}
+						className="mb-6 px-6 py-2.5 font-bold font-vcr text-sm tracking-widest uppercase transition-all duration-200 border-2 bg-black/40 backdrop-blur-sm border-retro-cyan/50 text-retro-cyan hover:border-[#a855f7] hover:text-[#a855f7] hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] flex items-center gap-2 group"
+					>
+						<span className="transition-transform duration-200 group-hover:-translate-x-1">
+							←
+						</span>
+						BACK TO EVENTS
+					</motion.button>
+
 					<EventDetail
 						event={event}
 						onStarToggle={handleStarToggle}

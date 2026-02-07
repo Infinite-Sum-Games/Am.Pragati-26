@@ -206,7 +206,7 @@ export const EventCard = ({
 								{event_price > 0 ? formatCurrency(event_price) : "FREE"}
 							</div>
 							{event_price > 0 && (
-								<div className="text-sm text-white/50 font-vcr">+ GST</div>
+								<div className="text-sm text-white/50 font-vcr">Incl GST</div>
 							)}
 						</div>
 					</div>

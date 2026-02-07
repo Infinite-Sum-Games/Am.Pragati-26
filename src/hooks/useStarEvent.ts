@@ -43,8 +43,8 @@ export function useStarEvent() {
 			}
 		},
 		// Always refetch after error or success:
-		// onSettled: () => {
-		// 	queryClient.invalidateQueries({ queryKey: ["events"] });
-		// },
+		onSettled: () => {
+			queryClient.invalidateQueries({ queryKey: ["events"] });
+		},
 	});
 }
