@@ -20,6 +20,7 @@ import { useAuthStore } from "@/store/auth.store";
 
 const BACKGROUND_IMAGE_URL =
 	"https://speugdv1vi.ufs.sh/f/y8q1VPJuKeA1TTlZtKwkMt4sZaGR2pLP37qUHNQlgKObDVmf";
+
 import type { GroupBookingPayload } from "@/types/bookingTypes"; //5
 
 export const Route = createFileRoute("/events/$eventId")({
@@ -90,8 +91,14 @@ function RouteComponent() {
 	};
 
 	const handleCheckoutSummaryConfirm = () => {
-		if (!pendingBooking || !event || bookIndividualMutation.isPending ||
-		bookGroupMutation.isPending){ return; };
+		if (
+			!pendingBooking ||
+			!event ||
+			bookIndividualMutation.isPending ||
+			bookGroupMutation.isPending
+		) {
+			return;
+		}
 
 		if (pendingBooking.type === "individual") {
 			bookIndividualMutation.mutate(eventId, {
@@ -155,7 +162,8 @@ function RouteComponent() {
 		}
 		// Fallback to gradient background using Tailwind classes
 		return {
-			className: "min-h-screen bg-gradient-to-b from-[#1a0a29] via-[#1a0b2e] to-black",
+			className:
+				"min-h-screen bg-gradient-to-b from-[#1a0a29] via-[#1a0b2e] to-black",
 			style: {},
 		};
 	};
@@ -168,7 +176,13 @@ function RouteComponent() {
 					{bgImageLoaded && (
 						<div className="absolute inset-0 bg-black/70 pointer-events-none" />
 					)}
-					<div className={bgImageLoaded ? "relative z-10 container mx-auto px-4 py-8" : "container mx-auto px-4 py-8"}>
+					<div
+						className={
+							bgImageLoaded
+								? "relative z-10 container mx-auto px-4 py-8"
+								: "container mx-auto px-4 py-8"
+						}
+					>
 						<EventDetailSkeleton />
 					</div>
 				</div>
@@ -185,7 +199,13 @@ function RouteComponent() {
 					{bgImageLoaded && (
 						<div className="absolute inset-0 bg-black/70 pointer-events-none" />
 					)}
-					<div className={bgImageLoaded ? "relative z-10 container mx-auto px-4 py-8 text-center" : "container mx-auto px-4 py-8 text-center"}>
+					<div
+						className={
+							bgImageLoaded
+								? "relative z-10 container mx-auto px-4 py-8 text-center"
+								: "container mx-auto px-4 py-8 text-center"
+						}
+					>
 						<h2 className="text-2xl text-red-500">Failed to load event</h2>
 						<p className="text-red-400">{error.message}</p>
 					</div>
@@ -203,7 +223,13 @@ function RouteComponent() {
 					{bgImageLoaded && (
 						<div className="absolute inset-0 bg-black/70 pointer-events-none" />
 					)}
-					<div className={bgImageLoaded ? "relative z-10 container mx-auto px-4 py-8 text-center" : "container mx-auto px-4 py-8 text-center"}>
+					<div
+						className={
+							bgImageLoaded
+								? "relative z-10 container mx-auto px-4 py-8 text-center"
+								: "container mx-auto px-4 py-8 text-center"
+						}
+					>
 						<h2 className="text-2xl text-yellow-500">Event not found</h2>
 					</div>
 				</div>
@@ -219,7 +245,13 @@ function RouteComponent() {
 				{bgImageLoaded && (
 					<div className="absolute inset-0 bg-black/70 pointer-events-none" />
 				)}
-				<div className={bgImageLoaded ? "relative z-10 container mx-auto px-4 py-8" : "container mx-auto px-4 py-8"}>
+				<div
+					className={
+						bgImageLoaded
+							? "relative z-10 container mx-auto px-4 py-8"
+							: "container mx-auto px-4 py-8"
+					}
+				>
 					<EventDetail
 						event={event}
 						onStarToggle={handleStarToggle}

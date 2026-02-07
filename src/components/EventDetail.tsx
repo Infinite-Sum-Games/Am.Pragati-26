@@ -254,17 +254,26 @@ function EventOrganisers({ event, onOrganizerClick }: EventOrganisersProps) {
 							)}
 
 							<div className="flex-1 min-w-0">
-								<span className="text-sm font-joystix uppercase tracking-wide text-white block truncate" title={org.organizer_name}>
+								<span
+									className="text-sm font-joystix uppercase tracking-wide text-white block truncate"
+									title={org.organizer_name}
+								>
 									{org.organizer_name}
 								</span>
 								<div className="flex items-center gap-2 mt-1 min-w-0">
 									{org.org_abbreviation && (
-										<span className="text-xs font-press-start text-[#00ffff] truncate shrink-0" title={org.org_abbreviation}>
+										<span
+											className="text-xs font-press-start text-[#00ffff] truncate shrink-0"
+											title={org.org_abbreviation}
+										>
 											{org.org_abbreviation}
 										</span>
 									)}
 									{org.org_type && (
-										<span className="text-xs font-joystix text-gray-500 truncate min-w-0" title={org.org_type}>
+										<span
+											className="text-xs font-joystix text-gray-500 truncate min-w-0"
+											title={org.org_type}
+										>
 											[{org.org_type}]
 										</span>
 									)}
