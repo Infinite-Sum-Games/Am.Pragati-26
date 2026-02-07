@@ -32,7 +32,7 @@ export const successRoute = new Elysia()
 
 			set.status = 303;
 			set.headers.location = redirectUrl;
-		} catch (error) {
+		} catch (_error) {
 			const baseUrl = process.env.APP_PUBLIC_URL || "http://localhost:3000";
 
 			set.status = 303;

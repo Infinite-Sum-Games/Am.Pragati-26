@@ -41,6 +41,7 @@ export const BookingService = {
 
 			console.log("[BookingService] Booking response:", response);
 			return response;
+			// biome-ignore lint/suspicious/noExplicitAny: allowed any
 		} catch (error: any) {
 			console.error("[BookingService] Booking error:", error);
 			const message =
@@ -72,6 +73,7 @@ export const BookingService = {
 					},
 				},
 			);
+		// biome-ignore lint/suspicious/noExplicitAny: allowed any
 		} catch (error: any) {
 			const message =
 				error?.response?.data?.message ||

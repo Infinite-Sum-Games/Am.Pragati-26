@@ -63,6 +63,7 @@ export function GroupRegistrationForm({
 		const messages: string[] = [];
 
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		// biome-ignore lint/suspicious/noExplicitAny: allowed any
 		const collectErrors = (errObj: any): void => {
 			if (!errObj) return;
 
