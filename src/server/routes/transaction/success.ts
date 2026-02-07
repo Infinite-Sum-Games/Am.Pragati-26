@@ -24,8 +24,7 @@ export const successRoute = new Elysia()
 			// const mode = formData.get("mode") as string;
 
 			// Redirect to success page with transaction ID
-			const baseUrl =
-				process.env.APP_PUBLIC_URL || "http://localhost:3000";
+			const baseUrl = process.env.APP_PUBLIC_URL || "http://localhost:3000";
 
 			const redirectUrl = txnId
 				? `${baseUrl}/transactions/verify/${encodeURIComponent(txnId)}`
@@ -33,9 +32,8 @@ export const successRoute = new Elysia()
 
 			set.status = 303;
 			set.headers.location = redirectUrl;
-		} catch (error) {
-			const baseUrl =
-				process.env.APP_PUBLIC_URL || "http://localhost:3000";
+		} catch (_error) {
+			const baseUrl = process.env.APP_PUBLIC_URL || "http://localhost:3000";
 
 			set.status = 303;
 			set.headers.location = `${baseUrl}/transactions/pending`;

@@ -22,4 +22,5 @@ export interface GroupBookingPayload {
 	ps?: string;
 }
 
+// biome-ignore lint/complexity/noBannedTypes: allowed {}
 export type IndividualBookingPayload = {};

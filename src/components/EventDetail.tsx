@@ -414,7 +414,7 @@ export default function EventDetail({
 					)}
 				</div>
 
-				<div ref={priceSectionRef} className="sticky top-0 z-40 pt-2">
+				<div ref={priceSectionRef} className="pt-2">
 					<PriceSection
 						event={event}
 						isFull={isFull}

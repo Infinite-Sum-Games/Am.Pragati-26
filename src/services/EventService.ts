@@ -44,18 +44,15 @@ export const EventService = {
 		);
 
 		const mappedEvents = res.events.map((event) => {
+			// biome-ignore lint/correctness/noUnusedVariables: allowed
 			const { is_starred, tags, organizers, ...rest } =
 				event as BackendEvent & { organizers?: string[] };
 			const filteredTags =
 				tags?.filter((tag: string) => !tag.startsWith("!")) || [];
 
-			const finalTags = Array.isArray(organizers)
-				? [...organizers, ...filteredTags]
-				: filteredTags;
-
 			return {
 				...rest,
-				tags: finalTags,
+				tags: filteredTags,
 				isStarred: is_starred,
 			} as Event;
 		});

@@ -22,6 +22,7 @@ export const TransactionService = {
 		payload: TransactionVerificationPayload,
 	): Promise<TransactionVerificationResponse> => {
 		try {
+			// biome-ignore lint/suspicious/noExplicitAny: allowed any
 			const response = await apiPost<any>(
 				API_ROUTES.TRANSACTIONS.VERIFY,
 				payload,
@@ -37,6 +38,7 @@ export const TransactionService = {
 			};
 
 			return normalizedResponse;
+			// biome-ignore lint/suspicious/noExplicitAny: allowed any
 		} catch (error: any) {
 			const message =
 				error?.response?.data?.message ||
