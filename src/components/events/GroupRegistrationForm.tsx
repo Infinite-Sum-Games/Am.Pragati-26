@@ -56,6 +56,7 @@ export function GroupRegistrationForm({
 		name: "teammates",
 	});
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	// biome-ignore lint/suspicious/noExplicitAny: allowed any
 	const onInvalid = (errors: any) => {
 		console.log("Form validation failed:", errors);
 
