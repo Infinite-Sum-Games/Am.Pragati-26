@@ -72,15 +72,41 @@ function SponsorsPage() {
 								className="hidden md:block lg:hidden w-full h-auto"
 							/>
 
-							{/* Mobile */}
-							<img
-								src="sponsors-page/card-long-mobile.webp"
-								alt="Sponsor Card Mobile"
-								className="block md:hidden w-full h-auto"
-							/>
+							{/* Mobile - CSS styled card that matches Other Sponsors cards */}
+							<div className="block md:hidden w-full bg-[url(/sponsors-page/card.png)] bg-center bg-cover bg-no-repeat py-[16%] px-[16%]">
+								<div className="flex flex-col items-center gap-4 text-center">
+									{/* Logo */}
+									<img
+										src="sponsors-page/bny.jpeg"
+										alt="BNY Logo"
+										className="w-28 h-auto object-contain rounded-xl"
+									/>
 
-							{/* CONTENT LAYER */}
-							<div className="absolute inset-0 flex flex-col lg:flex-row items-center justify-center text-center lg:text-left">
+									{/* Text */}
+									<div className="flex flex-col gap-3">
+										<p className="text-white font-jersey leading-[1.75] text-base">
+											BNY is a global financial services platform company and
+											the world's largest custodian bank. Founded in 1784 by
+											Alexander Hamilton, BNY supports how capital moves,
+											settles, and stays secure across markets. At its core, BNY
+											provides the infrastructure for safekeeping assets,
+											processing transactions, and supporting clients across the
+											full investment lifecycle.
+										</p>
+
+										<p className="text-white font-jersey leading-[1.75] text-base">
+											Amrita School of Business shares a strong and growing
+											association with BNY. Over the years, BNY has supported
+											Amrita students through meaningful internship
+											opportunities and continues its support as the title
+											sponsor for Pragati'25 and Pragati'26.
+										</p>
+									</div>
+								</div>
+							</div>
+
+							{/* CONTENT LAYER - for tablet/desktop only */}
+							<div className="hidden md:flex absolute inset-0 flex-col lg:flex-row items-center justify-center text-center lg:text-left">
 								{/* SAFE CONTENT FRAME */}
 								<div
 									className="
@@ -88,7 +114,6 @@ function SponsorsPage() {
                     flex flex-col lg:flex-row
                     items-center justify-center
                     gap-4 lg:gap-8
-                    px-[8%] py-[14%]
                     md:px-[10%] md:py-[10%]
                     lg:px-[12%] lg:py-[12%]
                   "
@@ -97,7 +122,7 @@ function SponsorsPage() {
 									<img
 										src="sponsors-page/bny.jpeg"
 										alt="BNY Logo"
-										className="w-28 md:w-36 lg:w-52 h-auto object-contain rounded-xl shrink-0"
+										className="w-36 lg:w-52 h-auto object-contain rounded-xl shrink-0"
 									/>
 
 									{/* Text */}
@@ -142,12 +167,18 @@ function SponsorsPage() {
 						Other Sponsors
 					</motion.p>
 
-					<div className="w-full px-10 py-8 pb-20 flex flex-wrap justify-center items-center gap-8">
+					<div className="w-full px-10 py-8 pb-20 flex flex-col md:flex-row flex-wrap justify-center items-center gap-8">
 						<Card
 							name="Banconus"
 							img="sponsors-page/banconus.jpeg"
 							extraStyling=""
 							appearDelay={1.6}
+						/>
+						<Card
+							name="Welspun BAPL"
+							img="sponsors-page/new_sponser.jpeg"
+							extraStyling="!w-[90%] md:!w-[95%] bg-[#2d1b4e] p-10 rounded-lg"
+							appearDelay={1.8}
 						/>
 					</div>
 				</div>
