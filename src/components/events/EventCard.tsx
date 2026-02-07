@@ -101,11 +101,11 @@ export const EventCard = ({
 			{/* Card container - Glassmorphism style matching profile */}
 			<div
 				className={`
-					relative w-full h-full overflow-hidden flex flex-col
+					relative w-full overflow-hidden flex flex-col
 					bg-black/60 backdrop-blur-sm
 					border transition-all duration-300 ease-out
 					${isHovered ? "border-[#a855f7]" : "border-retro-cyan/30"}
-					${isEventClosed ? "opacity-60 grayscale" : ""}
+					${isEventClosed ? "grayscale" : ""}
 				`}
 				style={{
 					boxShadow: isHovered
@@ -196,9 +196,9 @@ export const EventCard = ({
 				</button>
 
 				{/* Content section */}
-				<div className="relative flex-1 w-full bg-black/60 border-t border-retro-cyan/30 p-4 flex flex-col justify-between z-10">
+				<div className="relative flex-1 shrink-0 w-full bg-black/60 border-t border-retro-cyan/30 p-4 flex flex-col justify-between z-10">
 					<div className="flex items-start justify-between mb-3">
-						<h3 className="font-jersey15 text-2xl md:text-3xl text-white leading-tight flex-1 pr-5 tracking-tight uppercase drop-shadow-[2px_2px_0px_#a855f7]">
+						<h3 className="font-jersey15 text-2xl md:text-3xl text-white leading-tight flex-1 pr-5 tracking-tight uppercase drop-shadow-[2px_2px_0px_#a855f7] line-clamp-2">
 							{event_name}
 						</h3>
 						<div className="text-right shrink-0">
@@ -225,7 +225,7 @@ export const EventCard = ({
 					</div>
 
 					{tags && tags.length > 0 && (
-						<div className="flex items-center gap-2 overflow-hidden">
+						<div className="flex items-center gap-2">
 							{tags.slice(0, 2).map((tag) => (
 								<span
 									key={`${event_id}-${tag}`}
